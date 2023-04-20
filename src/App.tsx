@@ -1,57 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/home";
+import Category from "./components/category";
+import Sports from "./components/sports";
+import Navbar from "./components/navbar";
+import SearchBar from "./components/searchbar";
+import HanselsHome from "./components/hansels-home/hansels-home";
+import Beauty from "./components/beauty/beauty";
+import Grocery from "./components/grocery/grocery";
+import Electronics from "./components/electronics/electronics";
+import Fashion from "./components/fashion/fashion";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <SearchBar />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HanselsHome />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/beauty" element={<Beauty />}></Route>
+        <Route path="/grocery" element={<Grocery />}></Route>
+        <Route path="/electronics" element={<Electronics />}></Route>
+        <Route path="/fashion" element={<Fashion />}></Route>
+        <Route path="/category" element={<Category />}></Route>
+        <Route path="/sports" element={<Sports />}></Route>
+      </Routes>
+    </>
   );
 }
 
