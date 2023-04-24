@@ -1,7 +1,7 @@
 const Sports = () => {
   return (
     <div>
-      <p>welcome to sports</p>
+      <p style={{ padding: 300 }}>welcome to sports</p>
     </div>
   );
 };

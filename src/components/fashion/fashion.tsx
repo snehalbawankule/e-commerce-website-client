@@ -1,7 +1,7 @@
 const Fashion = () => {
   return (
     <div>
-      <p>Welcome to fashion</p>
+      <p style={{ paddingLeft: 300 }}>Welcome to fashion</p>
     </div>
   );
 };

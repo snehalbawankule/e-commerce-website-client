@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
-import Category from "./components/category";
+import Category from "./components/category/category";
 import Sports from "./components/sports";
 import Navbar from "./components/navbar";
 import SearchBar from "./components/searchbar";
@@ -11,11 +11,15 @@ import Beauty from "./components/beauty/beauty";
 import Grocery from "./components/grocery/grocery";
 import Electronics from "./components/electronics/electronics";
 import Fashion from "./components/fashion/fashion";
+// import SideNav from "./components/sidenav";
+// import { Posts } from "./hooks/local-storage";
 function App() {
   return (
     <>
       <SearchBar />
       <Navbar />
+      {/* <SideNav /> */}
+
       <Routes>
         <Route path="/" element={<HanselsHome />}></Route>
         <Route path="/home" element={<Home />}></Route>

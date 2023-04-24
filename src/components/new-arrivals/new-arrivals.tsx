@@ -1,19 +1,19 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import CategoryCard from "./category-card";
+import NewArrivalsCard from "./new-arrivals-card";
 
-const Category = () => {
+const NewArrivals = () => {
   const { isDesktop, isTablet } = useMediaQuery();
 
   //const articles = useAppSelector((state) => state.articles.article);
   const articles = JSON.parse(localStorage.getItem("articles") || "");
   console.log(articles);
-  const art = articles.slice(6, 12);
+  const art = articles.slice(0, 6);
   return (
     <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        Shop by category
+        New Arivals
       </Grid>
       {art.map((post: any) => {
         return (
@@ -27,7 +27,7 @@ const Category = () => {
               display="flex"
               key={post.id}
             >
-              <CategoryCard post={post} />
+              <NewArrivalsCard post={post} />
             </Grid>
           </>
         );
@@ -56,4 +56,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default NewArrivals;
