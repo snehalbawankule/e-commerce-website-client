@@ -1,40 +1,33 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import biba from "../../assets/images/brand/biba.png";
+import chanel from "../../assets/images/brand/chanel.png";
+import dg from "../../assets/images/brand/d&g.png";
+import hm from "../../assets/images/brand/h&m.png";
+import prada from "../../assets/images/brand/prada.png";
+import zara from "../../assets/images/brand/zara.png";
 import useMediaQuery from "../../hooks/use-media-query";
-import CategoryCard from "./category-card";
-import bag from "../../assets/images/category/bag.png";
-import clothing from "../../assets/images/category/clothing.jpg";
-import footwear from "../../assets/images/category/footwear.jpg";
-import jewellery from "../../assets/images/category/beauty.jpg";
-import sunglasses from "../../assets/images/category/sunglasses.png";
-import watch from "../../assets/images/category/watch.png";
+import BrandCard from "./brandCard";
 
-const Category = () => {
+const Brand = () => {
   const { isDesktop, isTablet } = useMediaQuery();
-  const category = [clothing, footwear, jewellery, watch, bag, sunglasses];
+
+  const images = [zara, hm, chanel, dg, biba, prada];
 
   //const articles = useAppSelector((state) => state.articles.article);
   // const articles = JSON.parse(localStorage.getItem("articles") || "");
-  // console.log(articles);
-  // const art = articles.slice(6, 12);
+
+  // const art = articles.slice(12, 18);
   return (
     <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        Shop by category
+        Shop by Brands
       </Grid>
-      {category.map((post: any) => {
+      {images.map((post: any) => {
         return (
           <>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={2}
-              display="flex"
-              key={post.id}
-            >
-              <CategoryCard post={post} />
+            <Grid item xs={12} sm={6} md={6} lg={2} display="flex">
+              <BrandCard post={post} />
             </Grid>
           </>
         );
@@ -63,4 +56,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Brand;

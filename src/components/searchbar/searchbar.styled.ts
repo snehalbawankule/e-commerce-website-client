@@ -7,9 +7,8 @@ const Input = styled.input`
   margin-top: 8px;
   height: 40px;
 
-  @media (min-width: 768px) {
-    width: ${pxToRem(900)};
-  }
+  width: ${pxToRem(300)};
+
   ::placeholder {
     color: #2f2e41bf;
   }

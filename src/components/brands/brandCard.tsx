@@ -2,22 +2,15 @@ import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
 import { TextWrap02 } from "../new-arrivals/new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
-import { BrandName } from "../brands/brand.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
+import { BrandName } from "./brand.styled";
 // import { AllReactions } from "../all-reactions/all-reactions";
 
-const CategoryCard = (props: any) => {
+const BrandCard = (props: any) => {
   const { post } = props;
   const { id } = post;
-  const category1 = [
-    "clothing",
-    "footwear",
-    "jewellery",
-    "watch",
-    "bag",
-    "sunglasses",
-  ];
+  console.log(post);
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -66,4 +59,4 @@ const CategoryCard = (props: any) => {
   );
 };
 
-export default CategoryCard;
+export default BrandCard;

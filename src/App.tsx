@@ -11,6 +11,8 @@ import Beauty from "./components/beauty/beauty";
 import Grocery from "./components/grocery/grocery";
 import Electronics from "./components/electronics/electronics";
 import Fashion from "./components/fashion/fashion";
+import Login from "./components/login";
+import Registration from "./components/registration";
 // import SideNav from "./components/sidenav";
 // import { Posts } from "./hooks/local-storage";
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path="/fashion" element={<Fashion />}></Route>
         <Route path="/category" element={<Category />}></Route>
         <Route path="/sports" element={<Sports />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/registration" element={<Registration />}></Route>
       </Routes>
     </>
   );

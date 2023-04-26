@@ -1,14 +1,23 @@
 import { Input } from "./searchbar.styled";
 import { AppBar, Button, Grid } from "@mui/material";
-import { TextWrap4 } from "../navbar/navbar.styled";
+import { PostButton, TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
-import SearchIcon from "@mui/icons-material/Search";
+
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Account from "../account/account";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SearchBar = () => {
   const { isDesktop } = useMediaQuery();
+  const navigate = useNavigate();
+ 
+
+  const handleNavigation = () => {
+    navigate("/login");
+  };
   return (
     <div>
       <AppBar
@@ -42,12 +51,10 @@ const SearchBar = () => {
             }}
           >
             <Input type="text" name="name" placeholder="Search"></Input>
-            <Button>
-              <SearchIcon />
+            <Account />
+            <Button variant="outlined" onClick={handleNavigation}>
+              Login
             </Button>
-
-            <PersonIcon />
-
             <FavoriteBorderIcon />
             <ShoppingCartIcon />
           </Grid>

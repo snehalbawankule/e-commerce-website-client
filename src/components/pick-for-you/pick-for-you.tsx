@@ -1,28 +1,21 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import CategoryCard from "./category-card";
-import bag from "../../assets/images/category/bag.png";
-import clothing from "../../assets/images/category/clothing.jpg";
-import footwear from "../../assets/images/category/footwear.jpg";
-import jewellery from "../../assets/images/category/beauty.jpg";
-import sunglasses from "../../assets/images/category/sunglasses.png";
-import watch from "../../assets/images/category/watch.png";
+import PickForYouCard from "./pick-for-you-card";
 
-const Category = () => {
+const PickForYou = () => {
   const { isDesktop, isTablet } = useMediaQuery();
-  const category = [clothing, footwear, jewellery, watch, bag, sunglasses];
 
   //const articles = useAppSelector((state) => state.articles.article);
-  // const articles = JSON.parse(localStorage.getItem("articles") || "");
-  // console.log(articles);
-  // const art = articles.slice(6, 12);
+  const articles = JSON.parse(localStorage.getItem("articles") || "");
+  console.log(articles);
+  const art = articles.slice(24, 30);
   return (
     <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        Shop by category
+        Picks for you
       </Grid>
-      {category.map((post: any) => {
+      {art.map((post: any) => {
         return (
           <>
             <Grid
@@ -34,7 +27,7 @@ const Category = () => {
               display="flex"
               key={post.id}
             >
-              <CategoryCard post={post} />
+              <PickForYouCard post={post} />
             </Grid>
           </>
         );
@@ -63,4 +56,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default PickForYou;
