@@ -30,11 +30,11 @@ const NewArrivalsCard = (props: any) => {
             justifyContent: isMobile ? "center" : "flex",
           }}
         >
-          <Box onClick={() => history(`/articles/${id}`)}>
+          <Box onClick={() => history(`/products/${id}`)}>
             <Box
               style={{
                 height: "150px",
-                backgroundImage: `url(${post.url})`,
+                backgroundImage: `url(${post.image})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 transform: hovered ? "scale(1.1)" : "scale(1)",

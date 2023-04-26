@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import NewArrivalsCard from "./new-arrivals-card";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { addProduct } from "../../store/services";
 
 const NewArrivals = () => {
   const { isDesktop, isTablet } = useMediaQuery();
-
-  //const articles = useAppSelector((state) => state.articles.article);
-  const articles = JSON.parse(localStorage.getItem("articles") || "");
-  console.log(articles);
+  const dispatch = useAppDispatch();
+  const articles = useAppSelector((state) => state.products.product);
+  useEffect(() => {
+    if (articles.length) {
+      dispatch(addProduct());
+    }
+  }, [articles.length, dispatch]);
   const art = articles.slice(0, 6);
   return (
     <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
