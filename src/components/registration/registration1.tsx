@@ -10,7 +10,7 @@ import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import FacebookLogo from "../../assets/images/FacebookLogo.png";
 import { Box, Grid, Divider } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
-// import axios from "axios";
+
 import Checkbox from "@mui/material/Checkbox";
 
 import {
