@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
-import { TextWrap02 } from "./new-arrivals.styled";
+import { ProductName, ProductTitle, TextWrap02 } from "./new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ const NewArrivalsCard = (props: any) => {
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12} display="flex" key={id}>
         <Card
+          key={post.id}
           style={{
             border: "none",
             boxShadow: "none",
@@ -34,6 +35,7 @@ const NewArrivalsCard = (props: any) => {
             <Box
               style={{
                 height: "150px",
+                width: "150px",
                 backgroundImage: `url(${post.image})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
@@ -46,13 +48,14 @@ const NewArrivalsCard = (props: any) => {
             />
 
             <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-              <TextWrap02
-                style={{
-                  height: 80,
-                }}
-              >
-                {post.title}
-              </TextWrap02>
+              <ProductName>{post.name}</ProductName>
+            </Grid>
+
+            <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+              <ProductTitle>{post.title}</ProductTitle>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+              <ProductTitle>${post.actualPrice}</ProductTitle>
             </Grid>
           </Box>
           {/* <AllReactions post={post} />

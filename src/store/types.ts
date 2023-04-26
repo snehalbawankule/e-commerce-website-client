@@ -3,6 +3,7 @@ export type Product = {
   name: string;
   title: string;
   description: string;
+  image: string;
   gender: string;
   brand: string;
   category: string;
@@ -41,6 +42,7 @@ export const defaultProduct: Product = {
   name: "",
   title: "",
   description: "",
+  image: "",
   gender: "",
   brand: "",
   category: "",

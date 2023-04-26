@@ -62,12 +62,13 @@ function Footer() {
             sm={12}
             md={12}
             lg={12}
+            key={index}
             style={{
               display: "flex",
               alignItems: "baseline",
             }}
           >
-            <Button key={index}>
+            <Button>
               <Link
                 style={{
                   color: "black",
@@ -91,12 +92,13 @@ function Footer() {
             sm={12}
             md={12}
             lg={12}
+            key={index}
             style={{
               display: "flex",
               alignItems: "baseline",
             }}
           >
-            <Button key={index}>
+            <Button>
               <Link
                 style={{
                   color: "black",

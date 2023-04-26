@@ -34,8 +34,8 @@ const Poster = () => {
         style={{
           height: isDesktop ? "300px" : isMobile ? "350px" : "600px",
           display: "flex-column",
-          marginLeft: 50,
-          marginRight: 50,
+          marginLeft: 40,
+          marginRight: 40,
           backgroundImage: `url(${images[index]})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -61,7 +61,7 @@ const Poster = () => {
         >
           <TextWrap4>homeDescription</TextWrap4>
         </Grid>
-        <Grid
+        {/* <Grid
           item
           xs={6}
           sm={6}
@@ -70,7 +70,7 @@ const Poster = () => {
           sx={{ pl: isDesktop ? 10 : 3, mt: isDesktop ? 10 : 3 }}
         >
           <PostButton>Shop now</PostButton>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Grid>
   );

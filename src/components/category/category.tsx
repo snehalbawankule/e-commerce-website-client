@@ -18,25 +18,15 @@ const Category = () => {
   // console.log(articles);
   // const art = articles.slice(6, 12);
   return (
-    <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
+    <Grid container sx={{ px: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         Shop by category
       </Grid>
-      {category.map((post: any) => {
+      {category.map((post: any, index: any) => {
         return (
-          <>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={2}
-              display="flex"
-              key={post.id}
-            >
-              <CategoryCard post={post} />
-            </Grid>
-          </>
+          <Grid item xs={12} sm={6} md={6} lg={2} display="flex" key={index}>
+            <CategoryCard post={post} />
+          </Grid>
         );
       })}
       {/* <Grid

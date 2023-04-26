@@ -5,7 +5,7 @@ export const addProduct = createAsyncThunk(
   "articles/addArticle",
   async (_, { dispatch }) => {
     return fetch(
-      "http://localhost:3001/getproducts?page=1&size=20&sort=createdAt&order=DESC"
+      "http://localhost:3001/getproducts?page=1&size=12&sort=createdAt&order=DESC"
     )
       .then((res) => res.json())
       .then((json) => {

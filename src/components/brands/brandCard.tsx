@@ -10,7 +10,6 @@ import { BrandName } from "./brand.styled";
 const BrandCard = (props: any) => {
   const { post } = props;
   const { id } = post;
-  console.log(post);
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -23,7 +22,7 @@ const BrandCard = (props: any) => {
   const { isMobile } = useMediaQuery();
   return (
     <Grid container>
-      <Grid item xs={12} sm={12} md={12} lg={12} display="flex" key={id}>
+      <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
         <Card
           style={{
             border: "none",

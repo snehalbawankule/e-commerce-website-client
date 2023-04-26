@@ -19,17 +19,15 @@ const Brand = () => {
 
   // const art = articles.slice(12, 18);
   return (
-    <Grid container sx={{ p: isDesktop ? 8 : isTablet ? 5 : 3 }} spacing={5}>
+    <Grid container sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         Shop by Brands
       </Grid>
-      {images.map((post: any) => {
+      {images.map((post: any, index: any) => {
         return (
-          <>
-            <Grid item xs={12} sm={6} md={6} lg={2} display="flex">
-              <BrandCard post={post} />
-            </Grid>
-          </>
+          <Grid item xs={12} sm={6} md={6} lg={2} display="flex" key={index}>
+            <BrandCard post={post} key={post.id} />
+          </Grid>
         );
       })}
       {/* <Grid
