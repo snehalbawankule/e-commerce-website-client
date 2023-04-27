@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import CategoryCard from "./category-card";
-import bag from "../../assets/images/category/bag.png";
-import clothing from "../../assets/images/category/clothing.jpg";
-import footwear from "../../assets/images/category/footwear.jpg";
-import jewellery from "../../assets/images/category/beauty.jpg";
-import sunglasses from "../../assets/images/category/sunglasses.png";
-import watch from "../../assets/images/category/watch.png";
+import { useLocation, Link } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { addCategory } from "../../store/category/services";
 
 const Category = () => {
   const { isDesktop, isTablet } = useMediaQuery();
-  const category = [clothing, footwear, jewellery, watch, bag, sunglasses];
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+  const categories = useAppSelector((state) => state.categories.category);
 
-  //const articles = useAppSelector((state) => state.articles.article);
-  // const articles = JSON.parse(localStorage.getItem("articles") || "");
-  // console.log(articles);
-  // const art = articles.slice(6, 12);
+  useEffect(() => {
+    if (categories.length) {
+      dispatch(addCategory());
+    }
+  }, [categories.length, dispatch]);
+
+  const category =
+    location.pathname === `/` ? categories.slice(0, 6) : categories;
+
   return (
     <Grid container sx={{ px: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
+      <Grid item xs={10} sm={10} md={10} lg={10}>
         Shop by category
+      </Grid>
+      <Grid
+        item
+        xs={2}
+        sm={2}
+        md={2}
+        lg={2}
+        style={{ display: "flex", justifyContent: "end" }}
+      >
+        <Link
+          to={`/category`}
+          style={{
+            color: "black",
+            textDecoration: "none",
+          }}
+        >
+          show all
+        </Link>
       </Grid>
       {category.map((post: any, index: any) => {
         return (
@@ -29,26 +51,6 @@ const Category = () => {
           </Grid>
         );
       })}
-      {/* <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <LoadMoreButton>
-          <Link
-            to={`/articles`}
-            style={{
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            {textwrap.LoadMoreArticles}
-          </Link>
-        </LoadMoreButton>
-      </Grid> */}
     </Grid>
   );
 };

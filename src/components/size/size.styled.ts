@@ -57,7 +57,6 @@ const ImageWrap = styled.img<LatestArticleProps>`
 const ProductName = styled.div`
   font-size: ${pxToRem(16)};
   color: #2f2e41;
-  margin-top: ${pxToRem(10)};
 `;
 const ProductTitle = styled.div`
   font-size: ${pxToRem(12)};

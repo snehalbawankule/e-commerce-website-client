@@ -41,7 +41,7 @@ const Login = () => {
     navigate("/registration");
   };
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="sm">
+    <Dialog open={open} onClose={handleClose} maxWidth="xs">
       <DialogTitle>
         <Grid container>
           <Grid item sm={11}>

@@ -4,34 +4,34 @@ import { Link } from "react-router-dom";
 import useMediaQuery from "../../hooks/use-media-query";
 import NewArrivalsCard from "./new-arrivals-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import { addProduct } from "../../store/services";
+import { addProduct } from "../../store/product/services";
 import { useLocation } from "react-router-dom";
 
 const NewArrivals = () => {
   const location = useLocation();
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
-  const articles = useAppSelector((state) => state.products.product);
+  const newArrivals = useAppSelector((state) => state.products.product);
   useEffect(() => {
-    if (articles.length) {
+    if (newArrivals.length) {
       dispatch(addProduct());
     }
-  }, [articles.length, dispatch]);
+  }, [newArrivals.length, dispatch]);
 
-  const art = location.pathname === `/` ? articles.slice(0, 6) : articles;
+  const art = location.pathname === `/` ? newArrivals.slice(0, 6) : newArrivals;
 
   return (
     <Grid container sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
-      <Grid item xs={11} sm={11} md={11} lg={11}>
+      <Grid item xs={10} sm={10} md={10} lg={10}>
         New Arrivals
       </Grid>
       <Grid
         item
-        xs={1}
-        sm={1}
-        md={1}
-        lg={1}
-        style={{ display: "flex", justifyContent: "center" }}
+        xs={2}
+        sm={2}
+        md={2}
+        lg={2}
+        style={{ display: "flex", justifyContent: "end" }}
       >
         <Link
           to={`/newarrivals`}

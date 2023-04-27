@@ -15,6 +15,7 @@ import Login from "./components/login";
 import Registration from "./components/registration";
 import NewArrivals from "./components/new-arrivals/new-arrivals";
 import Product from "./components/product/product";
+import Brand from "./components/brands";
 // import SideNav from "./components/sidenav";
 // import { Posts } from "./hooks/local-storage";
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/fashion" element={<Fashion />}></Route>
         <Route path="/category" element={<Category />}></Route>
         <Route path="/sports" element={<Sports />}></Route>
+        <Route path="/brand" element={<Brand />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
         <Route path="/products/:id" element={<Product />}></Route>

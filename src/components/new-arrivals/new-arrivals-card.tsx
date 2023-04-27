@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
-import { ProductName, ProductTitle, TextWrap02 } from "./new-arrivals.styled";
+import { ProductName, ProductTitle } from "./new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const NewArrivalsCard = (props: any) => {
                 height: "150px",
                 width: "150px",
                 backgroundImage: `url(${post.image})`,
-                backgroundPosition: "center",
+                backgroundPosition: "top",
                 backgroundSize: "cover",
                 transform: hovered ? "scale(1.1)" : "scale(1)",
                 transition: "all 0.2s ease-in-out",

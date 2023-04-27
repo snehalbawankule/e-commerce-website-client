@@ -1,55 +1,59 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
-import biba from "../../assets/images/brand/biba.png";
-import chanel from "../../assets/images/brand/chanel.png";
-import dg from "../../assets/images/brand/d&g.png";
-import hm from "../../assets/images/brand/h&m.png";
-import prada from "../../assets/images/brand/prada.png";
-import zara from "../../assets/images/brand/zara.png";
 import useMediaQuery from "../../hooks/use-media-query";
-import BrandCard from "./brandCard";
+import BrandCard from "./brand-card";
+import { useLocation, Link } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { addBrand } from "../../store/brand/services";
 
 const Brand = () => {
   const { isDesktop, isTablet } = useMediaQuery();
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+  const brands = useAppSelector((state) => state.brands.brand);
 
-  const images = [zara, hm, chanel, dg, biba, prada];
+  useEffect(() => {
+    if (brands.length) {
+      dispatch(addBrand());
+    }
+  }, [brands.length, dispatch]);
 
-  //const articles = useAppSelector((state) => state.articles.article);
-  // const articles = JSON.parse(localStorage.getItem("articles") || "");
+  const brand = location.pathname === `/` ? brands.slice(0, 6) : brands;
 
-  // const art = articles.slice(12, 18);
   return (
-    <Grid container sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
+    <Grid
+      container
+      sx={{ px: isDesktop ? 5 : isTablet ? 5 : 3, mb: 5, mt: 1 }}
+      spacing={5}
+    >
+      <Grid item xs={10} sm={10} md={10} lg={10}>
         Shop by Brands
       </Grid>
-      {images.map((post: any, index: any) => {
+      <Grid
+        item
+        xs={2}
+        sm={2}
+        md={2}
+        lg={2}
+        style={{ display: "flex", justifyContent: "end" }}
+      >
+        <Link
+          to={`/brand`}
+          style={{
+            color: "black",
+            textDecoration: "none",
+          }}
+        >
+          show all
+        </Link>
+      </Grid>
+      {brand.map((post: any, index: any) => {
         return (
           <Grid item xs={12} sm={6} md={6} lg={2} display="flex" key={index}>
-            <BrandCard post={post} key={post.id} />
+            <BrandCard post={post} />
           </Grid>
         );
       })}
-      {/* <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <LoadMoreButton>
-          <Link
-            to={`/articles`}
-            style={{
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            {textwrap.LoadMoreArticles}
-          </Link>
-        </LoadMoreButton>
-      </Grid> */}
     </Grid>
   );
 };

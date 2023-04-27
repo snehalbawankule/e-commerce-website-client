@@ -1,103 +1,72 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { TextWrap02, TextWrap03 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
-
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { addProduct } from "../../store/services";
+import { addProduct } from "../../store/product/services";
+import { PostButton } from "../navbar/navbar.styled";
+import Size from "../size/size";
 
 const Product = () => {
   let { id } = useParams();
-
   const dispatch = useAppDispatch();
-  const existingPost = useAppSelector((state) => state.products.product);
-  const post = existingPost.find((item: any) => item.id === id);
-  console.log(post);
-  const { isMobile, isTablet, isDesktop } = useMediaQuery();
-  const textRef = useRef<HTMLDivElement>(null);
+  // const existingPost = useAppSelector((state) => state.products.product);
+  // const post = existingPost.find((item: any) => item.id === id);
+
+  const { isTablet, isDesktop } = useMediaQuery();
+
   useEffect(() => {
     dispatch(addProduct());
   }, [dispatch]);
-  function handleSelection() {
-    const selectedText = window.getSelection()?.toString();
-    if (selectedText && textRef.current) {
-      const range = window.getSelection()!.getRangeAt(0);
-      const span = document.createElement("span");
-      span.className = "highlight";
-      range.surroundContents(span);
-    }
-  }
 
   return (
     <Grid
       container
-      display="flex"
       sx={{
-        mt: isDesktop ? 15 : isTablet ? 12 : 10,
+        mt: isDesktop ? 5 : isTablet ? 12 : 10,
         px: isDesktop ? 10 : isTablet ? 5 : 4,
-        display: "flex",
-        justifyContent: "center",
+        pb: 10,
       }}
     >
-      <Grid
+      {/* <Grid
         item
         xs={12}
         sm={12}
-        md={6}
-        lg={6}
+        md={4}
+        lg={4}
         style={{
-          height: isDesktop ? "350px" : isMobile ? "350px" : "600px",
           backgroundImage: `url(${post?.image})`,
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
         }}
       />
-
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        sx={{ mt: 4 }}
-        display="flex"
-        justifyContent="center"
-      >
-        <TextWrap02 ref={textRef} onMouseUp={handleSelection}>
-          {post?.name}
-        </TextWrap02>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        display="flex"
-        justifyContent="center"
-      >
-        <TextWrap02
-          style={{ fontWeight: 500, fontSize: 18 }}
-          ref={textRef}
-          onMouseUp={handleSelection}
-        >
-          {post?.title}
-        </TextWrap02>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        display="flex"
-        justifyContent="center"
-      >
-        <TextWrap03 ref={textRef} onMouseUp={handleSelection}>
-          {post?.description}
-        </TextWrap03>
-      </Grid>
+      <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
+          <TextWrap02 style={{ paddingTop: 0 }}>{post?.name}</TextWrap02>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
+          <TextWrap02 style={{ fontWeight: 500, fontSize: 18 }}>
+            {post?.title}
+          </TextWrap02>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
+          <TextWrap03 style={{ fontWeight: 500, fontSize: 18 }}>
+            ${post?.actualPrice}
+          </TextWrap03>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
+          <TextWrap03>{post?.description}</TextWrap03>
+        </Grid>
+        <Grid item>
+          <Size />
+        </Grid>
+        <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
+          <PostButton>Add to bag</PostButton>
+          <PostButton style={{ marginLeft: 10 }}>Add to wishlist</PostButton>
+        </Grid>
+      </Grid> */}
     </Grid>
   );
 };

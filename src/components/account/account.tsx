@@ -1,21 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  Box,
   Menu,
   Toolbar,
-  Button,
   Grid,
   IconButton,
   MenuItem,
   Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 
-import useMediaQuery from "../../hooks/use-media-query";
 const Account = () => {
-  const { isDesktop } = useMediaQuery();
-
   const pages = ["orders", "returns", "wishlist", "profile", "log out"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null

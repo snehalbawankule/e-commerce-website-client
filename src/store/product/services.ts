@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { actions } from "./reducer";
+import { actions } from "./slice";
 
 export const addProduct = createAsyncThunk(
-  "articles/addArticle",
+  "products/addProduct",
   async (_, { dispatch }) => {
     return fetch(
       "http://localhost:3001/getproducts?page=1&size=12&sort=createdAt&order=DESC"

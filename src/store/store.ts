@@ -1,10 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import storeReducer from "./reducer";
+import reducers from "./reducer";
 
 export const store = configureStore({
-  reducer: {
-    products: storeReducer,
-  },
+  reducer: reducers,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
