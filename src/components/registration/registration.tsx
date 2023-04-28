@@ -1,11 +1,9 @@
-import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import { useState } from "react";
 // import axios from "axios";
 import {
   CreateAccountButton,
   Input,
-  GoogleLogo1,
-  SignGoogleButton,
+
   TextWrap3,
   TextWrap1,
   TextWrap6,

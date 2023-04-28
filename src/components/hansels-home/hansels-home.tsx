@@ -6,7 +6,7 @@ import Category from "../category/category";
 import Poster from "../poster/poster";
 import NewArrivals from "../new-arrivals";
 import Brand from "../brands";
-import PickForYou from "../pick-for-you";
+import HandPicked from "../handpicked";
 
 const HanselsHome = () => {
   return (
@@ -14,7 +14,7 @@ const HanselsHome = () => {
       <Grid container display="flex">
         <Poster />
         <NewArrivals />
-        <PickForYou />
+        <HandPicked />
         <Category />
         <Brand />
         <Footer />

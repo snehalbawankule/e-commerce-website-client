@@ -5,14 +5,19 @@ type BrandProps = {
 };
 
 const BrandName = styled.img<BrandProps>`
-height: "51px",
-width: "76px",
 background-image:  url(${(props: any) => props.src});
-background-position: "center",
-background-size: "cover",
-transform: hovered ? "scale(1.1)" : "scale(1)",
-transition: "all 0.2s ease-in-out",
-border:none
+background-position: "center";
+background-size: "cover";
+transform: hovered ? "scale(1.1)" : "scale(1)";
+transition: "all 0.2s ease-in-out";
+border:none;
+  height: "150px";
+  width: "150px";
+  background-color: "#6DB3F2";
+  background-position: "top";
+  border-radius: "16px";
+
+
 `;
 const TextWrap4 = styled.h1`
   font-size: ${pxToRem(24)};

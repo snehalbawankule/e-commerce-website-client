@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
-import { TextWrap02 } from "../new-arrivals/new-arrivals.styled";
+import { ProductName, ProductTitle } from "../new-arrivals/new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
 // import { AllReactions } from "../all-reactions/all-reactions";
 
-const PickForYouCard = (props: any) => {
+const NewArrivalsCard = (props: any) => {
   const { post } = props;
   const { id } = post;
 
@@ -24,18 +24,20 @@ const PickForYouCard = (props: any) => {
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12} display="flex" key={id}>
         <Card
+          key={post.id}
           style={{
             border: "none",
             boxShadow: "none",
             justifyContent: isMobile ? "center" : "flex",
           }}
         >
-          <Box onClick={() => history(`/articles/${id}`)}>
+          <Box onClick={() => history(`/products/${id}`)}>
             <Box
               style={{
                 height: "150px",
-                backgroundImage: `url(${post.url})`,
-                backgroundPosition: "center",
+                width: "150px",
+                backgroundImage: `url(${post.image})`,
+                backgroundPosition: "top",
                 backgroundSize: "cover",
                 transform: hovered ? "scale(1.1)" : "scale(1)",
                 transition: "all 0.2s ease-in-out",
@@ -46,26 +48,20 @@ const PickForYouCard = (props: any) => {
             />
 
             <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-              <TextWrap02
-                style={{
-                  height: 80,
-                }}
-              >
-                {post.title}
-              </TextWrap02>
+              <ProductName>{post.name}</ProductName>
+            </Grid>
+
+            <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+              <ProductTitle>{post.title}</ProductTitle>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+              <ProductTitle>${post.actualPrice}</ProductTitle>
             </Grid>
           </Box>
-          {/* <AllReactions post={post} />
-          <Grid item xs={12} sm={12} md={12} lg={12} sx={{ pt: 2 }}>
-            <Divider sx={{ borderBottomWidth: 2 }} />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12} sx={{ mt: 3 }}>
-            <ReactionButtons post={post} key={post.id} />
-          </Grid> */}
         </Card>
       </Grid>
     </Grid>
   );
 };
 
-export default PickForYouCard;
+export default NewArrivalsCard;

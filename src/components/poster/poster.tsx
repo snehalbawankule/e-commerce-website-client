@@ -1,43 +1,42 @@
 import React, { useEffect, useState } from "react";
-import picture from "../../assets/images/picture.png";
-import Rectangle from "../../assets/images/Rectangle.png";
-import Rectangle2 from "../../assets/images/Rectangle2.png";
 import { Grid } from "@mui/material";
-import { PostButton, TextWrap4 } from "../navbar/navbar.styled";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
+import { addPoster } from "../../store/poster/services";
+
 const Poster = () => {
   const { isMobile, isDesktop } = useMediaQuery();
-  const images = [
-    picture,
-    Rectangle,
-    Rectangle2,
-    picture,
-    Rectangle2,
-    Rectangle,
-  ];
-  const [index, setIndex] = useState(0);
+
+  const dispatch = useAppDispatch();
+  const posters = useAppSelector((state) => state.posters.poster);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIndex((index) => (index + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, [images.length]);
+    if (posters.length) {
+      dispatch(addPoster());
+      const intervalId = setInterval(() => {
+        setIndex((index) => (index + 1) % posters.length);
+      }, 3000);
+      return () => clearInterval(intervalId);
+    }
+  }, [posters.length, dispatch]);
+
+  const [index, setIndex] = useState(0);
+
   return (
-    <Grid container display="flex">
+    <Grid container display="flex" style={{ marginLeft: 40, marginRight: 40 }}>
       <Grid
         item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
+        xs={6}
+        sm={6}
+        md={6}
+        lg={6}
         style={{
-          height: isDesktop ? "300px" : isMobile ? "350px" : "600px",
+          height: isDesktop ? "250px" : isMobile ? "350px" : "600px",
           display: "flex-column",
-          marginLeft: 40,
-          marginRight: 40,
-          backgroundImage: `url(${images[index]})`,
-          backgroundPosition: "center",
+
+          backgroundImage: `url(${posters[index].image})`,
+          backgroundPosition: "top",
           backgroundSize: "cover",
         }}
       >
@@ -49,7 +48,7 @@ const Poster = () => {
           lg={6}
           sx={{ pl: isDesktop ? 10 : 3, mt: isDesktop ? 20 : 10 }}
         >
-          <TextWrap4>Find your style</TextWrap4>
+          <TextWrap4>{posters[index].name}</TextWrap4>
         </Grid>
         <Grid
           item
@@ -61,16 +60,41 @@ const Poster = () => {
         >
           <TextWrap4>homeDescription</TextWrap4>
         </Grid>
-        {/* <Grid
+      </Grid>
+      <Grid
+        item
+        xs={6}
+        sm={6}
+        md={6}
+        lg={6}
+        style={{
+          height: isDesktop ? "250px" : isMobile ? "350px" : "600px",
+          display: "flex-column",
+          backgroundImage: `url(${posters[index].image})`,
+          backgroundPosition: "top",
+          backgroundSize: "cover",
+        }}
+      >
+        <Grid
           item
-          xs={6}
-          sm={6}
-          md={4}
-          lg={4}
-          sx={{ pl: isDesktop ? 10 : 3, mt: isDesktop ? 10 : 3 }}
+          xs={10}
+          sm={12}
+          md={7}
+          lg={6}
+          sx={{ pl: isDesktop ? 10 : 3, mt: isDesktop ? 20 : 10 }}
         >
-          <PostButton>Shop now</PostButton>
-        </Grid> */}
+          <TextWrap4>{posters[index].name}</TextWrap4>
+        </Grid>
+        <Grid
+          item
+          xs={11}
+          sm={10}
+          md={7}
+          lg={7}
+          sx={{ pl: isDesktop ? 10 : 3 }}
+        >
+          <TextWrap4>homeDescription</TextWrap4>
+        </Grid>
       </Grid>
     </Grid>
   );

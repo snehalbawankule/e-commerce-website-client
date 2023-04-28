@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
-import { ProductName } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
+import { BrandName } from "./brand.styled";
 
 const BrandCard = (props: any) => {
   const { post } = props;
@@ -35,7 +35,7 @@ const BrandCard = (props: any) => {
                 height: "150px",
                 width: "150px",
                 backgroundImage: `url(${post.image})`,
-
+                backgroundColor: "#6DB3F2",
                 backgroundPosition: "top",
                 backgroundSize: "cover",
                 transform: hovered ? "scale(1.1)" : "scale(1)",

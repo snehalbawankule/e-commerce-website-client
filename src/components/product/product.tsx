@@ -11,8 +11,8 @@ import Size from "../size/size";
 const Product = () => {
   let { id } = useParams();
   const dispatch = useAppDispatch();
-  // const existingPost = useAppSelector((state) => state.products.product);
-  // const post = existingPost.find((item: any) => item.id === id);
+  const existingPost = useAppSelector((state) => state.products.product);
+  const post = existingPost.find((item: any) => item.id === id);
 
   const { isTablet, isDesktop } = useMediaQuery();
 
@@ -29,7 +29,7 @@ const Product = () => {
         pb: 10,
       }}
     >
-      {/* <Grid
+      <Grid
         item
         xs={12}
         sm={12}
@@ -47,7 +47,7 @@ const Product = () => {
           <TextWrap02 style={{ paddingTop: 0 }}>{post?.name}</TextWrap02>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
-          <TextWrap02 style={{ fontWeight: 500, fontSize: 18 }}>
+          <TextWrap02 style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}>
             {post?.title}
           </TextWrap02>
         </Grid>
@@ -66,7 +66,7 @@ const Product = () => {
           <PostButton>Add to bag</PostButton>
           <PostButton style={{ marginLeft: 10 }}>Add to wishlist</PostButton>
         </Grid>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 };
