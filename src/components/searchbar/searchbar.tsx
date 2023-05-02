@@ -1,22 +1,18 @@
 import { Input } from "./searchbar.styled";
-import { AppBar, Button, Grid } from "@mui/material";
-import { PostButton, TextWrap4 } from "../navbar/navbar.styled";
+import { AppBar, Grid } from "@mui/material";
+import { TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
-
-import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Account from "../account/account";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const SearchBar = () => {
   const { isDesktop } = useMediaQuery();
   const navigate = useNavigate();
- 
 
   const handleNavigation = () => {
-    navigate("/login");
+    navigate("/wishlist");
   };
   return (
     <div>
@@ -26,7 +22,8 @@ const SearchBar = () => {
           background: "black",
           color: "white",
           alignItems: "center",
-          height: 60,
+          height: 65,
+          display: "flex",
         }}
       >
         <Grid container>
@@ -35,28 +32,47 @@ const SearchBar = () => {
             md={3}
             lg={3}
             style={{
-              paddingLeft: isDesktop ? 10 : 10,
-              display: "flex",
+              paddingLeft: isDesktop ? 30 : 10,
             }}
           >
             <TextWrap4>Hansels Foundation</TextWrap4>
           </Grid>
           <Grid
             item
-            md={3}
-            lg={3}
+            md={7}
+            lg={7}
             style={{
-              paddingLeft: isDesktop ? 10 : 10,
               display: "flex",
+              alignItems: "center",
             }}
           >
             <Input type="text" name="name" placeholder="Search"></Input>
+          </Grid>
+          <Grid
+            item
+            md={1}
+            lg={1}
+            style={{
+              paddingLeft: isDesktop ? 15 : 10,
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <FavoriteBorderIcon
+              sx={{ fontSize: isDesktop ? 35 : 20 }}
+              onClick={handleNavigation}
+            />
+            <ShoppingCartIcon
+              sx={{ fontSize: isDesktop ? 35 : 20, paddingLeft: 2 }}
+            />
+          </Grid>
+
+          {/* <Button variant="outlined" onClick={handleNavigation}>
+            Login
+          </Button> */}
+          <Grid item md={1} lg={1}>
             <Account />
-            <Button variant="outlined" onClick={handleNavigation}>
-              Login
-            </Button>
-            <FavoriteBorderIcon />
-            <ShoppingCartIcon />
           </Grid>
         </Grid>
       </AppBar>

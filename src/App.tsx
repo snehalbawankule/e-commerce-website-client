@@ -16,6 +16,7 @@ import Registration from "./components/registration";
 import NewArrivals from "./components/new-arrivals/new-arrivals";
 import Product from "./components/product/product";
 import Brand from "./components/brands";
+import Wishlist from "./components/wishlist";
 // import SideNav from "./components/sidenav";
 // import { Posts } from "./hooks/local-storage";
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/sports" element={<Sports />}></Route>
         <Route path="/brand" element={<Brand />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
         <Route path="/products/:id" element={<Product />}></Route>
       </Routes>

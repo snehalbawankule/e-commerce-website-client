@@ -1,16 +1,14 @@
-import * as React from "react";
 import Dialog from "@mui/material/Dialog";
+import axios from "axios";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
-// import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import FacebookLogo from "../../assets/images/FacebookLogo.png";
 import { Box, Grid, Divider } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
 import Checkbox from "@mui/material/Checkbox";
 
 import {
@@ -35,6 +33,9 @@ const Registration = () => {
   };
 
   const navigate = useNavigate();
+  const navLogin = () => {
+    navigate("/login");
+  };
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -47,13 +48,24 @@ const Registration = () => {
   const handleChange1 = (event: any) => {
     confirm_password = event.target.value;
   };
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    if (userInfo.password === confirm_password) {
+      axios
+        .post("http://localhost:3001/postuser", {
+          email: userInfo.email,
+          name: userInfo.name,
+          password: userInfo.password,
+        })
+        .then(() => {
+          navLogin();
+        });
+    } else {
+      alert("Passwords Don't Match");
+    }
   };
 
-  const navLogin = () => {
-    navigate("/login");
-  };
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm">
       <DialogTitle>

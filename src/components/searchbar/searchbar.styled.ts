@@ -4,10 +4,11 @@ const Input = styled.input`
   font-weight: 300;
   font-size: ${pxToRem(17)};
   border-width: 0 0 2px;
-  margin-top: 8px;
+  border-radius: 30px;
+  padding-left: 10px;
   height: 40px;
 
-  width: ${pxToRem(300)};
+  width: 100%;
 
   ::placeholder {
     color: #2f2e41bf;

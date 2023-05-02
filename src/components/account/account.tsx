@@ -8,12 +8,14 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
+import { ProfileImage } from "./account.styled";
 
 const Account = () => {
   const pages = ["orders", "returns", "wishlist", "profile", "log out"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -21,18 +23,16 @@ const Account = () => {
     setAnchorElNav(event.currentTarget);
   };
 
+  const currentUser = JSON.parse(localStorage.getItem("current") || "{}");
+  var profile = currentUser.name.charAt(0);
+  console.log(profile);
+
   return (
     <Grid container>
       <Toolbar>
-        <Grid
-          item
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-          }}
-        >
+        <Grid item>
           <IconButton size="small" onClick={handleOpenNavMenu} color="inherit">
-            Account
+            <ProfileImage>{profile}</ProfileImage>
           </IconButton>
           <Menu
             id="menu-appbar"

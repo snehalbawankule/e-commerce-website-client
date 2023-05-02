@@ -1,4 +1,4 @@
-import * as React from "react";
+import axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -35,10 +35,28 @@ const Login = () => {
   const [password, setPassword] = useState();
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    axios
+      .post("http://localhost:3001/checkuser", {
+        email,
+        password,
+      })
+      .then(function (response) {
+        if (response.data.message === "User not found") {
+          alert(response.data.message);
+        } else if (response.data.message === "Invalid password") {
+          alert(response.data.message);
+        } else {
+          localStorage.setItem("current", JSON.stringify(response.data));
+          navigate("/");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const navRegistration = () => {
-    navigate("/registration");
+    navigate("/");
   };
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">
