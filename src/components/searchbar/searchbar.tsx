@@ -1,82 +1,74 @@
 import { Input } from "./searchbar.styled";
-import { AppBar, Grid } from "@mui/material";
-import { TextWrap4 } from "../navbar/navbar.styled";
-import useMediaQuery from "../../hooks/use-media-query";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Account from "../account/account";
+import { Grid } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { List, ListItem } from "@mui/material";
+import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 
 const SearchBar = () => {
-  const { isDesktop } = useMediaQuery();
-  const navigate = useNavigate();
+  const [product, setProduct] = useState({
+    productName: "",
+    isFetching: false,
+  });
+  const [products, setProducts] = useState([]);
 
-  const handleNavigation = () => {
-    navigate("/wishlist");
+  const searchbarHandler = (event: any) => {
+    event?.preventDefault();
+    setProduct({
+      ...product,
+      [product.productName]: event.target.value,
+      isFetching: true,
+    });
+
+    fetch(
+      `http://localhost:3001/getproducts/search?size=6&q=${event.target.value}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        setProducts(json);
+      });
   };
+
   return (
-    <div>
-      <AppBar
-        position="fixed"
+    <Grid container>
+      <Grid
+        item
+        md={12}
+        lg={12}
         style={{
-          background: "black",
-          color: "white",
-          alignItems: "center",
-          height: 65,
           display: "flex",
+          alignItems: "center",
         }}
       >
-        <Grid container>
-          <Grid
-            item
-            md={3}
-            lg={3}
-            style={{
-              paddingLeft: isDesktop ? 30 : 10,
-            }}
-          >
-            <TextWrap4>Hansels Foundation</TextWrap4>
-          </Grid>
-          <Grid
-            item
-            md={7}
-            lg={7}
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Input type="text" name="name" placeholder="Search"></Input>
-          </Grid>
-          <Grid
-            item
-            md={1}
-            lg={1}
-            style={{
-              paddingLeft: isDesktop ? 15 : 10,
-              justifyContent: "center",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <FavoriteBorderIcon
-              sx={{ fontSize: isDesktop ? 35 : 20 }}
-              onClick={handleNavigation}
-            />
-            <ShoppingCartIcon
-              sx={{ fontSize: isDesktop ? 35 : 20, paddingLeft: 2 }}
-            />
-          </Grid>
-
-          {/* <Button variant="outlined" onClick={handleNavigation}>
-            Login
-          </Button> */}
-          <Grid item md={1} lg={1}>
-            <Account />
-          </Grid>
-        </Grid>
-      </AppBar>
-    </div>
+        <Input
+          type="text"
+          value={product.productName}
+          placeholder="Search..."
+          onChange={searchbarHandler}
+        />
+      </Grid>
+      {products.length === 0 ? null : (
+        <List>
+          {products.map((post: any) => {
+            return (
+              <Grid
+                item
+                key={post.id}
+                md={7}
+                lg={7}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <ListItem>{post.name}</ListItem>
+              </Grid>
+            );
+          })}
+        </List>
+      )}
+    </Grid>
   );
 };
 export default SearchBar;

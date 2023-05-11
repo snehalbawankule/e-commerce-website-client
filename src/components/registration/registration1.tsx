@@ -10,7 +10,6 @@ import FacebookLogo from "../../assets/images/FacebookLogo.png";
 import { Box, Grid, Divider } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
 import {
   Input,
   SignGoogleButton,
@@ -21,7 +20,6 @@ import {
 } from "../registration/registration.styled";
 import { LoginButton } from "../login/login.styled";
 import { default as textwrap } from "../../assets/text-file/textwrap.json";
-
 import { useNavigate } from "react-router-dom";
 
 const Registration = () => {

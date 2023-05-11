@@ -57,11 +57,19 @@ const ImageWrap = styled.img<LatestArticleProps>`
 const ProductName = styled.div`
   font-size: ${pxToRem(16)};
   color: #2f2e41;
+  font-weight: 500;
+  text-align: center;
   margin-top: ${pxToRem(10)};
 `;
 const ProductTitle = styled.div`
   font-size: ${pxToRem(12)};
+  padding-top: ${pxToRem(6)};
+  font-weight: 400;
   color: #2f2e41;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export {

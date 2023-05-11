@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <Grid container sx={{ mt: 7 }}>
+    <Grid container sx={{ mt: 7, backgroundColor: "#efeef6" }}>
       <Toolbar>
         <Grid
           item

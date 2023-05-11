@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useMediaQuery from "../../hooks/use-media-query";
 import PickForYouCard from "./handpicked-card";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -16,8 +16,9 @@ const HandPicked = () => {
       dispatch(addHandPicked());
     }
   }, [articles.length, dispatch]);
+  const location = useLocation();
+  const art = location.pathname === `/` ? articles.slice(0, 6) : articles;
 
-  const art = articles.slice(6, 12);
   return (
     <Grid container sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
       <Grid item xs={10} sm={10} md={10} lg={10}>

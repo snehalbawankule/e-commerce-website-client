@@ -20,6 +20,10 @@ const Product = () => {
     dispatch(addProduct());
   }, [dispatch]);
 
+ const handleWishlist=()=>{
+    // dispatch(actions.addLike(newLike));
+
+ }
   return (
     <Grid
       container
@@ -64,7 +68,7 @@ const Product = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
           <PostButton>Add to bag</PostButton>
-          <PostButton style={{ marginLeft: 10 }}>Add to wishlist</PostButton>
+          <PostButton style={{ marginLeft: 10 }} onClick={handleWishlist}>Add to wishlist</PostButton>
         </Grid>
       </Grid>
     </Grid>

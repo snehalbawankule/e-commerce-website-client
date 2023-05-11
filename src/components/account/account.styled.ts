@@ -1,4 +1,5 @@
 import styled from "styled-components";
+const pxToRem = (size: number) => `${size / 16}rem`;
 
 const ProfileImage = styled.div`
   width: 50px;
@@ -12,4 +13,12 @@ const ProfileImage = styled.div`
   justify-content: center;
 `;
 
-export { ProfileImage };
+const PostButton = styled.button`
+  font-size: ${pxToRem(16)};
+  border: none;
+  background: none;
+
+  margin-left: ${pxToRem(10)};
+`;
+
+export { ProfileImage, PostButton };

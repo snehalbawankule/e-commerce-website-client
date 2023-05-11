@@ -19,7 +19,7 @@ const PostButton = styled.button`
 `;
 const TextWrap4 = styled.h1`
   font-size: ${pxToRem(24)};
-  color: #f3f2ff;
+  color: black;
   font-weight: 700;
   @media (max-width: 1024px) {
     font-size: ${pxToRem(12)};

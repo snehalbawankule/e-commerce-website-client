@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Grid, Card, Box } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
-import { BrandName } from "./brand.styled";
 
 const BrandCard = (props: any) => {
   const { post } = props;

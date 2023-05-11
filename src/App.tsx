@@ -17,12 +17,14 @@ import NewArrivals from "./components/new-arrivals/new-arrivals";
 import Product from "./components/product/product";
 import Brand from "./components/brands";
 import Wishlist from "./components/wishlist";
+import HandPicked from "./components/handpicked/handpicked-list";
+import Appbar from "./components/appbar";
 // import SideNav from "./components/sidenav";
 // import { Posts } from "./hooks/local-storage";
 function App() {
   return (
     <>
-      <SearchBar />
+      <Appbar />
       <Navbar />
       {/* <SideNav /> */}
 
@@ -39,6 +41,7 @@ function App() {
         <Route path="/brand" element={<Brand />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
+        <Route path="/handpicked" element={<HandPicked />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
         <Route path="/products/:id" element={<Product />}></Route>
       </Routes>

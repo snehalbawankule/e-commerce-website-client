@@ -4,12 +4,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
-// import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import FacebookLogo from "../../assets/images/FacebookLogo.png";
 import { Box, Grid, Divider } from "@mui/material";
-// import axios from "axios";
 import {
   Input,
   SignGoogleButton,
@@ -46,7 +44,7 @@ const Login = () => {
         } else if (response.data.message === "Invalid password") {
           alert(response.data.message);
         } else {
-          localStorage.setItem("current", JSON.stringify(response.data));
+          localStorage.setItem("currentUser", JSON.stringify(response.data));
           navigate("/");
         }
       })

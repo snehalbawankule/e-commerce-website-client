@@ -5,7 +5,6 @@ import useMediaQuery from "../../hooks/use-media-query";
 // import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { PostButton } from "../navbar/navbar.styled";
 import Size from "../size/size";
-// import { addWishlist } from "../../store/wishlist/services";
 
 const WishlistCard = (props: any) => {
   const { post } = props;
