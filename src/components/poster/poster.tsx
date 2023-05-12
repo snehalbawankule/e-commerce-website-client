@@ -5,7 +5,6 @@ import { PostButton, TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { addPoster } from "../../store/poster/services";
 import { Link } from "react-router-dom";
-
 const Poster = () => {
   const { isMobile, isDesktop } = useMediaQuery();
 
@@ -29,7 +28,7 @@ const Poster = () => {
       container
       style={{
         justifyContent: "center",
-        backgroundColor: "#efeef6",
+
         paddingBottom: "30px",
       }}
     >
@@ -38,6 +37,7 @@ const Poster = () => {
           height: isDesktop ? "370px" : isMobile ? "350px" : "600px",
           mx: 5,
           backgroundColor: "white",
+
           borderRadius: 20,
           width: "100%",
           display: "flex",

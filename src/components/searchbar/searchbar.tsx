@@ -1,10 +1,7 @@
 import { Input } from "./searchbar.styled";
 import { Grid } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { List, ListItem } from "@mui/material";
-import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 
 const SearchBar = () => {
   const [product, setProduct] = useState({

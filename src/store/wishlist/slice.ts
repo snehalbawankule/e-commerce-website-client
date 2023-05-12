@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { defaultState, defaultWishlist } from "./types";
-//import axios from "axios";
 
 const initialState: defaultState = {
   wishlist: [defaultWishlist],
