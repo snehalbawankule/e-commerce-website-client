@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import Background from "./background.jpg";
+import Cards from "../../assets/images/card3.jpg";
 import Footer from "../footer/footer";
 import Category from "../category/category";
 import Poster from "../poster/poster";
@@ -15,11 +15,9 @@ const HanselsHome = () => {
         container
         display="flex"
         style={{
-          backgroundImage: `url(${Background})`,
-          backgroundPosition: "top",
+          backgroundImage: `url(${Cards})`,
+          backgroundPosition: "center",
           backgroundSize: "cover",
-
-          borderRadius: "16px",
         }}
       >
         <Poster />

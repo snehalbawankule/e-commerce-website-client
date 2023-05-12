@@ -72,6 +72,26 @@ const ProductTitle = styled.div`
   overflow: hidden;
 `;
 
+const NewArrivalTextWrap = styled.div`
+  font-size: ${pxToRem(32)};
+  padding-top: ${pxToRem(16)};
+  font-weight: 700;
+  font-family: cursive;
+  color: #2f2e41;
+  text-align: center;
+`;
+
+const Scroll = styled.div`
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 20px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export {
   TextWrap02,
   TextWrap03,
@@ -80,4 +100,6 @@ export {
   ImageWrap,
   ProductTitle,
   ProductName,
+  NewArrivalTextWrap,
+  Scroll,
 };

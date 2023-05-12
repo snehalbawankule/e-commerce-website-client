@@ -29,7 +29,9 @@ const Poster = () => {
       style={{
         justifyContent: "center",
 
-        paddingBottom: "30px",
+        backgroundColor: "#aea49b",
+        paddingTop: 30,
+        paddingBottom: 30,
       }}
     >
       <Box

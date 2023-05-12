@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { Card, Container, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Card, Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import WishlistCard from "./wishlist-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";

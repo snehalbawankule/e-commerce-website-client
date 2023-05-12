@@ -5,7 +5,6 @@ import Home from "./components/home";
 import Category from "./components/category/category";
 import Sports from "./components/sports";
 import Navbar from "./components/navbar";
-import SearchBar from "./components/searchbar";
 import HanselsHome from "./components/hansels-home/hansels-home";
 import Beauty from "./components/beauty/beauty";
 import Grocery from "./components/grocery/grocery";
