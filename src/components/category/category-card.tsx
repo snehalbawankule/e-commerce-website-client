@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { Grid, Card, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { ProductName } from "../new-arrivals/new-arrivals.styled";
-// import ReactionButtons from "../add-reaction";
-import useMediaQuery from "../../hooks/use-media-query";
-import { useNavigate } from "react-router-dom";
-// import { AllReactions } from "../all-reactions/all-reactions";
 
+import { useNavigate } from "react-router-dom";
 const CategoryCard = (props: any) => {
   const { post } = props;
   const { id } = post;
@@ -19,7 +16,7 @@ const CategoryCard = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-  const { isMobile } = useMediaQuery();
+  // const { isMobile } = useMediaQuery();
   return (
     <Box
       onClick={() => history(`/products/${id}`)}

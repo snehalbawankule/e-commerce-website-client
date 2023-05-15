@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid, Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { PostButton, TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { addPoster } from "../../store/poster/services";
 import { Link } from "react-router-dom";
+import img from "../../assets/images/img.webp";
 const Poster = () => {
   const { isMobile, isDesktop } = useMediaQuery();
 
@@ -28,8 +29,8 @@ const Poster = () => {
       container
       style={{
         justifyContent: "center",
-
-        // backgroundColor: "#aea49b",
+        backgroundImage: `url(${img})`,
+        backgroundColor: "#aea49b",
         marginTop: 60,
         paddingTop: 30,
         paddingBottom: 30,

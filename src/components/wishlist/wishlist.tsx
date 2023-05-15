@@ -3,7 +3,7 @@ import { Card, Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import WishlistCard from "./wishlist-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import { addWishlist } from "../../store/wishlist/services";
+import { getWishlist } from "../../store/wishlist/services";
 import {
   AddToCardText,
   Price,
@@ -19,7 +19,7 @@ const Wishlist = () => {
 
   useEffect(() => {
     if (wishlist.length) {
-      dispatch(addWishlist());
+      dispatch(getWishlist());
     }
   }, [wishlist.length, dispatch]);
 

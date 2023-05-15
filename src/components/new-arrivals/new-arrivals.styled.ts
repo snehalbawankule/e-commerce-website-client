@@ -91,6 +91,13 @@ const Scroll = styled.div`
     display: none;
   }
 `;
+const Scroll1 = styled.div`
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 20px;
+`;
 
 export {
   TextWrap02,
@@ -102,4 +109,5 @@ export {
   ProductName,
   NewArrivalTextWrap,
   Scroll,
+  Scroll1,
 };

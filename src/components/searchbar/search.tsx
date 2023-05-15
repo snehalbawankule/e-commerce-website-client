@@ -1,7 +1,14 @@
 import { useState } from "react";
-import { AppBar, Toolbar, InputBase, List, ListItem } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  List,
+  ListItem,
+  Grid,
+  InputBase,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { Container, Appbar, Search, SearchIcons, Lists } from "./search.styled";
+import { Container, Search, Lists } from "./search.styled";
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -35,19 +42,29 @@ function SearchBar() {
 
   return (
     <Container>
-      <Appbar>
-        <AppBar position="static">
-          <Toolbar style={{ backgroundColor: "white" }}>
-            <Search>
-              <SearchIcons>
-                <SearchIcon />
-              </SearchIcons>
-              <InputBase
-                style={{ width: "20vw" }}
-                placeholder="Search…"
-                value={searchQuery}
-                onChange={handleSearchInputChange}
-              />
+      <AppBar position="static">
+        <Toolbar
+          style={{
+            backgroundColor: "white",
+            paddingLeft: 5,
+            paddingRight: 5,
+          }}
+        >
+          <Search>
+            <Grid container paddingTop="15px">
+              <Grid item xs={6} sm={6} md={11} lg={11}>
+                <InputBase
+                  placeholder="Search…"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                />
+              </Grid>
+              <Grid item xs={2} sm={2} md={1} lg={1}>
+                <SearchIcon style={{ color: "gray", fontSize: 30 }} />
+              </Grid>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={12} lg={12}>
               {searchResults.length > 0 && (
                 <Lists>
                   <List>
@@ -59,10 +76,10 @@ function SearchBar() {
                   </List>
                 </Lists>
               )}
-            </Search>
-          </Toolbar>
-        </AppBar>
-      </Appbar>
+            </Grid>
+          </Search>
+        </Toolbar>
+      </AppBar>
     </Container>
   );
 }

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Grid, Card, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { ProductName, ProductTitle } from "../new-arrivals/new-arrivals.styled";
-// import ReactionButtons from "../add-reaction";
-import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
-// import { AllReactions } from "../all-reactions/all-reactions";
 
 const HandPickedCard = (props: any) => {
   const { post } = props;
@@ -19,7 +16,7 @@ const HandPickedCard = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-  const { isMobile } = useMediaQuery();
+
   return (
     <Box
       onClick={() => history(`/products/${id}`)}

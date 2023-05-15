@@ -1,0 +1,13 @@
+.size-button {
+  background-color: #f0f0f0;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.size-button.selected {
+  background-color: #a8a8a8;
+  color: white;
+}

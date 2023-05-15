@@ -45,26 +45,18 @@ const Appbar = () => {
           <TextWrap4>ShopMaven</TextWrap4>
         </Grid>
 
-        <Grid item md={5} lg={5}>
+        <Grid item md={4.5} lg={4.5}>
           <Navbar />
         </Grid>
-        <Grid
-          item
-          md={3}
-          lg={3}
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <Grid item md={3.5} lg={3.5}>
           <SearchBar />
         </Grid>
         <Grid
           item
-          md={1}
-          lg={1}
+          md={1.2}
+          lg={1.2}
           style={{
-            paddingLeft: isDesktop ? 15 : 10,
+            // paddingLeft: isDesktop ? 15 : 10,
             paddingTop: 15,
             justifyContent: "center",
             display: "flex",
@@ -78,7 +70,7 @@ const Appbar = () => {
             sx={{ fontSize: isDesktop ? 35 : 20, paddingLeft: 2 }}
           />
         </Grid>
-        <Grid item md={1} lg={1} display="flex" alignItems="baseline">
+        <Grid item md={0.8} lg={0.8} display="flex" alignItems="baseline">
           {currentUser === "" ? (
             <PostButton
               style={{ color: "black", paddingTop: 20 }}
