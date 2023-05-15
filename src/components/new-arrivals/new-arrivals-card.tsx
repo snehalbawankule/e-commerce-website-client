@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, Box } from "@mui/material";
 import { ProductName } from "./new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
-import useMediaQuery from "../../hooks/use-media-query";
+// import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
 // import { AllReactions } from "../all-reactions/all-reactions";
 
@@ -19,7 +19,7 @@ const NewArrivalsCard = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-  const { isMobile } = useMediaQuery();
+  // const { isMobile } = useMediaQuery();
   return (
     <Box
       onClick={() => history(`/products/${id}`)}

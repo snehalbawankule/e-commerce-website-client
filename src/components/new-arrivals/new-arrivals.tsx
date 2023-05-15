@@ -15,30 +15,20 @@ const NewArrivals = () => {
   }, [newArrivals.length, dispatch]);
 
   return (
-    <Grid container spacing={5} paddingLeft="30px">
+    <Grid
+      container
+      spacing={5}
+      paddingLeft="30px"
+      style={{
+        marginBottom: 50,
+        paddingBottom: 20,
+      }}
+    >
       <Grid item xs={10} sm={10} md={12} lg={12}>
         <NewArrivalTextWrap>
           New Arrivals Style for every story
         </NewArrivalTextWrap>
       </Grid>
-      {/* <Grid
-        item
-        xs={2}
-        sm={2}
-        md={2}
-        lg={2}
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <Link
-          to={`/newarrivals`}
-          style={{
-            color: "black",
-            textDecoration: "none",
-          }}
-        >
-          show all
-        </Link>
-      </Grid> */}
 
       <Scroll>
         {newArrivals.map((post: any, index: any) => {

@@ -8,6 +8,21 @@ function SearchBar() {
 
   const handleSearchInputChange = (event: any) => {
     const query = event.target.value;
+    // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    //   null
+    // );
+
+    // const handleLogOut = () => {
+    //   localStorage.setItem("currentUser", JSON.stringify(""));
+    // };
+
+    // const handleCloseNavMenu = () => {
+    //   setAnchorElNav(null);
+    // };
+    // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    //   setAnchorElNav(event.currentTarget);
+    // };
+
     setSearchQuery(query);
     fetch(
       `http://localhost:3001/getproducts/search?size=6&q=${event.target.value}`
@@ -28,7 +43,7 @@ function SearchBar() {
                 <SearchIcon />
               </SearchIcons>
               <InputBase
-                style={{ width: "50vw" }}
+                style={{ width: "20vw" }}
                 placeholder="Search…"
                 value={searchQuery}
                 onChange={handleSearchInputChange}

@@ -1,56 +1,59 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
-import useMediaQuery from "../../hooks/use-media-query";
-import PickForYouCard from "./handpicked-card";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addHandPicked } from "../../store/handpicked/services";
+import HandPickedCard from "./handpicked-card";
+import {
+  NewArrivalTextWrap,
+  Scroll,
+} from "../new-arrivals/new-arrivals.styled";
 
-const HandPicked = () => {
-  const { isDesktop, isTablet } = useMediaQuery();
+const HandPickedList = () => {
   const dispatch = useAppDispatch();
-  const articles = useAppSelector((state) => state.handPickeds.handPicked);
+  const products = useAppSelector((state) => state.handPickeds.handPicked);
 
   useEffect(() => {
-    if (articles.length) {
+    if (products.length) {
       dispatch(addHandPicked());
     }
-  }, [articles.length, dispatch]);
-  const location = useLocation();
-  const art = location.pathname === `/` ? articles.slice(0, 6) : articles;
+  }, [products.length, dispatch]);
 
   return (
-    <Grid container sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }} spacing={5}>
-      <Grid item xs={10} sm={10} md={10} lg={10}>
-        Pick for you
+    <Grid
+      container
+      spacing={5}
+      paddingLeft="30px"
+      style={{
+        // backgroundColor: "#Cdbdc4",
+        marginBottom: 50,
+        paddingBottom: 20,
+      }}
+    >
+      <Grid item xs={10} sm={10} md={12} lg={12}>
+        <NewArrivalTextWrap style={{ paddingTop: 0 }}>
+          Discovered the Perfect Piece for you!
+        </NewArrivalTextWrap>
       </Grid>
-      <Grid
-        item
-        xs={2}
-        sm={2}
-        md={2}
-        lg={2}
-        style={{ display: "flex", justifyContent: "end" }}
-      >
-        <Link
-          to={`/handpicked`}
-          style={{
-            color: "black",
-            textDecoration: "none",
-          }}
-        >
-          show all
-        </Link>
-      </Grid>
-      {art.map((post: any) => {
-        return (
-          <Grid item xs={12} sm={6} md={6} lg={2} display="flex" key={post.id}>
-            <PickForYouCard post={post} />
-          </Grid>
-        );
-      })}
+
+      <Scroll>
+        {products.map((post: any, index: any) => {
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={2.4}
+              lg={2.4}
+              display="flex"
+              key={index}
+            >
+              <HandPickedCard post={post} />
+            </Grid>
+          );
+        })}
+      </Scroll>
     </Grid>
   );
 };
 
-export default HandPicked;
+export default HandPickedList;

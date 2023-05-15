@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Card, Box } from "@mui/material";
-import useMediaQuery from "../../hooks/use-media-query";
+import { Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const BrandCard = (props: any) => {
@@ -16,37 +15,29 @@ const BrandCard = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-  const { isMobile } = useMediaQuery();
   return (
     <Grid container>
-      <Grid item xs={12} sm={12} md={12} lg={12} display="flex" key={id}>
-        <Card
-          key={post.id}
+      <Box
+        onClick={() => history(`/products/${id}`)}
+        key={id}
+        sx={{ display: "grid", marginRight: 10 }}
+      >
+        <Box
           style={{
-            border: "none",
-            boxShadow: "none",
-            justifyContent: isMobile ? "center" : "flex",
+            height: "150px",
+            width: "150px",
+            backgroundImage: `url(${post.image})`,
+            backgroundPosition: "top",
+            backgroundSize: "cover",
+            transform: hovered ? "scale(1.1)" : "scale(1)",
+            transition: "all 0.2s ease-in-out",
+            borderRadius: "16px",
           }}
-        >
-          <Box onClick={() => history(`/products/${id}`)}>
-            <Box
-              style={{
-                height: "150px",
-                width: "150px",
-                backgroundImage: `url(${post.image})`,
-                backgroundColor: "#6DB3F2",
-                backgroundPosition: "top",
-                backgroundSize: "cover",
-                transform: hovered ? "scale(1.1)" : "scale(1)",
-                transition: "all 0.2s ease-in-out",
-                borderRadius: "16px",
-              }}
-              onMouseOver={handleHover}
-              onMouseLeave={handleMouseLeave}
-            />
-          </Box>
-        </Card>
-      </Grid>
+          sx={{ display: "grid", justifyContent: "center" }}
+          onMouseOver={handleHover}
+          onMouseLeave={handleMouseLeave}
+        />
+      </Box>
     </Grid>
   );
 };

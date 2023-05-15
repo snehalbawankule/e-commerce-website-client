@@ -14,11 +14,11 @@ const HanselsHome = () => {
       <Grid
         container
         display="flex"
-        style={{
-          backgroundImage: `url(${Cards})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
+        // style={{
+        //   backgroundImage: `url(${Cards})`,
+        //   backgroundPosition: "center",
+        //   backgroundSize: "cover",
+        // }}
       >
         <Poster />
         <NewArrivals />

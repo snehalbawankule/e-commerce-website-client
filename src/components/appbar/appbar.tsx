@@ -7,6 +7,7 @@ import Account from "../account/account";
 import { useNavigate } from "react-router-dom";
 import { PostButton } from "../account/account.styled";
 import SearchBar from "../searchbar";
+import Navbar from "../navbar/navbar";
 
 const Appbar = () => {
   const { isDesktop } = useMediaQuery();
@@ -35,18 +36,22 @@ const Appbar = () => {
       <Grid container>
         <Grid
           item
-          md={3}
-          lg={3}
+          md={2}
+          lg={2}
           style={{
             paddingLeft: isDesktop ? 30 : 10,
           }}
         >
-          <TextWrap4>Hansels Foundation</TextWrap4>
+          <TextWrap4>ShopMaven</TextWrap4>
+        </Grid>
+
+        <Grid item md={5} lg={5}>
+          <Navbar />
         </Grid>
         <Grid
           item
-          md={7}
-          lg={7}
+          md={3}
+          lg={3}
           style={{
             display: "flex",
             alignItems: "center",

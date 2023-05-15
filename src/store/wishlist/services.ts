@@ -10,7 +10,6 @@ export const addWishlist = createAsyncThunk(
     )
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         dispatch(actions.addWishlists(json));
       });
   }

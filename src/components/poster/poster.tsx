@@ -29,7 +29,8 @@ const Poster = () => {
       style={{
         justifyContent: "center",
 
-        backgroundColor: "#aea49b",
+        // backgroundColor: "#aea49b",
+        marginTop: 60,
         paddingTop: 30,
         paddingBottom: 30,
       }}
@@ -38,7 +39,7 @@ const Poster = () => {
         sx={{
           height: isDesktop ? "370px" : isMobile ? "350px" : "600px",
           mx: 5,
-          backgroundColor: "white",
+          backgroundColor: "#aea49b",
 
           borderRadius: 20,
           width: "100%",

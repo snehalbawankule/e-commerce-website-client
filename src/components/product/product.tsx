@@ -20,18 +20,18 @@ const Product = () => {
     dispatch(addProduct());
   }, [dispatch]);
 
- const handleWishlist=()=>{
+  const handleWishlist = () => {
     // dispatch(actions.addLike(newLike));
-
- }
+  };
   return (
     <Grid
       container
       sx={{
-        mt: isDesktop ? 5 : isTablet ? 12 : 10,
+        mt: isDesktop ? 12 : isTablet ? 12 : 10,
         px: isDesktop ? 10 : isTablet ? 5 : 4,
         pb: 10,
       }}
+      key={id}
     >
       <Grid
         item
@@ -68,7 +68,9 @@ const Product = () => {
         </Grid>
         <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
           <PostButton>Add to bag</PostButton>
-          <PostButton style={{ marginLeft: 10 }} onClick={handleWishlist}>Add to wishlist</PostButton>
+          <PostButton style={{ marginLeft: 10 }} onClick={handleWishlist}>
+            Add to wishlist
+          </PostButton>
         </Grid>
       </Grid>
     </Grid>

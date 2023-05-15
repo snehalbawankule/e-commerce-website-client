@@ -16,7 +16,7 @@ const Wishlist = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
   const wishlist = useAppSelector((state) => state.wishlists.wishlist);
-  console.log(wishlist);
+
   useEffect(() => {
     if (wishlist.length) {
       dispatch(addWishlist());

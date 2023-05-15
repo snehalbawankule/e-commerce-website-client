@@ -13,7 +13,7 @@ const Size = () => {
         style={{ marginTop: 15, display: "flex", alignItems: "center" }}
       >
         {size.map((post: any, index: any) => {
-          return <SizeCard post={post} />;
+          return <SizeCard key={index} post={post} />;
         })}
       </Grid>
     </>

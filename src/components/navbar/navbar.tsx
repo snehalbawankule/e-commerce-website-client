@@ -16,14 +16,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 const Navbar = () => {
   const { isDesktop } = useMediaQuery();
 
-  const pages = [
-    "grocery",
-    "electronics",
-    "fashion",
-    "home",
-    "beauty",
-    "sports",
-  ];
+  const pages = ["grocery", "electronics", "fashion", "home", "beauty"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -35,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <Grid container sx={{ mt: 7, backgroundColor: "#efeef6" }}>
+    <Grid container>
       <Toolbar>
         <Grid
           item
