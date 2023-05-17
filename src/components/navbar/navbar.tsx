@@ -16,7 +16,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 const Navbar = () => {
   const { isDesktop } = useMediaQuery();
 
-  const pages = ["grocery", "electronics", "fashion", "home", "beauty"];
+  const pages = ["women", "men", "kids", "beauty", "home"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );

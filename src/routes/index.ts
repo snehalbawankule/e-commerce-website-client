@@ -1,12 +1,12 @@
 import { lazy } from "react";
 
 import { Routes } from "./types";
+import ProductList from "../components/products-by-category/product-list";
 
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Home = lazy(() => import("../components/home"));
 const Category = lazy(() => import("../components/category"));
-const Beauty = lazy(() => import("../components/beauty"));
-const Electronics = lazy(() => import("../components/electronics"));
+const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
 const Brand = lazy(() => import("../components/brands"));
 const Product = lazy(() => import("../components/product"));
@@ -33,12 +33,9 @@ const APP_ROUTES: Routes = [
   },
   {
     path: "/beauty",
-    component: Beauty,
+    component: Products,
   },
-  {
-    path: "/electronics",
-    component: Electronics,
-  },
+
   {
     path: "/wishlist",
     component: Wishlist,
@@ -58,6 +55,22 @@ const APP_ROUTES: Routes = [
   {
     path: "/login",
     component: Login,
+  },
+  {
+    path: "/women",
+    component: Products,
+  },
+  {
+    path: "/men",
+    component: Products,
+  },
+  {
+    path: "/kids",
+    component: Products,
+  },
+  {
+    path: "/women/western-wear",
+    component: ProductList,
   },
 ];
 

@@ -19,7 +19,7 @@ const CategoryCard = (props: any) => {
   // const { isMobile } = useMediaQuery();
   return (
     <Box
-      onClick={() => history(`/products/${id}`)}
+      onClick={() => history(`/${post.name}`)}
       key={id}
       sx={{ display: "grid", marginRight: 10 }}
     >

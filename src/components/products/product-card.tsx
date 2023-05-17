@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { Grid, Box } from "@mui/material";
-import { ProductName, TextWrap01 } from "./new-arrivals.styled";
-// import ReactionButtons from "../add-reaction";
-// import useMediaQuery from "../../hooks/use-media-query";
+import { useState } from "react";
+import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-// import { AllReactions } from "../all-reactions/all-reactions";
+import { ProductName, ProductTitle } from "../new-arrivals/new-arrivals.styled";
 
-const NewArrivalsCard = (props: any) => {
+const ProductCard = (props: any) => {
   const { post } = props;
-  const { id } = post;
 
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -20,20 +16,16 @@ const NewArrivalsCard = (props: any) => {
     setHovered(false);
   };
   const handleChange = () => {
-    history(`/products/${id}`);
+    history(`/products/${post.id}`);
   };
-  // const { isMobile } = useMediaQuery();
+
   return (
-    <Box
-      onClick={handleChange}
-      key={id}
-      sx={{ display: "grid", marginRight: 10 }}
-    >
+    <Box onClick={handleChange} key={post?.id} sx={{ display: "grid" }}>
       <Box
         style={{
           height: "250px",
           width: "180px",
-          backgroundImage: `url(${post.image})`,
+          backgroundImage: `url(${post?.image})`,
           backgroundPosition: "top",
           backgroundSize: "cover",
           transform: hovered ? "scale(1.1)" : "scale(1)",
@@ -47,17 +39,16 @@ const NewArrivalsCard = (props: any) => {
         {/* <TextWrap01 style={{ fontSize: 30, textAlign: "end" }}>♡</TextWrap01> */}
       </Box>
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductName>{post.name}</ProductName>
+        <ProductName>{post?.name}</ProductName>
       </Grid>
 
-      {/* <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductTitle>{post.title}</ProductTitle>
+      <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+        <ProductTitle>{post?.title}</ProductTitle>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductTitle>${post.actualPrice}</ProductTitle>
-      </Grid> */}
+        <ProductTitle>${post?.actualPrice}</ProductTitle>
+      </Grid>
     </Box>
   );
 };
-
-export default NewArrivalsCard;
+export default ProductCard;

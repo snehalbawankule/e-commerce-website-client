@@ -2,11 +2,18 @@ export type Category = {
   id: string;
   name: string;
   image: string;
-  subCategory: [
+  sub_categories: [
     {
       id: string;
+      categoryId: string;
       name: string;
-      image: string;
+      sub_sub_categories: [
+        {
+          id: string;
+          subCategoryId: string;
+          name: string;
+        }
+      ];
     }
   ];
 };
@@ -19,11 +26,18 @@ export const defaultCategory: Category = {
   id: "",
   name: "",
   image: "",
-  subCategory: [
+  sub_categories: [
     {
       id: "",
+      categoryId: "",
       name: "",
-      image: "",
+      sub_sub_categories: [
+        {
+          id: "",
+          subCategoryId: "",
+          name: "",
+        },
+      ],
     },
   ],
 };

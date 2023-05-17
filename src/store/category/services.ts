@@ -5,7 +5,7 @@ export const addCategory = createAsyncThunk(
   "categories/addCategory",
   async (_, { dispatch }) => {
     return fetch(
-      "http://localhost:3001/getcategory?page=1&size=12&sort=createdAt&order=ASC"
+      "http://localhost:3001/get-all-cat?page=1&size=12&sort=createdAt&order=ASC"
     )
       .then((res) => res.json())
       .then((json) => {

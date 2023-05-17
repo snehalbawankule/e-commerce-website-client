@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const pxToRem = (size: number) => `${size / 16}`;
+// const pxToRem = (size: number) => `${size / 16}`;
 const Container = styled.div`
   flex-grow: 1;
 `;
