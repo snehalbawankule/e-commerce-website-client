@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";
@@ -9,7 +10,7 @@ const ProductList = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   const segments = currentPage.split("/");
-
+  console.log(segments);
   const dispatch = useAppDispatch();
 
   const Products = useAppSelector((state) => state.products.product);
@@ -18,7 +19,7 @@ const ProductList = () => {
   useEffect(() => {
     if (products.length) {
       fetch(
-        `http://localhost:3001/get-sub-category-products?page=1&size=12&sort=createdAt&order=ASC&category=${segments[0]}&subCategory=${segments[1]}`
+        `http://localhost:3001/get-sub-sub-category-products?page=1&size=12&sort=createdAt&order=ASC&category=${segments[0]}&subCategory=${segments[1]}&sub_subCategory=${segments[2]}`
       )
         .then((res) => res.json())
         .then((json) => {
@@ -27,8 +28,14 @@ const ProductList = () => {
           setIsLoading(false);
         });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, products.length, dispatch, segments[0], segments[1]]);
+  }, [
+    isLoading,
+    products.length,
+    dispatch,
+    segments[0],
+    segments[1],
+    segments[2],
+  ]);
 
   return (
     <>

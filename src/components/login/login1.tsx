@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   const navRegistration = () => {
-    navigate("/");
+    navigate("/registration");
   };
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xs">

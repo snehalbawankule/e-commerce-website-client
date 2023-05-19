@@ -1,5 +1,5 @@
 export type Route = {
-  path: string;
+  path: string[];
   component: React.ComponentType<any>;
   redirectTo?: string;
 };

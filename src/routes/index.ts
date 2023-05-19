@@ -2,7 +2,7 @@ import { lazy } from "react";
 
 import { Routes } from "./types";
 import ProductList from "../components/products-by-category/product-list";
-
+import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Home = lazy(() => import("../components/home"));
 const Category = lazy(() => import("../components/category"));
@@ -14,63 +14,108 @@ const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
 const NewArrivals = lazy(() => import("../components/new-arrivals"));
 
+export const Product123 = ["/women", "/men", "/beauty"];
+export const ProductByCategory = [
+  "/women/western wear",
+  "/women/ethnic wear",
+  "/women/footwear",
+  "/women/bags wallets & clutches",
+  "/men/topwear",
+  "/men/bottomwear",
+  "/men/footwear",
+  "/beauty/makeup",
+  "/beauty/skincare",
+  "/beauty/haircare",
+  "/beauty/tools and accessories",
+];
+
+const ProductBySubCategory = [
+  "/women/western wear/tops, tshirt & shirts",
+  "/women/western wear/dresses & jumpsuits",
+  "/women/western wear/jeans & jeggings",
+  "/women/ethnic wear/lehenga cholis",
+  "/women/ethnic wear/kurtas",
+  "/women/ethnic wear/sarees",
+  "/women/ethnic wear/kurta suit sets",
+  "/women/ethnic wear/dress material",
+  "/women/footwear/all",
+  "/women/footwear/heels",
+  "/women/footwear/sport shoes",
+  "/women/footwear/flats",
+  "/women/bags wallets & clutches",
+  "/men/topwear",
+  "/men/bottomwear",
+  "/men/footwear",
+  "/beauty/makeup/face makeup",
+  "/beauty/makeup/lips makeup",
+  "/beauty/makeup/eye makeup",
+  "/beauty/makeup/makeup tools",
+  "/beauty/skincare",
+  "/beauty/haircare",
+  "/beauty/tools and accessories",
+];
+
 const APP_ROUTES: Routes = [
   {
-    path: "/",
+    path: ["/"],
     component: HanselsHome,
   },
   {
-    path: "/home",
+    path: ["/home"],
     component: Home,
   },
   {
-    path: "/category",
+    path: ["/category"],
     component: Category,
   },
   {
-    path: "/newarrivals",
+    path: ["/newarrivals"],
     component: NewArrivals,
   },
   {
-    path: "/beauty",
+    path: ["/beauty"],
     component: Products,
   },
 
   {
-    path: "/wishlist",
+    path: ["/wishlist"],
     component: Wishlist,
   },
   {
-    path: "/brand",
+    path: ["/brand"],
     component: Brand,
   },
   {
-    path: "/products/:id",
+    path: ["/products/:id"],
     component: Product,
   },
   {
-    path: "/registration",
+    path: ["/registration"],
     component: Registration,
   },
   {
-    path: "/login",
+    path: ["/login"],
     component: Login,
   },
   {
-    path: "/women",
+    path: ["/women"],
     component: Products,
   },
   {
-    path: "/men",
+    path: ["/men"],
     component: Products,
   },
   {
-    path: "/kids",
+    path: ["/kids"],
     component: Products,
   },
   {
-    path: "/women/western-wear",
+    path: ProductByCategory,
     component: ProductList,
+  },
+  {
+    path: ProductBySubCategory,
+    component: Products1,
   },
 ];
 

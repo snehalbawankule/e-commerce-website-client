@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
   Menu,
@@ -19,8 +19,9 @@ import { addCategory } from "../../store/category/services";
 const SideNav = () => {
   const { isDesktop } = useMediaQuery();
   const location = useLocation();
-
-  const currentPage = location.pathname.slice(1);
+  const navigate = useNavigate();
+  const pathSegments = location.pathname.split("/");
+  const currentPage = pathSegments[1];
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
   const category = categories.find((item) => item.name === currentPage);
@@ -40,7 +41,17 @@ const SideNav = () => {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-
+  const handleChange = (e: any, page: any) => {
+    e.preventDefault();
+    const convertedString = page.toLowerCase();
+    navigate(`/${currentPage}/${convertedString}`);
+  };
+  const handleChange2 = (e: any, page: any, page1: any) => {
+    e.preventDefault();
+    const convertedString = page.toLowerCase();
+    const convertedString2 = page1.toLowerCase();
+    navigate(`/${currentPage}/${convertedString}/${convertedString2}`);
+  };
   return (
     <Grid container direction="column">
       <Grid
@@ -122,22 +133,20 @@ const SideNav = () => {
                     fontSize: 18,
                     textTransform: "capitalize",
                   }}
+                  onClick={(event) => handleChange(event, page.name)}
                 >
                   {page.name}
                 </Button>
 
                 {page.sub_sub_categories.map((page1: any, index1: any) => (
-                  <MenuItem key={index1}>
+                  <MenuItem
+                    key={index1}
+                    onClick={(event) =>
+                      handleChange2(event, page.name, page1.name)
+                    }
+                  >
                     <Typography textAlign="center" color="gray">
-                      <Link
-                        style={{
-                          color: "black",
-                          textDecoration: "none",
-                        }}
-                        to={`/${currentPage}/${page.name}/${page1.name}`}
-                      >
-                        {page1.name}
-                      </Link>
+                      {page1.name}
                     </Typography>
                   </MenuItem>
                 ))}

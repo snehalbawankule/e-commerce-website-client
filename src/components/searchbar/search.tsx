@@ -7,29 +7,17 @@ import {
   Grid,
   InputBase,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, Search, Lists } from "./search.styled";
+
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearchInputChange = (event: any) => {
     const query = event.target.value;
-    // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    //   null
-    // );
-
-    // const handleLogOut = () => {
-    //   localStorage.setItem("currentUser", JSON.stringify(""));
-    // };
-
-    // const handleCloseNavMenu = () => {
-    //   setAnchorElNav(null);
-    // };
-    // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    //   setAnchorElNav(event.currentTarget);
-    // };
-
     setSearchQuery(query);
     fetch(
       `http://localhost:3001/getproducts/search?size=6&q=${event.target.value}`
@@ -38,6 +26,14 @@ function SearchBar() {
       .then((json) => {
         setSearchResults(json);
       });
+  };
+
+  const handleChange = (event: any, id: any) => {
+    event.preventDefault();
+    setSearchResults([]);
+    setSearchQuery("");
+    navigate(`/products/${id}`);
+    console.log(id);
   };
 
   return (
@@ -69,7 +65,12 @@ function SearchBar() {
                 <Lists>
                   <List>
                     {searchResults.map((result: any) => (
-                      <ListItem key={result} style={{ color: "black" }}>
+                      <ListItem
+                        key={result}
+                        style={{ color: "black" }}
+                        onClick={(event) => handleChange(event, result.id)}
+                        // onClose={handleCloseNavMenu}
+                      >
                         {result.name}
                       </ListItem>
                     ))}
