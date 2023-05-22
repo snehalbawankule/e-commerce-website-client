@@ -5,6 +5,7 @@ import brandReducer from "./brand/slice";
 import wishlistReducer from "./wishlist/slice";
 import posterReducer from "./poster/slice";
 import handPickedReducer from "./handpicked/slice";
+import cartReducer from "./cart/slice";
 const reducers = combineReducers({
   products: productReducer,
   categories: categoryReducer,
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   posters: posterReducer,
   wishlists: wishlistReducer,
   handPickeds: handPickedReducer,
+  carts: cartReducer,
 });
 
 export default reducers;

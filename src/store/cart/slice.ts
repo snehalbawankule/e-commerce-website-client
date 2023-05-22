@@ -1,34 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultWishlist } from "./types";
+import { defaultState, defaultCart } from "./types";
 import axios from "axios";
 const initialState: defaultState = {
-  wishlist: [defaultWishlist],
+  cart: [defaultCart],
 };
 const { actions, reducer } = createSlice({
-  name: "wishlists",
+  name: "carts",
   initialState,
   reducers: {
-    getWishlists(state, action) {
-      state.wishlist = action.payload;
+    getCarts(state, action) {
+      state.cart = action.payload;
     },
-    addWishlist(state, action) {
-      const lastId = state.wishlist.slice(-1)[0].id;
+    addCart(state, action) {
+      const lastId = state.cart.slice(-1)[0].id;
       const number = lastId + 1;
       let payload = { ...action.payload };
       payload.id = number;
       console.log(payload);
-      state.wishlist.push(payload);
-      axios.post("http://localhost:3001/postwishlist", {
-        userEmail: action.payload.userEmail,
+      state.cart.push(payload);
+      axios.post("http://localhost:3001/post-cart", {
         productId: action.payload.productId,
+        userEmail: action.payload.userEmail,
         quantity: action.payload.quantity,
         size: action.payload.size,
         color: action.payload.color,
       });
+    },
+    removeCart(state, action) {
+      axios.delete(`http://localhost:3001/remove-cart?id=${action.payload}`);
     },
   },
 });
 
 export { actions };
 export default reducer;
-export const selectAllPosts = (state: any) => state.wishlists.wishlist;
+export const selectAllPosts = (state: any) => state.carts.cart;

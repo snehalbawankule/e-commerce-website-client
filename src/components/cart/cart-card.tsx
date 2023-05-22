@@ -7,39 +7,18 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Divider, FormControl } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import {
-  AddToCardText,
-  Price,
-  ProductName,
-  ProductTitle,
-} from "./wishlist.styled";
-import { actions as action } from "../../store/wishlist/slice";
+import { AddToCardText, Price, ProductName, ProductTitle } from "./cart.styled";
 import { actions } from "../../store/cart/slice";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/hooks";
-
-const WishlistCard = (props: any) => {
+const CartCard = (props: any) => {
   const { post } = props;
   const [quantity, setQuantity] = useState(post.quantity);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(event.target.value as string);
   };
-  const handleCart = () => {
-    const newCart = {
-      productId: post?.productId,
-      userEmail: post?.userEmail,
-      quantity: post?.quantity,
-      size: post?.size,
-      color: post?.color,
-    };
-    dispatch(actions.addCart(newCart));
-    navigate("/cart");
-  };
-
   const handleRemove = () => {
-    dispatch(action.removeWishlist(post.id));
+    dispatch(actions.removeCart(post.id));
     window.location.reload();
   };
   const { isTablet, isDesktop } = useMediaQuery();
@@ -123,7 +102,7 @@ const WishlistCard = (props: any) => {
             sx={{ mt: isDesktop ? 5 : 3, display: "flex", textAlign: "end" }}
           >
             <Grid item xs={6} sm={6} md={6} lg={6}>
-              <AddToCardText onClick={handleCart}>Move to Cart </AddToCardText>
+              <AddToCardText>Move to Cart </AddToCardText>
             </Grid>
             <Grid item xs={6} sm={6} md={6} lg={6}>
               <AddToCardText
@@ -142,4 +121,4 @@ const WishlistCard = (props: any) => {
     </>
   );
 };
-export default WishlistCard;
+export default CartCard;

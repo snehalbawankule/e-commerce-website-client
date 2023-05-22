@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { actions } from "./slice";
 
-export const getWishlist = createAsyncThunk(
-  "wishlist/getWishlist",
+export const getWishlists = createAsyncThunk(
+  "wishlist/getCarts",
   async (_, { dispatch }) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
     return fetch(
@@ -10,7 +10,7 @@ export const getWishlist = createAsyncThunk(
     )
       .then((res) => res.json())
       .then((json) => {
-        dispatch(actions.getWishlists(json));
+        dispatch(actions.getWishlist(json));
       });
   }
 );

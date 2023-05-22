@@ -1,27 +1,22 @@
 import React, { useEffect } from "react";
 import { Card, Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import WishlistCard from "./wishlist-card";
+import CartCard from "./cart-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import { getWishlists } from "../../store/wishlist/services";
-import {
-  AddToCardText,
-  Price,
-  ProductName,
-  ProductTitle,
-} from "./wishlist.styled";
+import { getCart } from "../../store/cart/services";
+import { AddToCardText, Price, ProductName, ProductTitle } from "./cart.styled";
 import Bag from "../../assets/images/bag.png";
 import { Divider } from "@mui/material";
-const Wishlist = () => {
+const Cart = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
-  const wishlist = useAppSelector((state) => state.wishlists.wishlist);
+  const cart = useAppSelector((state) => state.carts.cart);
 
   useEffect(() => {
-    if (wishlist.length) {
-      dispatch(getWishlists());
+    if (cart.length) {
+      dispatch(getCart());
     }
-  }, [wishlist.length, dispatch]);
+  }, [cart.length, dispatch]);
 
   return (
     <>
@@ -42,10 +37,10 @@ const Wishlist = () => {
             lg={8}
             style={{ paddingBottom: 20 }}
           >
-            Wishlist
+            Cart
           </Grid>
           <Divider style={{ marginBottom: 40 }}></Divider>
-          {wishlist.map((post: any, index: any) => {
+          {cart.map((post: any, index: any) => {
             return (
               <Grid
                 item
@@ -56,7 +51,7 @@ const Wishlist = () => {
                 display="flex"
                 key={index}
               >
-                <WishlistCard post={post} />
+                <CartCard post={post} />
               </Grid>
             );
           })}
@@ -107,4 +102,4 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default Cart;

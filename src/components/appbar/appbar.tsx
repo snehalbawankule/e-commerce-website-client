@@ -13,10 +13,13 @@ const Appbar = () => {
   const { isDesktop } = useMediaQuery();
   const navigate = useNavigate();
 
-  const handleNavigation = () => {
+  const handleWishlist = () => {
     navigate("/wishlist");
   };
-  const handleNavigation1 = () => {
+  const handleCart = () => {
+    navigate("/cart");
+  };
+  const handleLogin = () => {
     navigate("/login");
   };
 
@@ -64,17 +67,18 @@ const Appbar = () => {
         >
           <FavoriteBorderIcon
             sx={{ fontSize: isDesktop ? 35 : 20 }}
-            onClick={handleNavigation}
+            onClick={handleWishlist}
           />
           <ShoppingCartIcon
             sx={{ fontSize: isDesktop ? 35 : 20, paddingLeft: 2 }}
+            onClick={handleCart}
           />
         </Grid>
         <Grid item md={0.8} lg={0.8} display="flex" alignItems="baseline">
           {currentUser === "" ? (
             <PostButton
               style={{ color: "black", paddingTop: 20 }}
-              onClick={handleNavigation1}
+              onClick={handleLogin}
             >
               Login
             </PostButton>

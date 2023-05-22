@@ -8,7 +8,7 @@ const { actions, reducer } = createSlice({
   name: "wishlists",
   initialState,
   reducers: {
-    getWishlists(state, action) {
+    getWishlist(state, action) {
       state.wishlist = action.payload;
     },
     addWishlist(state, action) {
@@ -25,6 +25,10 @@ const { actions, reducer } = createSlice({
         size: action.payload.size,
         color: action.payload.color,
       });
+    },
+
+    removeWishlist(state, action) {
+      axios.delete(`http://localhost:3001/removewishlist?id=${action.payload}`);
     },
   },
 });

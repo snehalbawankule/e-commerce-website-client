@@ -10,9 +10,9 @@ export type Cartlist = {
 };
 
 export type defaultState = {
-  wishlist: Cartlist[];
+  cart: Cartlist[];
 };
-export const defaultWishlist: Cartlist = {
+export const defaultCart: Cartlist = {
   id: "",
   userEmail: "",
   quantity: 0,

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { PostButton } from "../navbar/navbar.styled";
 import Size from "../size/size";
 import { actions } from "../../store/wishlist/slice";
+import { actions as action } from "../../store/cart/slice";
 
 const Product = () => {
   let { id } = useParams();
@@ -42,6 +43,16 @@ const Product = () => {
       color: "red",
     };
     dispatch(actions.addWishlist(newWishlist));
+  };
+  const handleCart = () => {
+    const newCart = {
+      userEmail: currentUser.email,
+      productId: product?.id,
+      quantity: 1,
+      size: valueFromChild,
+      color: "red",
+    };
+    dispatch(action.addCart(newCart));
   };
   return (
     <Grid
@@ -90,7 +101,7 @@ const Product = () => {
         <Size onSendValue={handleValueFromChild} />
 
         <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
-          <PostButton>Add to bag</PostButton>
+          <PostButton onClick={handleCart}>Add to bag</PostButton>
           <PostButton style={{ marginLeft: 10 }} onClick={handleWishlist}>
             Add to wishlist
           </PostButton>

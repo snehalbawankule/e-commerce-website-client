@@ -1,10 +1,10 @@
 import { lazy } from "react";
-
 import { Routes } from "./types";
 import ProductList from "../components/products-by-category/product-list";
 import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Home = lazy(() => import("../components/home"));
+const Cart = lazy(() => import("../components/cart"));
 const Category = lazy(() => import("../components/category"));
 const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
@@ -43,15 +43,31 @@ const ProductBySubCategory = [
   "/women/footwear/sport shoes",
   "/women/footwear/flats",
   "/women/bags wallets & clutches",
-  "/men/topwear",
-  "/men/bottomwear",
+  "/men/topwear/t-shirts",
+  "/men/topwear/shirts",
+  "/men/topwear/sweater",
+  "/men/topwear/jacket",
+  "/men/topwear/sweatshirts",
+  "/men/topwear/coats & blazers",
+  "/men/bottomwear/track pants",
+  "/men/bottomwear/shorts & 3/4ths",
+  "/men/bottomwear/trousers & pants",
+  "/men/bottomwear/jeans & joggers",
   "/men/footwear",
   "/beauty/makeup/face makeup",
   "/beauty/makeup/lips makeup",
   "/beauty/makeup/eye makeup",
   "/beauty/makeup/makeup tools",
-  "/beauty/skincare",
-  "/beauty/haircare",
+  "/beauty/skincare/sunscreen",
+  "/beauty/skincare/cleansers",
+  "/beauty/skincare/moisturizers",
+  "/beauty/skincare/masks",
+  "/beauty/skincare/serums",
+  "/beauty/haircare/shampoos",
+  "/beauty/haircare/conditioners",
+  "/beauty/haircare/hair tools",
+  "/beauty/haircare/hair treatment",
+  "/beauty/haircare/styling products",
   "/beauty/tools and accessories",
 ];
 
@@ -63,6 +79,10 @@ const APP_ROUTES: Routes = [
   {
     path: ["/home"],
     component: Home,
+  },
+  {
+    path: ["/cart"],
+    component: Cart,
   },
   {
     path: ["/category"],
