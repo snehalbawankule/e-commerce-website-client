@@ -5,6 +5,7 @@ import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Home = lazy(() => import("../components/home"));
 const Cart = lazy(() => import("../components/cart"));
+const Profile = lazy(() => import("../components/profile"));
 const Category = lazy(() => import("../components/category"));
 const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
@@ -83,6 +84,10 @@ const APP_ROUTES: Routes = [
   {
     path: ["/cart"],
     component: Cart,
+  },
+  {
+    path: ["/profile"],
+    component: Profile,
   },
   {
     path: ["/category"],

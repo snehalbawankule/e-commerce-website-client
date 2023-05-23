@@ -34,7 +34,7 @@ const Login = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/checkuser", {
+      .post("http://localhost:3001/validate-user", {
         email,
         password,
       })

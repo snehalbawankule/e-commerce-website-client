@@ -16,7 +16,7 @@ const ProductCard = (props: any) => {
     setHovered(false);
   };
   const handleChange = () => {
-    history(`/products/${post.id}`);
+    history(`/products/${post?.id}`);
   };
 
   return (

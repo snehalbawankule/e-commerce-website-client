@@ -1,16 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Menu,
-  Grid,
-  IconButton,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
 import { PostButton, ProfileImage } from "./account.styled";
 
 const Account = () => {
-  const pages = ["Orders", "Returns", "Wishlist", "Profile"];
+  const pages = ["orders", "returns", "wishlist", "profile"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
