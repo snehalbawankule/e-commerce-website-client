@@ -10,7 +10,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 
 function Footer() {
   const { isMobile, isDesktop, isTablet } = useMediaQuery();
-  const page1 = ["track order", "shipping", "Returns", "FAQs", "Contact us"];
+  const page1 = ["track order", "shipping", "Returns", "FAQs", "contact-us"];
   const about = ["about us", "career", "cyber security", "press"];
   return (
     <Grid

@@ -13,6 +13,9 @@ const Profile = () => {
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
         <ProductTitle>Profile</ProductTitle>
       </Grid>
+      <ProductTitle>Personal Details</ProductTitle>
+      <ProductTitle>Address</ProductTitle>
+
       <Grid item>
         <PostButton>
           <Link

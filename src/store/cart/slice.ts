@@ -12,12 +12,7 @@ const { actions, reducer } = createSlice({
       state.cart = action.payload;
     },
     addCart(state, action) {
-      const lastId = state.cart.slice(-1)[0].id;
-      const number = lastId + 1;
-      let payload = { ...action.payload };
-      payload.id = number;
-      console.log(payload);
-      state.cart.push(payload);
+      state.cart.push(action.payload);
       axios.post("http://localhost:3001/post-cart", {
         productId: action.payload.productId,
         userEmail: action.payload.userEmail,

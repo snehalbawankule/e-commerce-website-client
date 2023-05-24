@@ -14,6 +14,7 @@ const Product = lazy(() => import("../components/product"));
 const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
 const NewArrivals = lazy(() => import("../components/new-arrivals"));
+const ContactUs = lazy(() => import("../components/contact-us"));
 
 export const Product123 = ["/women", "/men", "/beauty"];
 export const ProductByCategory = [
@@ -80,6 +81,10 @@ const APP_ROUTES: Routes = [
   {
     path: ["/home"],
     component: Home,
+  },
+  {
+    path: ["/contact-us"],
+    component: ContactUs,
   },
   {
     path: ["/cart"],
