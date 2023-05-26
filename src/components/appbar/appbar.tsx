@@ -2,7 +2,7 @@ import { AppBar, Grid } from "@mui/material";
 import { TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
+import { useRef } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Account from "../account/account";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,9 @@ import NotificationBadge from "react-notification-badge";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useEffect } from "react";
 import { getCart } from "../../store/cart/services";
+
 const Appbar = () => {
+  const badgeRef = useRef(null);
   const { isDesktop } = useMediaQuery();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -23,7 +25,7 @@ const Appbar = () => {
       dispatch(getCart());
     }
   }, [cart.length, dispatch]);
-  console.log(cart.length);
+
   const handleWishlist = () => {
     navigate("/wishlist");
   };
@@ -89,7 +91,7 @@ const Appbar = () => {
                 paddingLeft: 45,
               }}
             >
-              <NotificationBadge count={cart.length} />
+              <NotificationBadge ref={badgeRef} count={cart.length} />
             </div>
 
             <ShoppingCartOutlinedIcon

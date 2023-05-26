@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { TextWrap02, TextWrap03 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -13,10 +13,6 @@ import { Product123 } from "../../routes";
 const Product = () => {
   let { id } = useParams();
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const pathSegments = location.pathname.split("/");
-
-  const firstName = "/" + pathSegments[1];
 
   const { isTablet, isDesktop } = useMediaQuery();
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
@@ -24,10 +20,6 @@ const Product = () => {
   const post = existingPost.find((item: any) => item.id === id);
   console.log(post);
   const [product, setProduct] = useState(post);
-  const paths = ["women", "men", "kids"];
-  console.log("");
-  const isCurrentPathMatch = post?.category === "women";
-  console.log(isCurrentPathMatch);
 
   useEffect(() => {
     if (product?.id !== id) {

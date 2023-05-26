@@ -1,38 +1,43 @@
+import Dialog from "@mui/material/Dialog";
+import axios from "axios";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-// import axios from "axios";
+import GoogleLogo from "../../assets/images/GoogleLogo.png";
+import FacebookLogo from "../../assets/images/FacebookLogo.png";
+import { Box, Grid, Divider } from "@mui/material";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import {
-  CreateAccountButton,
   Input,
-
+  SignGoogleButton,
+  LoginLink,
+  GoogleLogo1,
   TextWrap3,
   TextWrap1,
-  TextWrap6,
-  TextWrap7,
-  TextWrap4,
-  TextWrap5,
-  TextWrap2,
-  LoginLink,
 } from "./registration.styled";
-import { Box, Grid } from "@mui/material";
+import { LoginButton } from "../login/login.styled";
 import { default as textwrap } from "../../assets/text-file/textwrap.json";
-// import { useGoogleLogin } from "@react-oauth/google";
-import Rectangle1 from "../../assets/images/Rectangle1.png";
 import { useNavigate } from "react-router-dom";
-import useMediaQuery from "../../hooks/use-media-query";
 
 const Registration = () => {
-  const { isMobile, isDesktop } = useMediaQuery();
-  // const Login = useGoogleLogin({
-  //   onSuccess: (tokenResponse: any) => console.log(tokenResponse),
-  // });
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/");
+  };
+
   const navigate = useNavigate();
   const navLogin = () => {
     navigate("/login");
   };
   const [userInfo, setUserInfo] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
-    profile: "",
     password: "",
   });
   var confirm_password = "";
@@ -45,179 +50,126 @@ const Registration = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // if (userInfo.password === confirm_password) {
-    //   axios
-    //     .post("http://localhost:3001/postuser", {
-    //       email: userInfo.email,
-    //       name: userInfo.name,
-    //       profile: userInfo.profile,
-    //       password: userInfo.password,
-    //     })
-    //     .then(() => {
-    //       navLogin();
-    //     });
-    // } else {
-    //   alert("Passwords Don't Match");
-    // }
+    if (userInfo.password === confirm_password) {
+      axios
+        .post("http://localhost:3001/postuser", {
+          firstname: userInfo.firstname,
+          lastname: userInfo.lastname,
+          email: userInfo.email,
+          password: userInfo.password,
+        })
+        .then(() => {
+          navLogin();
+        });
+    } else {
+      alert("Passwords Don't Match");
+    }
   };
+
   return (
-    <>
-      <Grid container style={{ background: "white" }}>
-        <Grid item xs={12} sm={12} md={12} lg={8}>
-          <Box
-            style={{
-              backgroundImage: `url(${Rectangle1})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={7}
-              lg={6}
-              sx={{ pl: isDesktop ? 10 : 4, pt: isDesktop ? 5 : 1 }}
-            >
-              <TextWrap4>{textwrap.title}</TextWrap4>
-            </Grid>
-            <Grid
-              item
-              xs={11}
-              sm={10}
-              md={10}
-              lg={11}
-              sx={{ pl: isDesktop ? 10 : 4, pt: isMobile ? 15 : 55.9 }}
-            >
-              <TextWrap5>{textwrap.description}</TextWrap5>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              sx={{ pl: isDesktop ? 10 : 4 }}
-            >
-              <TextWrap6>{textwrap.author}</TextWrap6>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={6}
-              sx={{
-                pl: isDesktop ? 10 : 4,
-                mt: isMobile ? -3 : -5,
-                pb: isMobile ? 3 : 8,
-              }}
-            >
-              <TextWrap7>{textwrap.authorCategory}</TextWrap7>
-            </Grid>
-          </Box>
+    <Dialog open={open} onClose={handleClose} maxWidth="sm">
+      <DialogTitle>
+        <Grid container>
+          <Grid item sm={11}>
+            <TextWrap1>Sign up</TextWrap1>
+          </Grid>
+          <Grid item sm={1}>
+            <CloseIcon style={{ paddingLeft: 30 }} onClick={handleClose} />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={4}
-          sx={{ px: isDesktop ? 4 : "" }}
-          style={{
-            textAlign: "center",
-          }}
-        >
+      </DialogTitle>
+
+      <DialogContent sx={{ textAlign: "center" }}>
+        <Box>
+          <SignGoogleButton>
+            <GoogleLogo1 src={GoogleLogo} />
+            Continue with Google
+          </SignGoogleButton>
+
+          <SignGoogleButton>
+            <GoogleLogo1 src={FacebookLogo} />
+            Continue with Facebook
+          </SignGoogleButton>
+
+          <Divider style={{ marginTop: 65 }}>OR</Divider>
           <form
             onSubmit={(e) => {
               handleSubmit(e);
             }}
           >
-            <Box sx={{ pt: isDesktop ? 10 : 3 }}>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TextWrap1>{textwrap.createAccount}</TextWrap1>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <TextWrap2>{textwrap.accountDescription}</TextWrap2>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12} sx={{ marginTop: 4 }}>
-                <Input
-                  type="text"
-                  name="name"
-                  onBlur={handleChange}
-                  defaultValue={userInfo.name}
-                  placeholder="Name"
-                  minLength={5}
-                  maxLength={10}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  onBlur={handleChange}
-                  defaultValue={userInfo.email}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Input
-                  type="url"
-                  name="profile"
-                  onBlur={handleChange}
-                  defaultValue={userInfo.profile}
-                  placeholder="Add Profile Picture"
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Input
-                  type="password"
-                  id="pass10"
-                  name="password"
-                  onBlur={handleChange}
-                  defaultValue={userInfo.password}
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                  placeholder="password"
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Input
-                  type="password"
-                  id="pass20"
-                  name="confirm_password"
-                  onBlur={handleChange1}
-                  defaultValue={confirm_password}
-                  placeholder="Confirm password"
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CreateAccountButton>
-                  {textwrap.createAccountButton}
-                </CreateAccountButton>
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
-                {/* <SignGoogleButton onClick={() => Login()}>
-                  <GoogleLogo1 src={GoogleLogo} />
-                  {textwrap.googleSignUp}
-                </SignGoogleButton> */}
-              </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Input
+              style={{ marginTop: 30 }}
+              type="text"
+              name="firstname"
+              onBlur={handleChange}
+              defaultValue={userInfo.firstname}
+              minLength={5}
+              maxLength={10}
+              placeholder="Full Name"
+              required
+            />
+            <Input
+              style={{ marginTop: 30 }}
+              type="text"
+              name="lastname"
+              onBlur={handleChange}
+              defaultValue={userInfo.lastname}
+              minLength={5}
+              maxLength={10}
+              placeholder="Full Name"
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              defaultValue={userInfo.email}
+              onBlur={handleChange}
+              required
+            />
+
+            <Input
+              type="password"
+              name="password"
+              onBlur={handleChange}
+              defaultValue={userInfo.password}
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              placeholder="password"
+              required
+            />
+            <Input
+              style={{ marginBottom: 10 }}
+              type="password"
+              name="password1"
+              onBlur={handleChange1}
+              defaultValue={confirm_password}
+              placeholder="Confirm Password"
+              required
+            />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Sign up for news about our sales and new arrivals"
+            />
+
+            <DialogActions style={{ justifyContent: "center" }}>
+              <Box>
+                <LoginButton>{textwrap.createAccountButton}</LoginButton>
+
                 <TextWrap3>
                   {textwrap.alreadyHas}
                   <LoginLink onClick={navLogin}>{textwrap.loginLink}</LoginLink>
                 </TextWrap3>
-              </Grid>
-            </Box>
+                <TextWrap3>
+                  By signing up, you agree to our Privacy Policy and Terms of
+                  Service.
+                </TextWrap3>
+              </Box>
+            </DialogActions>
           </form>
-        </Grid>
-      </Grid>
-    </>
+        </Box>
+      </DialogContent>
+    </Dialog>
   );
 };
 export default Registration;

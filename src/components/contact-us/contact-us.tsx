@@ -1,16 +1,12 @@
 import { useState } from "react";
 // import axios from "axios";
 import {
-  CreateAccountButton,
   Input,
-  TextWrap3,
   TextWrap1,
   TextWrap6,
   TextWrap7,
   TextWrap4,
   TextWrap5,
-  TextWrap2,
-  LoginLink,
 } from "../registration/registration.styled";
 import { Box, Grid } from "@mui/material";
 import { default as textwrap } from "../../assets/text-file/textwrap.json";

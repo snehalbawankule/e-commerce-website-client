@@ -15,7 +15,8 @@ const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
 const NewArrivals = lazy(() => import("../components/new-arrivals"));
 const ContactUs = lazy(() => import("../components/contact-us"));
-
+const Faqs = lazy(() => import("../components/helpcenter"));
+const FaqsCard = lazy(() => import("../components/faqs-card"));
 export const Product123 = ["/women", "/men", "/beauty"];
 export const ProductByCategory = [
   "/women/western wear",
@@ -29,6 +30,14 @@ export const ProductByCategory = [
   "/beauty/skincare",
   "/beauty/haircare",
   "/beauty/tools and accessories",
+];
+export const HelpCenter = [
+  "/faqs/order",
+  "/faqs/login & account",
+  "/faqs/payment",
+  "/faqs/cancellation & returns",
+  "/faqs/shipping",
+  "/faqs/privacy & security",
 ];
 
 const ProductBySubCategory = [
@@ -85,6 +94,14 @@ const APP_ROUTES: Routes = [
   {
     path: ["/contact-us"],
     component: ContactUs,
+  },
+  {
+    path: ["/faqs"],
+    component: Faqs,
+  },
+  {
+    path: HelpCenter,
+    component: FaqsCard,
   },
   {
     path: ["/cart"],

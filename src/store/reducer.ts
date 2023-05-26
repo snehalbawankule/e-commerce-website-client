@@ -7,6 +7,7 @@ import posterReducer from "./poster/slice";
 import handPickedReducer from "./handpicked/slice";
 import cartReducer from "./cart/slice";
 import userReducer from "./user/slice";
+import helpCenterReducer from "./helpcenter/slice";
 const reducers = combineReducers({
   products: productReducer,
   categories: categoryReducer,
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   handPickeds: handPickedReducer,
   carts: cartReducer,
   users: userReducer,
+  helpCenter: helpCenterReducer,
 });
 
 export default reducers;

@@ -21,8 +21,9 @@ const Account = () => {
   };
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-  var profile = currentUser?.name?.charAt(0);
-
+  var profile1 = currentUser?.firstname?.charAt(0).toUpperCase();
+  var profile2 = currentUser?.lastname?.charAt(0).toUpperCase();
+  var profile = profile1 + profile2;
   return (
     <Grid container>
       <Grid item>

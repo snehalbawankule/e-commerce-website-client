@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
-import { PostButton, ProfileImage } from "./profile.styled";
+import { PostButton } from "./profile.styled";
 import { ProductTitle } from "../new-arrivals/new-arrivals.styled";
 
 const Profile = () => {
