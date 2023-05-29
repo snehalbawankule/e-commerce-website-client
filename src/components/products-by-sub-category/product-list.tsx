@@ -48,6 +48,7 @@ const ProductList = () => {
           style={{
             marginBottom: 50,
             paddingBottom: 20,
+            marginTop: 80,
           }}
         >
           {products.map((post: any, index: any) => {
@@ -59,7 +60,7 @@ const ProductList = () => {
                 md={4}
                 lg={4}
                 display="flex"
-                marginTop="100px"
+                marginTop="15px"
                 key={index}
               >
                 <ProductCard post={post} />

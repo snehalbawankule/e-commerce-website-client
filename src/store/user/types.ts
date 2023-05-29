@@ -1,40 +1,42 @@
-import { defaultProduct } from "../product/types";
-
-export type Wishlist = {
+export type User = {
   id: string;
-  userEmail: string;
-  quantity: number;
-  size: string;
-  color: string;
-  defaultProduct: any;
-  // products: [
-  //   {
-  //     id: string;
-  //     name: string;
-  //     title: string;
-  //     image: string;
-  //     updatedAt: Date;
-  //   }
-  // ];
+  firstname: string;
+  lastname: string;
+  email: string;
+  user_address: {
+    id: string;
+    userId: string;
+    address_line1: string;
+    address_line2: string;
+    city: string;
+    postal_code: string;
+    state: string;
+    country: string;
+    mobile: string;
+    createdAt: Date;
+    updatedAt: Date;
+  };
 };
 
 export type defaultState = {
-  wishlist: Wishlist[];
+  user: User;
 };
-export const defaultWishlist: Wishlist = {
+export const defaultUser: User = {
   id: "",
-  userEmail: "",
-  quantity: 0,
-  size: "",
-  color: "",
-  defaultProduct,
-  // products: [
-  //   {
-  //     id: "",
-  //     name: "",
-  //     title: "",
-  //     image: "",
-  //     updatedAt: new Date("2023-10-02"),
-  //   },
-  // ],
+  firstname: "",
+  lastname: "",
+  email: "",
+  user_address: {
+    id: "",
+    userId: "",
+    address_line1: "",
+    address_line2: "",
+    city: "",
+    postal_code: "",
+    state: "",
+    country: "",
+    mobile: "",
+    createdAt: new Date("2023-10-02"),
+    updatedAt: new Date("2023-10-02"),
+  },
 };

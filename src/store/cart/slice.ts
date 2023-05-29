@@ -14,8 +14,8 @@ const { actions, reducer } = createSlice({
     addCart(state, action) {
       state.cart.push(action.payload);
       axios.post("http://localhost:3001/post-cart", {
+        userId: action.payload.userId,
         productId: action.payload.productId,
-        userEmail: action.payload.userEmail,
         quantity: action.payload.quantity,
         size: action.payload.size,
         color: action.payload.color,

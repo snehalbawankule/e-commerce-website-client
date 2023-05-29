@@ -1,19 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultWishlist } from "./types";
-import axios from "axios";
+import { defaultState, defaultUser } from "./types";
 const initialState: defaultState = {
-  wishlist: [defaultWishlist],
+  user: defaultUser,
 };
 const { actions, reducer } = createSlice({
   name: "user",
   initialState,
   reducers: {
-    getCurrentUserProfile(state, action) {
-      state.wishlist = action.payload;
+    getCurrentUser(state, action) {
+      state.user = action.payload;
     },
   },
 });
 
 export { actions };
 export default reducer;
-export const selectAllPosts = (state: any) => state.user.profile;
+export const selectAllPosts = (state: any) => state.user.user;

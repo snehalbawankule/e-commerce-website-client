@@ -8,7 +8,6 @@ import { PostButton } from "../navbar/navbar.styled";
 import Size from "../size/size";
 import { actions } from "../../store/wishlist/slice";
 import { actions as action } from "../../store/cart/slice";
-import { Product123 } from "../../routes";
 
 const Product = () => {
   let { id } = useParams();
@@ -38,7 +37,7 @@ const Product = () => {
 
   const handleWishlist = () => {
     const newWishlist = {
-      userEmail: currentUser.email,
+      userId: currentUser.id,
       productId: product?.id,
       quantity: 1,
       size: valueFromChild,
@@ -48,7 +47,7 @@ const Product = () => {
   };
   const handleCart = () => {
     const newCart = {
-      userEmail: currentUser.email,
+      userId: currentUser.id,
       productId: product?.id,
       quantity: 1,
       size: valueFromChild,

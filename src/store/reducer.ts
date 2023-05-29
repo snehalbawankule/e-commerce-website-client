@@ -6,8 +6,10 @@ import wishlistReducer from "./wishlist/slice";
 import posterReducer from "./poster/slice";
 import handPickedReducer from "./handpicked/slice";
 import cartReducer from "./cart/slice";
-import userReducer from "./user/slice";
+
 import helpCenterReducer from "./helpcenter/slice";
+import userReducer from "./user/slice";
+
 const reducers = combineReducers({
   products: productReducer,
   categories: categoryReducer,
@@ -16,8 +18,8 @@ const reducers = combineReducers({
   wishlists: wishlistReducer,
   handPickeds: handPickedReducer,
   carts: cartReducer,
-  users: userReducer,
   helpCenter: helpCenterReducer,
+  user: userReducer,
 });
 
 export default reducers;

@@ -5,7 +5,7 @@ import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Home = lazy(() => import("../components/home"));
 const Cart = lazy(() => import("../components/cart"));
-const Profile = lazy(() => import("../components/profile"));
+const Profile = lazy(() => import("../components/profile/profile-info"));
 const Category = lazy(() => import("../components/category"));
 const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
@@ -17,6 +17,10 @@ const NewArrivals = lazy(() => import("../components/new-arrivals"));
 const ContactUs = lazy(() => import("../components/contact-us"));
 const Faqs = lazy(() => import("../components/helpcenter"));
 const FaqsCard = lazy(() => import("../components/faqs-card"));
+const ProfileInfo = lazy(() => import("../components/profile/profile-info"));
+const ManageAddress = lazy(
+  () => import("../components/profile/manage-address")
+);
 export const Product123 = ["/women", "/men", "/beauty"];
 export const ProductByCategory = [
   "/women/western wear",
@@ -109,7 +113,7 @@ const APP_ROUTES: Routes = [
   },
   {
     path: ["/profile"],
-    component: Profile,
+    component: ProfileInfo,
   },
   {
     path: ["/category"],
@@ -155,6 +159,14 @@ const APP_ROUTES: Routes = [
   {
     path: ["/kids"],
     component: Products,
+  },
+  {
+    path: ["/profile/profile information"],
+    component: ProfileInfo,
+  },
+  {
+    path: ["/profile/manage address"],
+    component: ManageAddress,
   },
   {
     path: ProductByCategory,
