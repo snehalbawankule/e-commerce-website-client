@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { PostButton } from "./profile.styled";
 import { ProductTitle } from "../new-arrivals/new-arrivals.styled";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { getCurrentUser } from "../../store/user/services";
 
-const Profile = () => {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-  var profile = currentUser?.name?.charAt(0);
+const ManageAddress = () => {
+  const dispatch = useAppDispatch();
+  const user_address = useAppSelector((state) => state.user.user);
+  console.log(user_address);
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
-    <Grid container style={{ paddingTop: 100 }}>
+    <Grid container style={{ paddingTop: 100, marginLeft: 330 }}>
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
         <ProductTitle>Profile</ProductTitle>
       </Grid>
@@ -32,4 +38,4 @@ const Profile = () => {
     </Grid>
   );
 };
-export default Profile;
+export default ManageAddress;

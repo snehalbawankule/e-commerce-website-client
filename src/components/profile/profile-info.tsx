@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
-import { Input, ProfileInfoTitle } from "./profile.styled";
+import { Grid, TextField } from "@mui/material";
+import { actions } from "../../store/user/slice";
+import {
+  EditButton,
+  Input,
+  ProfileInfoTitle,
+  SaveButton,
+} from "./profile.styled";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
-import axios from "axios";
 
 const ProfileInfo = () => {
   const dispatch = useAppDispatch();
 
   const currentUser = useAppSelector((state) => state.user.user);
-  console.log(currentUser.firstname);
+
   const [userInfo, setUserInfo] = useState({
     firstname: currentUser.firstname,
     lastname: currentUser.lastname,
@@ -24,12 +29,27 @@ const ProfileInfo = () => {
     country: "",
     mobile: "",
   });
-  console.log(userInfo);
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
+
+  const [validEmail, setValidEmail] = useState(true);
+
+  const validateEmail = (email: any) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
   const handleUserInfoChange = (event: any) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+
+    if (validateEmail(userInfo.email)) {
+      setValidEmail(true);
+
+      console.log("Valid email:", userInfo.email);
+    } else {
+      setValidEmail(false);
+    }
   };
   const handleUserAddressChange = (event: any) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
@@ -37,22 +57,18 @@ const ProfileInfo = () => {
 
   const [editMode, setEditMode] = useState(false);
   const handleEditClick = () => {
-    setEditMode(true);
+    setEditMode(!editMode);
   };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-
-    //   axios
-    //     .post("http://localhost:3001/postuser", {
-    //       firstname: userInfo.firstname,
-    //       lastname: userInfo.lastname,
-    //       email: userInfo.email,
-    //       password: userInfo.mobile,
-    //     })
-    //     .then(() => {
-    //       alert("User info updated successfully");
-    //     });
+    const updatedUser = {
+      id: currentUser.id,
+      firstname: userInfo.firstname,
+      lastname: userInfo.lastname,
+      email: userInfo.email,
+    };
+    dispatch(actions.userUpdate(updatedUser));
   };
 
   return (
@@ -61,58 +77,92 @@ const ProfileInfo = () => {
       style={{ paddingTop: 100, marginLeft: 330 }}
       direction="column"
     >
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={4}
+        lg={4}
+        style={{ display: "flex", paddingBottom: 20 }}
+      >
+        <ProfileInfoTitle>Personal Information</ProfileInfoTitle>
+        <EditButton onClick={handleEditClick}>
+          {editMode ? <>Cancel</> : <>Edit</>}
+        </EditButton>
+      </Grid>
       <form
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <Grid item xs={12} sm={12} md={10} lg={10}>
-          <ProfileInfoTitle>Personal Information</ProfileInfoTitle>
-        </Grid>
-        <Grid item xs={1} sm={1} md={1} lg={1}>
-          <button onClick={handleEditClick}>Edit</button>
-        </Grid>
         {editMode ? (
-          <Input
-            style={{ marginTop: 30 }}
-            type="text"
-            name="firstname"
-            onBlur={handleUserInfoChange}
-            defaultValue={userInfo.firstname}
-            minLength={5}
-            maxLength={10}
-            placeholder="First Name"
-            required
-          />
+          <>
+            <TextField
+              name="firstname"
+              defaultValue={userInfo.firstname}
+              onChange={handleUserInfoChange}
+              required
+              label="FirstName"
+              InputProps={{
+                inputProps: {
+                  minLength: 5,
+                  maxLength: 10,
+                },
+              }}
+              style={{ marginLeft: 10 }}
+            />
+
+            <TextField
+              name="lastname"
+              defaultValue={userInfo.lastname}
+              onChange={handleUserInfoChange}
+              required
+              label="LastName"
+              InputProps={{
+                inputProps: {
+                  minLength: 5,
+                  maxLength: 10,
+                },
+              }}
+              style={{ marginLeft: 20 }}
+            />
+            <TextField
+              name="email"
+              defaultValue={userInfo.email}
+              onChange={handleUserInfoChange}
+              required
+              label="Email"
+              error={!validEmail}
+              helperText={!validEmail && "Invalid email address"}
+              style={{ marginLeft: 20 }}
+            />
+            <SaveButton>Save</SaveButton>
+          </>
         ) : (
-          <input
-            style={{ marginTop: 30 }}
-            type="text"
-            name="firstname"
-            defaultValue={userInfo.firstname}
-            disabled
-          />
+          <>
+            <TextField
+              name="firstname"
+              defaultValue={userInfo.firstname}
+              disabled
+              label="FirstName"
+              style={{ marginLeft: 10 }}
+            />
+            <TextField
+              name="lastname"
+              defaultValue={userInfo.lastname}
+              disabled
+              label="LastName"
+              style={{ marginLeft: 20 }}
+            />
+            <TextField
+              name="email"
+              defaultValue={userInfo.email}
+              disabled
+              label="Email"
+              style={{ marginLeft: 20 }}
+            />
+          </>
         )}
-
-        <Input
-          type="text"
-          name="lastname"
-          onBlur={handleUserInfoChange}
-          defaultValue={userInfo.lastname}
-          minLength={5}
-          maxLength={10}
-          placeholder="Last Name"
-          required
-        />
-
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          defaultValue={userInfo.email}
-          onBlur={handleUserInfoChange}
-          required
-        />
       </form>
       <ProfileInfoTitle>Manage Addresses</ProfileInfoTitle>
       <form
@@ -121,7 +171,7 @@ const ProfileInfo = () => {
         }}
       >
         <Input
-          style={{ marginTop: 30 }}
+          style={{ marginTop: 20 }}
           type="text"
           name="address_line1"
           onBlur={handleUserAddressChange}
