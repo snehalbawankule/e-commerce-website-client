@@ -31,8 +31,32 @@ const { actions, reducer } = createSlice({
           });
       }
     },
+    addNewAddress(state, action) {
+      const existingPost = state.user;
+      existingPost.user_addresses.push(action.payload);
+
+      axios
+        .post("http://localhost:3001/post-user-address", {
+          userId: action.payload.userId,
+          name: action.payload.name,
+          mobile: action.payload.mobile,
+          address_line1: action.payload.address_line1,
+          address_line2: action.payload.address_line2,
+          city: action.payload.city,
+          postal_code: action.payload.postal_code,
+          state: action.payload.state,
+          country: action.payload.country,
+          alternative_mobile: action.payload.alternative_mobile,
+          address_type: action.payload.address_type,
+        })
+        .then(() => {
+          alert("User info updated successfully");
+        });
+    },
   },
 });
+
+
 
 export { actions };
 export default reducer;

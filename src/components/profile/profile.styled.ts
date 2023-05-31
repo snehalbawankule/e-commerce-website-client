@@ -27,24 +27,10 @@ const EditButton = styled.button`
   align-items: end;
   background: none;
 `;
-const Input = styled.input`
-  font-weight: 300;
-  font-size: ${pxToRem(17)};
-  border-width: 1px;
-  margin-left: ${pxToRem(56)};
-  @media (max-width: 767px) {
-    margin-left: ${pxToRem(20)};
-  }
-  @media (min-width: 768px) {
-    width: ${pxToRem(180)};
-  }
-  ::placeholder {
-    color: #2f2e41bf;
-  }
-`;
+
 const ProfileInfoTitle = styled.div`
   font-size: ${pxToRem(18)};
-
+  margin-top: ${pxToRem(16)};
   font-weight: 500;
   color: #2f2e41;
 `;
@@ -70,7 +56,6 @@ export {
   ProfileImage,
   PostButton,
   ProfileText,
-  Input,
   ProfileInfoTitle,
   SaveButton,
   EditButton,

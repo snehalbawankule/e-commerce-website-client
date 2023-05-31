@@ -139,8 +139,15 @@ const SideNav = () => {
                 </Button>
 
                 {page.sub_sub_categories.map((page1: any, index1: any) => (
-                  <MenuItem
-                    key={index1}
+                  <Button
+                    style={{
+                      display: "flex",
+                      justifyContent: "start",
+                      color: "black",
+                      fontSize: 18,
+                      marginLeft: 10,
+                      textTransform: "capitalize",
+                    }}
                     onClick={(event) =>
                       handleChange2(event, page.name, page1.name)
                     }
@@ -148,7 +155,7 @@ const SideNav = () => {
                     <Typography textAlign="center" color="gray">
                       {page1.name}
                     </Typography>
-                  </MenuItem>
+                  </Button>
                 ))}
               </>
             ))}

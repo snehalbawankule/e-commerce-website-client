@@ -10,7 +10,6 @@ const ProductList = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   const segments = currentPage.split("/");
-  console.log(segments);
   const dispatch = useAppDispatch();
 
   const Products = useAppSelector((state) => state.products.product);

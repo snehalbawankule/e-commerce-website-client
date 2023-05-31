@@ -17,7 +17,7 @@ const Product = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
   const existingPost = useAppSelector((state) => state.products.product);
   const post = existingPost.find((item: any) => item.id === id);
-  console.log(post);
+
   const [product, setProduct] = useState(post);
 
   useEffect(() => {

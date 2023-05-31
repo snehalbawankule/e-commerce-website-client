@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import "./index.css";
 import { TextWrap03 } from "./size.styled";
-interface ChildComponentProps {
+interface ChildProps {
   onSendValue: (value: string) => void;
 }
 
-const Size: React.FC<ChildComponentProps> = ({ onSendValue }) => {
+const Size: React.FC<ChildProps> = ({ onSendValue }) => {
   const size = ["XS", "S", "M", "L", "XL", "2XL"];
   const [selectedSize, setSelectedSize] = useState(null);
 

@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
-import {
-  EditButton,
-  Input,
-  ProfileInfoTitle,
-  SaveButton,
-} from "./profile.styled";
+import { EditButton, ProfileInfoTitle, SaveButton } from "./profile.styled";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
 
@@ -16,20 +11,11 @@ const ProfileInfo = () => {
   const currentUser = useAppSelector((state) => state.user.user);
 
   const [userInfo, setUserInfo] = useState({
+    id: currentUser.id,
     firstname: currentUser.firstname,
     lastname: currentUser.lastname,
     email: currentUser.email,
   });
-  const [userAddressInfo, setUserAddressInfo] = useState({
-    address_line1: "",
-    address_line2: "",
-    city: "",
-    postal_code: "",
-    state: "",
-    country: "",
-    mobile: "",
-  });
-
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -45,14 +31,9 @@ const ProfileInfo = () => {
 
     if (validateEmail(userInfo.email)) {
       setValidEmail(true);
-
-      console.log("Valid email:", userInfo.email);
     } else {
       setValidEmail(false);
     }
-  };
-  const handleUserAddressChange = (event: any) => {
-    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 
   const [editMode, setEditMode] = useState(false);
@@ -62,13 +43,7 @@ const ProfileInfo = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    const updatedUser = {
-      id: currentUser.id,
-      firstname: userInfo.firstname,
-      lastname: userInfo.lastname,
-      email: userInfo.email,
-    };
-    dispatch(actions.userUpdate(updatedUser));
+    dispatch(actions.userUpdate(userInfo));
   };
 
   return (
@@ -164,58 +139,6 @@ const ProfileInfo = () => {
           </>
         )}
       </form>
-      <ProfileInfoTitle>Manage Addresses</ProfileInfoTitle>
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <Input
-          style={{ marginTop: 20 }}
-          type="text"
-          name="address_line1"
-          onBlur={handleUserAddressChange}
-          defaultValue={userAddressInfo.address_line1}
-          minLength={5}
-          maxLength={10}
-          placeholder="address line 1"
-          required
-        />
-
-        <Input
-          type="text"
-          name="address_line2"
-          onBlur={handleUserAddressChange}
-          defaultValue={userAddressInfo.address_line2}
-          minLength={5}
-          maxLength={10}
-          placeholder="address line 2"
-          required
-        />
-
-        <Input
-          type="text"
-          name="city"
-          placeholder="city"
-          defaultValue={userAddressInfo.city}
-          onBlur={handleUserAddressChange}
-          required
-        />
-      </form>
-
-      {/* <Grid item>
-        <PostButton>
-          <Link
-            style={{
-              color: "black",
-              textDecoration: "none",
-            }}
-            to={`/login`}
-          >
-            LogOut
-          </Link>
-        </PostButton>
-      </Grid> */}
     </Grid>
   );
 };

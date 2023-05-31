@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Grid, TextField } from "@mui/material";
+import { Box, Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
-import { EditButton, ProfileInfoTitle, SaveButton } from "./profile.styled";
+import { EditButton, SaveButton } from "./profile.styled";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
 import Radio from "@mui/material/Radio";
@@ -9,13 +9,14 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import ExistingAddress from "./existing-address";
+import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 
-const ManageAddress = () => {
+const ExistingAddress = () => {
   const dispatch = useAppDispatch();
 
   const currentUser = useAppSelector((state) => state.user.user);
   const id = currentUser.id;
+  const address = currentUser.user_addresses;
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -44,28 +45,37 @@ const ManageAddress = () => {
     dispatch(actions.addNewAddress(userAddressInfo));
   };
 
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(true);
 
   return (
     <Grid container style={{ marginTop: 100, paddingLeft: 330 }}>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        style={{ display: "flex", paddingBottom: 10 }}
-      >
-        <ProfileInfoTitle>Manage address</ProfileInfoTitle>
-      </Grid>
-      <EditButton
-        style={{ marginLeft: 10 }}
-        onClick={() => setEditMode(!editMode)}
-      >
-        Add new address
-      </EditButton>
-      {editMode ? (
-        <>
+      <Box>
+        {editMode ? (
+          <Box>
+            <>
+              {address.map((item: any) => {
+                return (
+                  <Box>
+                    <EditButton
+                      style={{ marginLeft: 10 }}
+                      onClick={() => setEditMode(!editMode)}
+                    >
+                      Edit
+                    </EditButton>
+                    <TextWrap01>
+                      {item.name} {item.mobile}
+                    </TextWrap01>
+                    <TextWrap01>
+                      {item.address_line1}, {item.address_line2},{item.city},
+                      {item.state},{item.postal_code},{item.country},
+                      {item.alternative_mobile}
+                    </TextWrap01>
+                  </Box>
+                );
+              })}
+            </>
+          </Box>
+        ) : (
           <form
             onSubmit={(e) => {
               handleSubmit(e);
@@ -310,10 +320,9 @@ const ManageAddress = () => {
               </EditButton>
             </Grid>
           </form>
-        </>
-      ) : null}
-      <ExistingAddress />
+        )}
+      </Box>
     </Grid>
   );
 };
-export default ManageAddress;
+export default ExistingAddress;

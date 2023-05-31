@@ -3,19 +3,23 @@ export type User = {
   firstname: string;
   lastname: string;
   email: string;
-  user_address: {
-    id: string;
-    userId: string;
-    address_line1: string;
-    address_line2: string;
-    city: string;
-    postal_code: string;
-    state: string;
-    country: string;
-    mobile: string;
-    createdAt: Date;
-    updatedAt: Date;
-  };
+  user_addresses: [
+    {
+      id: string;
+      userId: string;
+      name: string;
+      mobile: Number;
+      address_line1: string;
+      address_line2: string;
+      city: string;
+      postal_code: string;
+      state: string;
+      country: string;
+      alternative_mobile: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }
+  ];
 };
 
 export type defaultState = {
@@ -26,17 +30,21 @@ export const defaultUser: User = {
   firstname: "",
   lastname: "",
   email: "",
-  user_address: {
-    id: "",
-    userId: "",
-    address_line1: "",
-    address_line2: "",
-    city: "",
-    postal_code: "",
-    state: "",
-    country: "",
-    mobile: "",
-    createdAt: new Date("2023-10-02"),
-    updatedAt: new Date("2023-10-02"),
-  },
+  user_addresses: [
+    {
+      id: "",
+      userId: "",
+      name: "",
+      mobile: 0,
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      postal_code: "",
+      state: "",
+      country: "",
+      alternative_mobile: "",
+      createdAt: new Date("2023-10-02"),
+      updatedAt: new Date("2023-10-02"),
+    },
+  ],
 };
