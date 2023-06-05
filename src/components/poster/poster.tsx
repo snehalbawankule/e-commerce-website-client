@@ -29,7 +29,6 @@ const Poster = () => {
       container
       style={{
         justifyContent: "center",
-
         marginTop: 60,
         paddingTop: 30,
         paddingBottom: 30,
@@ -38,19 +37,19 @@ const Poster = () => {
       <Box
         sx={{
           height: isDesktop ? "370px" : isMobile ? "350px" : "600px",
-          mx: 5,
+          mx: isDesktop ? 5 : 0,
           backgroundColor: "#aea49b",
 
-          borderRadius: 20,
+          borderRadius: isDesktop ? 20 : 0,
           width: "100%",
           display: "flex",
           overflow: "hidden",
         }}
       >
-        <Grid item xs={6} sm={6} md={7} lg={7}>
+        <Grid item xs={12} sm={6} md={7} lg={7}>
           <Box
             sx={{
-              height: isDesktop ? "370px" : isMobile ? "350px" : "600px",
+              height: isDesktop ? "370px" : isMobile ? "370px" : "600px",
 
               backgroundImage: `url(${posters[index].image})`,
               backgroundPosition: "center",
@@ -58,10 +57,17 @@ const Poster = () => {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={6} md={5} lg={5}>
+        <Grid
+          item
+          xs={0}
+          sm={6}
+          md={5}
+          lg={5}
+          style={{ display: isMobile ? "none" : "flex" }}
+        >
           <Grid
             item
-            xs={10}
+            xs={0}
             sm={12}
             md={7}
             lg={6}
@@ -71,7 +77,7 @@ const Poster = () => {
           </Grid>
           <Grid
             item
-            xs={11}
+            xs={0}
             sm={10}
             md={7}
             lg={7}
@@ -79,7 +85,7 @@ const Poster = () => {
           >
             <TextWrap4>homeDescription</TextWrap4>
           </Grid>
-          <Grid item xs={3} sm={3} md={3} lg={3} display="contents">
+          <Grid item xs={0} sm={3} md={3} lg={3} display="contents">
             <PostButton
               style={{
                 marginLeft: isDesktop ? 40 : 10,

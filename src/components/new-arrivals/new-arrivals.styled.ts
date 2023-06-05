@@ -60,6 +60,9 @@ const ProductName = styled.div`
   font-weight: 500;
   text-align: center;
   margin-top: ${pxToRem(10)};
+  @media (max-width: 767px) {
+    font-size: ${pxToRem(12)};
+  }
 `;
 const ProductTitle = styled.div`
   font-size: ${pxToRem(12)};
@@ -79,6 +82,10 @@ const NewArrivalTextWrap = styled.div`
   font-family: cursive;
   color: #2f2e41;
   text-align: center;
+  @media (max-width: 767px) {
+    font-size: ${pxToRem(18)};
+    padding-top: ${pxToRem(0)};
+  }
 `;
 
 const Scroll = styled.div`

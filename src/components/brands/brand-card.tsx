@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const BrandCard = (props: any) => {
   const { post } = props;
   const { id } = post;
-
+  const { isDesktop, isMobile } = useMediaQuery();
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -24,8 +25,8 @@ const BrandCard = (props: any) => {
       >
         <Box
           style={{
-            height: "150px",
-            width: "150px",
+            height: isDesktop ? "150px" : isMobile ? "130px" : "150px",
+            width: isDesktop ? "150px" : isMobile ? "120px" : "120px",
             backgroundImage: `url(${post.image})`,
             backgroundPosition: "top",
             backgroundSize: "cover",

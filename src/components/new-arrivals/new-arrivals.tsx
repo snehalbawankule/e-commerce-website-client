@@ -4,9 +4,11 @@ import NewArrivalsCard from "./new-arrivals-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { addProduct } from "../../store/product/services";
 import { NewArrivalTextWrap, Scroll } from "./new-arrivals.styled";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const NewArrivals = () => {
   const dispatch = useAppDispatch();
+  const { isDesktop, isMobile } = useMediaQuery();
   const newArrivals = useAppSelector((state) => state.products.product);
   useEffect(() => {
     if (newArrivals.length) {
@@ -18,13 +20,13 @@ const NewArrivals = () => {
     <Grid
       container
       spacing={5}
-      paddingLeft="30px"
       style={{
-        marginBottom: 50,
+        paddingLeft: isDesktop ? 30 : 3,
+        marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}
     >
-      <Grid item xs={10} sm={10} md={12} lg={12}>
+      <Grid item xs={12} sm={10} md={12} lg={12}>
         <NewArrivalTextWrap>
           New Arrivals Style for every story
         </NewArrivalTextWrap>
@@ -35,7 +37,7 @@ const NewArrivals = () => {
           return (
             <Grid
               item
-              xs={12}
+              xs={4}
               sm={6}
               md={2.4}
               lg={2.4}

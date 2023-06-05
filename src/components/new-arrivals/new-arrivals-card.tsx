@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Grid, Box } from "@mui/material";
-import { ProductName} from "./new-arrivals.styled";
+import { ProductName } from "./new-arrivals.styled";
 // import ReactionButtons from "../add-reaction";
-// import useMediaQuery from "../../hooks/use-media-query";
+import useMediaQuery from "../../hooks/use-media-query";
 import { useNavigate } from "react-router-dom";
 // import { AllReactions } from "../all-reactions/all-reactions";
 
 const NewArrivalsCard = (props: any) => {
   const { post } = props;
   const { id } = post;
+  const { isDesktop, isMobile } = useMediaQuery();
 
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -31,8 +32,8 @@ const NewArrivalsCard = (props: any) => {
     >
       <Box
         style={{
-          height: "250px",
-          width: "180px",
+          height: isDesktop ? "250px" : isMobile ? "130px" : "150px",
+          width: isDesktop ? "180px" : isMobile ? "120px" : "120px",
           backgroundImage: `url(${post.image})`,
           backgroundPosition: "top",
           backgroundSize: "cover",

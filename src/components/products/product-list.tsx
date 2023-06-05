@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";

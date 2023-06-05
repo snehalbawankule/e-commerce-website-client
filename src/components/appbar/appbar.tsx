@@ -49,9 +49,17 @@ const Appbar = () => {
         display: "flex",
       }}
     >
-      <Grid container>
+      <Grid
+        container
+        sx={{
+          flexGrow: 1,
+          display: { xs: "none", md: "flex" },
+        }}
+      >
         <Grid
           item
+          xs={2}
+          sm={2}
           md={2}
           lg={2}
           style={{

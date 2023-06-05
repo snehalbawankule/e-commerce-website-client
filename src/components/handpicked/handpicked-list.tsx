@@ -7,8 +7,10 @@ import {
   NewArrivalTextWrap,
   Scroll,
 } from "../new-arrivals/new-arrivals.styled";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const HandPickedList = () => {
+  const { isDesktop, isMobile } = useMediaQuery();
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.handPickeds.handPicked);
 
@@ -22,14 +24,13 @@ const HandPickedList = () => {
     <Grid
       container
       spacing={5}
-      paddingLeft="30px"
       style={{
-        // backgroundColor: "#Cdbdc4",
-        marginBottom: 50,
+        paddingLeft: isDesktop ? 30 : 3,
+        marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}
     >
-      <Grid item xs={10} sm={10} md={12} lg={12}>
+      <Grid item xs={12} sm={10} md={12} lg={12}>
         <NewArrivalTextWrap style={{ paddingTop: 0 }}>
           Discovered the Perfect Piece for you!
         </NewArrivalTextWrap>
@@ -40,7 +41,7 @@ const HandPickedList = () => {
           return (
             <Grid
               item
-              xs={12}
+              xs={4}
               sm={6}
               md={2.4}
               lg={2.4}
