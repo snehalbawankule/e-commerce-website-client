@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import useMediaQuery from "../../hooks/use-media-query";
 const Navbar = () => {
-  const { isDesktop } = useMediaQuery();
+  const { isDesktop, isMobile } = useMediaQuery();
 
   const pages = ["women", "men", "kids", "beauty", "home"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -29,19 +29,24 @@ const Navbar = () => {
 
   return (
     <Grid container>
-      <Toolbar>
+      <Toolbar
+        style={{
+          paddingLeft: 0,
+          marginTop: -25,
+          display: isMobile ? "flex" : "none",
+        }}
+      >
         <Grid
           item
           sx={{
             flexGrow: 1,
-            display: { xs: "flex", md: "none" },
           }}
         >
           <IconButton
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
-            aria-haspopup="true"
+            style={{ padding: 0 }}
             onClick={handleOpenNavMenu}
             color="inherit"
           >
@@ -74,7 +79,8 @@ const Navbar = () => {
             ))}
           </Menu>
         </Grid>
-
+      </Toolbar>
+      <Toolbar>
         <Box
           sx={{
             flexGrow: 1,

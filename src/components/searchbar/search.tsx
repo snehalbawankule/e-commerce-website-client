@@ -10,12 +10,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, Search, Lists } from "./search.styled";
+import useMediaQuery from "../../hooks/use-media-query";
 
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
-
+  const { isDesktop, isMobile } = useMediaQuery();
   const handleSearchInputChange = (event: any) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -38,7 +39,7 @@ function SearchBar() {
 
   return (
     <Container>
-      <AppBar position="static">
+      <AppBar position="static" style={{ marginTop: isMobile ? 4 : "" }}>
         <Toolbar
           style={{
             backgroundColor: "white",
@@ -47,15 +48,15 @@ function SearchBar() {
           }}
         >
           <Search>
-            <Grid container paddingTop="15px">
-              <Grid item xs={6} sm={6} md={11} lg={11}>
+            <Grid container>
+              <Grid item xs={10} sm={11} md={11} lg={11}>
                 <InputBase
                   placeholder="Search…"
                   value={searchQuery}
                   onChange={handleSearchInputChange}
                 />
               </Grid>
-              <Grid item xs={2} sm={2} md={1} lg={1}>
+              <Grid item xs={2} sm={1} md={1} lg={1}>
                 <SearchIcon style={{ color: "gray", fontSize: 30 }} />
               </Grid>
             </Grid>

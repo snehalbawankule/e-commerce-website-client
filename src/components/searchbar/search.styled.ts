@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// const pxToRem = (size: number) => `${size / 16}`;
+const pxToRem = (size: number) => `${size / 16}`;
 const Container = styled.div`
   flex-grow: 1;
 `;
@@ -18,6 +18,10 @@ const Search = styled.div`
   [theme.breakpoints.up("sm")]: {
     margin-left: theme.spacing(3);
     width: "auto";
+  }
+  @media (max-width: 767px) {
+    font-size: ${pxToRem(18)};
+    margin-top: ${pxToRem(4)};
   }
 `;
 

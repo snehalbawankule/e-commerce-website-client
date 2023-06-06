@@ -15,7 +15,11 @@ function Footer() {
   return (
     <Grid
       container
-      sx={{ p: isDesktop ? 10 : isTablet ? 5 : 3, background: "#F3F2FF" }}
+      sx={{
+        p: isDesktop ? 10 : isTablet ? 5 : 3,
+        background: "#F3F2FF",
+        display: isMobile ? "none" : "flex",
+      }}
     >
       <Grid item xs={2} sm={2} md={4} lg={4}>
         <Grid

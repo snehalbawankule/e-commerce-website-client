@@ -25,8 +25,8 @@ const Brand = () => {
       container
       style={{
         paddingLeft: isDesktop ? 30 : 3,
-        marginBottom: isDesktop ? 50 : 5,
-        paddingBottom: 20,
+        marginBottom: 50,
+        paddingBottom: isDesktop ? 20 : 30,
       }}
     >
       <Grid item xs={12} sm={10} md={12} lg={12}>
