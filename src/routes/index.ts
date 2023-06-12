@@ -11,6 +11,7 @@ const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
 const Brand = lazy(() => import("../components/brands"));
 const Product = lazy(() => import("../components/product"));
+const Account = lazy(() => import("../components/account"));
 const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
 const NewArrivals = lazy(() => import("../components/new-arrivals"));
@@ -90,6 +91,10 @@ const APP_ROUTES: Routes = [
   {
     path: ["/"],
     component: HanselsHome,
+  },
+  {
+    path: ["/account"],
+    component: Account,
   },
   {
     path: ["/home"],

@@ -106,8 +106,23 @@ const Scroll1 = styled.div`
   margin-top: 20px;
 `;
 
+const ImageBox = styled.img<LatestArticleProps>`
+  height: ${pxToRem(220)};
+  width: ${pxToRem(160)};
+  background-image: url(${(props: any) => props.src});
+  background-position: top;
+  background-size: cover;
+  transition: all 0.2s ease-in-out;
+  border-radius: ${pxToRem(16)};
+
+  @media (max-width: 767px) {
+    height: ${pxToRem(130)};
+    width: ${pxToRem(120)};
+  }
+`;
 export {
   TextWrap02,
+  ImageBox,
   TextWrap03,
   TextWrap01,
   LoadMoreButton,

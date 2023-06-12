@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
-import { addProduct } from "../../store/product/services";
 
 const ProductList = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   console.log("currentpage" + currentPage);
-  const dispatch = useAppDispatch();
+
   const [data, setData] = useState<any[]>([]);
 
   const [pageNo, setPageNo] = useState(1);
@@ -35,7 +33,7 @@ const ProductList = () => {
 
   function getData(currentPage: string) {
     fetch(
-      `http://localhost:3001/get-category-products?page=${pageNo}&size=5&sort=createdAt&order=ASC&category=${currentPage}`
+      `http://localhost:3001/get-category-products?page=${pageNo}&size=8&sort=createdAt&order=ASC&category=${currentPage}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -49,15 +47,7 @@ const ProductList = () => {
           setIsLoading(false);
         }
       })
-      // .then((response) => {
-      //   if (pageNo > 1) {
-      //     let arr = [...data, ...response.data];
 
-      //     setData(arr);
-      //   } else {
-      //     setData(response.data);
-      //   }
-      // })
       .catch((error) => {
         alert("Axios GET request failed");
       });
@@ -77,7 +67,7 @@ const ProductList = () => {
     <Grid
       container
       onScroll={firstEvent}
-      style={{ height: 600, overflowY: "auto" }}
+      style={{ height: 800, overflowY: "auto" }}
     >
       <Grid
         container

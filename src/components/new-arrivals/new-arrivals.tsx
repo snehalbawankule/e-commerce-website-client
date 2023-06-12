@@ -8,7 +8,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 
 const NewArrivals = () => {
   const dispatch = useAppDispatch();
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   const newArrivals = useAppSelector((state) => state.products.product);
   useEffect(() => {
     if (newArrivals.length) {
@@ -35,15 +35,7 @@ const NewArrivals = () => {
       <Scroll>
         {newArrivals.map((post: any, index: any) => {
           return (
-            <Grid
-              item
-              xs={4}
-              sm={6}
-              md={2.4}
-              lg={2.4}
-              display="flex"
-              key={index}
-            >
+            <Grid item xs={4} sm={6} md={2} lg={2} display="flex" key={index}>
               <NewArrivalsCard post={post} />
             </Grid>
           );

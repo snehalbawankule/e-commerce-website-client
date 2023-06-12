@@ -1,4 +1,4 @@
-import { AppBar, Grid, IconButton, Toolbar, Box } from "@mui/material";
+import { AppBar, Grid, Toolbar } from "@mui/material";
 import { TextWrap4 } from "../navbar/navbar.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -17,7 +17,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 import { IconName } from "./appbar.styled";
 
 const Appbar = () => {
@@ -46,6 +45,9 @@ const Appbar = () => {
   };
   const handleAccount = () => {
     navigate("/account");
+  };
+  const handleCategory = () => {
+    navigate("/category");
   };
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
@@ -158,6 +160,7 @@ const Appbar = () => {
           background: "white",
           bottom: 0,
           paddingTop: "8px",
+
           display: isMobile ? "flex" : "none",
         }}
       >
@@ -182,7 +185,7 @@ const Appbar = () => {
             <Grid item xs={2.4} sm={2.4}>
               <StorefrontIcon
                 sx={{ fontSize: 30, justifyContent: "center" }}
-                onClick={handleHome}
+                onClick={handleCategory}
               />
               <IconName>Category</IconName>
             </Grid>

@@ -10,7 +10,7 @@ import {
 import useMediaQuery from "../../hooks/use-media-query";
 
 const HandPickedList = () => {
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.handPickeds.handPicked);
 
@@ -39,15 +39,7 @@ const HandPickedList = () => {
       <Scroll>
         {products.map((post: any, index: any) => {
           return (
-            <Grid
-              item
-              xs={4}
-              sm={6}
-              md={2.4}
-              lg={2.4}
-              display="flex"
-              key={index}
-            >
+            <Grid item xs={4} sm={6} md={2} lg={2} display="flex" key={index}>
               <HandPickedCard post={post} />
             </Grid>
           );

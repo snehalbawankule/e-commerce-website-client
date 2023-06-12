@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { TextWrap02, TextWrap03 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
@@ -65,19 +65,19 @@ const Product = () => {
       }}
       key={id}
     >
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={4}
-        lg={4}
-        style={{
-          backgroundImage: `url(${product?.image})`,
-          backgroundPosition: "center",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+      <Grid item xs={12} sm={12} md={4} lg={4}>
+        <Box
+          style={{
+            width: "90%",
+            height: "100%",
+            backgroundImage: `url(${product?.image})`,
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></Box>
+      </Grid>
+
       <Grid item xs={12} sm={12} md={6} lg={6}>
         <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
           <TextWrap02 style={{ paddingTop: 0 }}>{product?.name}</TextWrap02>
@@ -96,11 +96,9 @@ const Product = () => {
           <TextWrap03>{product?.description}</TextWrap03>
         </Grid>
 
-        {/* {isCurrentPathMatch === true ? (
+        {product?.category === "women" || product?.category === "men" ? (
           <Size onSendValue={handleValueFromChild} />
-        ) : null} */}
-
-        <Size onSendValue={handleValueFromChild} />
+        ) : null}
 
         <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
           <PostButton onClick={handleCart}>Add to bag</PostButton>
