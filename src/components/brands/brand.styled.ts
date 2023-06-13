@@ -1,7 +1,7 @@
 import styled from "styled-components";
 const pxToRem = (size: number) => `${size / 16}rem`;
 type BrandProps = {
-  background?: string;
+  src?: string;
 };
 
 const BrandName = styled.img<BrandProps>`
@@ -19,6 +19,20 @@ border:none;
 
 
 `;
+const ImageBox = styled.img<BrandProps>`
+  height: ${pxToRem(160)};
+  width: ${pxToRem(160)};
+  background-image: url(${(props: any) => props.src});
+  background-position: top;
+  background-size: cover;
+  transition: all 0.2s ease-in-out;
+  border-radius: ${pxToRem(16)};
+
+  @media (max-width: 767px) {
+    height: ${pxToRem(130)};
+    width: ${pxToRem(120)};
+  }
+`;
 const TextWrap4 = styled.h1`
   font-size: ${pxToRem(24)};
   color: #f3f2ff;
@@ -27,4 +41,4 @@ const TextWrap4 = styled.h1`
     font-size: ${pxToRem(12)};
   }
 `;
-export { BrandName, TextWrap4 };
+export { BrandName, TextWrap4, ImageBox };

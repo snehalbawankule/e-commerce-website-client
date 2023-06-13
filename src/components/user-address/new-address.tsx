@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
-import { EditButton, ProfileInfoTitle, SaveButton } from "./profile.styled";
+import {
+  EditButton,
+  ProfileInfoTitle,
+  SaveButton,
+} from "../profile/profile.styled";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
 import Radio from "@mui/material/Radio";
@@ -9,9 +13,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import ExistingAddress from "./existing-address";
 
-const ManageAddress = () => {
+const NewAddress = () => {
   const dispatch = useAppDispatch();
 
   const currentUser = useAppSelector((state) => state.user.user);
@@ -42,6 +45,7 @@ const ManageAddress = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     dispatch(actions.addNewAddress(userAddressInfo));
+    setEditMode(false);
   };
 
   const [editMode, setEditMode] = useState(false);
@@ -312,8 +316,7 @@ const ManageAddress = () => {
           </form>
         </>
       ) : null}
-      <ExistingAddress />
     </Grid>
   );
 };
-export default ManageAddress;
+export default NewAddress;
