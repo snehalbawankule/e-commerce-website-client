@@ -1,12 +1,12 @@
 import React from "react";
-import ExistingAddress from "./existing-address";
 import NewAddress from "./new-address";
+import AddressList from "./address-list";
 
 const ManageAddress = () => {
   return (
     <>
       <NewAddress />
-      <ExistingAddress />
+      <AddressList />
     </>
   );
 };

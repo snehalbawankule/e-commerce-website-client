@@ -8,7 +8,7 @@ export type User = {
       id: string;
       userId: string;
       name: string;
-      mobile: Number;
+      mobile: string;
       address_line1: string;
       address_line2: string;
       city: string;
@@ -16,6 +16,7 @@ export type User = {
       state: string;
       country: string;
       alternative_mobile: string;
+      address_type: string;
       createdAt: Date;
       updatedAt: Date;
     }
@@ -35,7 +36,7 @@ export const defaultUser: User = {
       id: "",
       userId: "",
       name: "",
-      mobile: 0,
+      mobile: "",
       address_line1: "",
       address_line2: "",
       city: "",
@@ -43,6 +44,7 @@ export const defaultUser: User = {
       state: "",
       country: "",
       alternative_mobile: "",
+      address_type: "",
       createdAt: new Date("2023-10-02"),
       updatedAt: new Date("2023-10-02"),
     },

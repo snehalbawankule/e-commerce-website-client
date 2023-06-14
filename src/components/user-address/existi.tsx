@@ -45,6 +45,24 @@ const ExistingAddress = () => {
       [event.target.name]: event.target.value,
     });
   };
+  const [editingAddress, setEditingAddress] = useState(null);
+
+  const handleEditAddress = (address: any) => {
+    setEditingAddress(address);
+  };
+
+  const handleSaveAddress = (updatedAddress: any) => {
+    const updatedAddresses = address.map((address) =>
+      address.id === updatedAddress.id ? updatedAddress : address
+    );
+    //setAddress(updatedAddresses);
+
+    setEditingAddress(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingAddress(null);
+  };
   const handleSubmit = (event: any) => {
     event.preventDefault();
     dispatch(actions.addNewAddress(userAddressInfo));
