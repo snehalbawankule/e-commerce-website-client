@@ -25,7 +25,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid container marginTop="50px">
         <Grid
           item
           xs={10}
@@ -40,7 +40,7 @@ const Wishlist = () => {
             sm={10}
             md={8}
             lg={8}
-            style={{ paddingBottom: 20 }}
+            style={{ paddingBottom: 20, fontWeight: "bold" }}
           >
             Wishlist
           </Grid>

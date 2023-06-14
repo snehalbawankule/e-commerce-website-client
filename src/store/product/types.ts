@@ -20,14 +20,15 @@ export type Product = {
       updatedAt: Date;
     }
   ];
-  comments: [
+  reviews: [
     {
-      commentId: string;
-      userName: string;
+      id: string;
+      productId: string;
+      userId: string;
       rating: number;
-      comment: string;
-      isReply: boolean;
-      replyTo: string;
+      image: string;
+      title: string;
+      description: string;
       createdAt: Date;
       updatedAt: Date;
     }
@@ -60,14 +61,15 @@ export const defaultProduct: Product = {
       updatedAt: new Date("2023-10-02"),
     },
   ],
-  comments: [
+  reviews: [
     {
-      commentId: "",
-      userName: "",
+      id: "",
+      productId: "",
+      userId: "",
       rating: 0,
-      comment: "",
-      isReply: false,
-      replyTo: "",
+      image: "",
+      title: "",
+      description: "",
       createdAt: new Date("2023-10-02"),
       updatedAt: new Date("2023-10-02"),
     },

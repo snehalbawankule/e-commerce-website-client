@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
-import { EditButton, SaveButton } from "../profile/profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { EditButton } from "../profile/profile.styled";
+import { useAppSelector } from "../../hooks/hooks";
 import { AddressType, TextWrap01 } from "./address.styled";
 import AddressEditModal from "./edit-address";
 
 function AddressList() {
   const currentUser = useAppSelector((state) => state.user.user);
-  const id = currentUser.id;
   const addressed = currentUser.user_addresses;
   console.log(addressed);
   const [addresses, setAddresses] = useState(addressed);
@@ -18,9 +17,6 @@ function AddressList() {
   };
 
   const handleSaveAddress = (updatedAddress: any) => {
-    // const updatedAddresses = addresses?.map((address: any) =>
-    //   address.id === updatedAddress.id ? updatedAddress : address
-    // );
     setAddresses(updatedAddress);
 
     setEditingAddress(null);

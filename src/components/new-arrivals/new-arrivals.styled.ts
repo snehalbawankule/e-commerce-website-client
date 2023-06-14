@@ -107,8 +107,8 @@ const Scroll1 = styled.div`
 `;
 
 const ImageBox = styled.img<LatestArticleProps>`
-  height: ${pxToRem(200)};
-  width: ${pxToRem(160)};
+  height: ${pxToRem(250)};
+  width: ${pxToRem(170)};
   background-image: url(${(props: any) => props.src});
   background-position: top;
   background-size: cover;
