@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductList = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const ProductList = () => {
   const [pageNo, setPageNo] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const previousInputValue = useRef("");
-
+  const { isMobile, isDesktop } = useMediaQuery();
   console.log("aswa" + currentPage !== previousInputValue.current);
   useEffect(() => {
     previousInputValue.current = currentPage;
@@ -73,18 +74,18 @@ const ProductList = () => {
         container
         direction="row"
         spacing={2}
-        marginLeft="250px"
         style={{
-          marginBottom: 50,
+          marginLeft: isDesktop ? "250px" : "5px",
+          marginBottom: isDesktop ? "50px" : "5px",
           marginTop: 80,
-          paddingBottom: 20,
+          paddingBottom: isDesktop ? "20px" : "5px",
         }}
       >
         {data.map((post: any, index: any) => {
           return (
             <Grid
               item
-              xs={12}
+              xs={6}
               sm={6}
               md={3}
               lg={3}

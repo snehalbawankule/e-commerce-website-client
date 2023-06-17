@@ -8,6 +8,7 @@ import { PostButton } from "../navbar/navbar.styled";
 import Size from "../size/size";
 import { actions } from "../../store/wishlist/slice";
 import { actions as action } from "../../store/cart/slice";
+import ReviewList from "../rating-and-review/reviews-list";
 
 const Product = () => {
   let { id } = useParams();
@@ -61,7 +62,7 @@ const Product = () => {
       sx={{
         mt: isDesktop ? 12 : isTablet ? 12 : 10,
         px: isDesktop ? 10 : isTablet ? 5 : 4,
-        pb: 10,
+        pb: 4,
       }}
       key={id}
     >
@@ -71,14 +72,14 @@ const Product = () => {
             width: "90%",
             height: "100%",
             backgroundImage: `url(${product?.image})`,
-            backgroundPosition: "center",
+            backgroundPosition: "top",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
           }}
         ></Box>
       </Grid>
 
-      <Grid item xs={12} sm={12} md={6} lg={6}>
+      <Grid item xs={12} sm={12} md={6} lg={6} style={{ overflowY: "scroll" }}>
         <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
           <TextWrap02 style={{ paddingTop: 0 }}>{product?.name}</TextWrap02>
         </Grid>
@@ -106,6 +107,7 @@ const Product = () => {
             Add to wishlist
           </PostButton>
         </Grid>
+        <ReviewList />
       </Grid>
     </Grid>
   );

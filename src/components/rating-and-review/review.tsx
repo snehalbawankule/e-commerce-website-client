@@ -37,14 +37,14 @@ export const CommentCard = (props1: any) => {
           </TextWrap04>
 
           <TextWrap04 style={{ paddingLeft: isMobile ? 5 : 10 }}>
-            {post?.userName}
+            {post?.title}
           </TextWrap04>
 
           <TextWrap04 style={{ paddingLeft: isMobile ? 50 : 10 }}>
             {post?.date}
           </TextWrap04>
           <Grid item xs={12} sm={12}>
-            <TextWrap04>{post?.comment}</TextWrap04>
+            <TextWrap04>{post?.description}</TextWrap04>
           </Grid>
         </Grid>
       </Box>

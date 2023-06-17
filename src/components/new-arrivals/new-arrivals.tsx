@@ -21,7 +21,7 @@ const NewArrivals = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : 3,
+        paddingLeft: isDesktop ? 30 : 14,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}
@@ -35,7 +35,7 @@ const NewArrivals = () => {
       <Scroll>
         {newArrivals.map((post: any, index: any) => {
           return (
-            <Grid item xs={4} sm={6} md={2} lg={2} display="flex" key={index}>
+            <Grid item xs={6} sm={6} md={2} lg={2} display="flex" key={index}>
               <NewArrivalsCard post={post} />
             </Grid>
           );

@@ -1,5 +1,6 @@
 import { Grid, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { CommentCard } from "./review";
 import { CommentsBox } from "./review.styled";
 import useMediaQuery from "../../hooks/use-media-query";
@@ -11,17 +12,27 @@ const ReviewList = () => {
   const { id } = useParams();
   const existingPost = useAppSelector((state) => state.products.product);
   var product = existingPost.find((item: any) => item.id === id);
-
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    if (product) {
+      fetch(`http://localhost:3001/get-product-reviews?productId=${product.id}`)
+        .then((res) => res.json())
+        .then((json) => {
+          setReviews(json);
+        });
+    }
+  }, [id, product]);
+  console.log(reviews);
   return (
     <Grid container display="flex" justifyContent="center">
-      <Box
+      {/* <Box
         sx={{
           display: isDesktop ? "flex" : isTablet ? "flex" : "none",
           marginTop: isMobile ? "80px" : "40px",
         }}
       >
         <Comment post={product?.id} />
-      </Box>
+      </Box> */}
       <CommentsBox
         style={{
           marginTop: isDesktop ? "20px" : isMobile ? "90px" : "30px",
@@ -29,7 +40,7 @@ const ReviewList = () => {
           paddingRight: isDesktop ? "20px" : isMobile ? "10px" : "30px",
         }}
       >
-        {product?.reviews?.map((items: any, index: any) => {
+        {reviews?.map((items: any, index: any) => {
           return (
             <>
               <Grid

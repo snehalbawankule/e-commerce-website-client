@@ -12,3 +12,17 @@ export const getCurrentUser = createAsyncThunk(
       });
   }
 );
+
+// export const getProductReviews = createAsyncThunk(
+//   "reviews/productReviews",
+//   async (_, { dispatch }) => {
+//     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+//     return fetch(
+//       `http://localhost:3001/getCurrent?page=1&size=12&sort=createdAt&order=DESC&userId=${currentUser.id}`
+//     )
+//       .then((res) => res.json())
+//       .then((json) => {
+//         dispatch(actions.getProductReviews(json));
+//       });
+//   }
+// );

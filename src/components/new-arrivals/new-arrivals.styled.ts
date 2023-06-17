@@ -69,10 +69,15 @@ const ProductTitle = styled.div`
   padding-top: ${pxToRem(6)};
   font-weight: 400;
   color: #2f2e41;
+
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  @media (max-width: 767px) {
+    width: ${pxToRem(165)};
+    overflow: hidden;
+  }
 `;
 
 const NewArrivalTextWrap = styled.div`
@@ -116,8 +121,8 @@ const ImageBox = styled.img<LatestArticleProps>`
   border-radius: ${pxToRem(16)};
 
   @media (max-width: 767px) {
-    height: ${pxToRem(130)};
-    width: ${pxToRem(120)};
+    height: ${pxToRem(230)};
+    width: ${pxToRem(170)};
   }
 `;
 export {
