@@ -7,7 +7,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 import { Comment } from "./new-review";
 import { useAppSelector } from "../../hooks/hooks";
 const ReviewList = () => {
-  const { isDesktop, isMobile, isTablet } = useMediaQuery();
+  const { isDesktop, isMobile } = useMediaQuery();
 
   const { id } = useParams();
   const existingPost = useAppSelector((state) => state.products.product);
