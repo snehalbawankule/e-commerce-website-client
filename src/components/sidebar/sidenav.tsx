@@ -17,7 +17,7 @@ import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 import { CategoryName } from "../products/products.styled";
 import { addCategory } from "../../store/category/services";
 const SideNav = () => {
-  const { isDesktop } = useMediaQuery();
+  const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const location = useLocation();
   const navigate = useNavigate();
   const pathSegments = location.pathname.split("/");
@@ -99,7 +99,7 @@ const SideNav = () => {
       </Grid>
       <div
         style={{
-          width: "20%",
+          width: isDesktop ? "20%" : isTablet ? "25%" : "none",
           paddingTop: 100,
           height: "100%",
           position: "absolute",
@@ -110,14 +110,14 @@ const SideNav = () => {
         <Box
           sx={{
             flexGrow: 1,
-            display: isDesktop ? "flex" : "none",
+            display: isMobile ? "none" : "flex",
           }}
         >
           <Grid
             container
             direction="column"
             style={{
-              paddingLeft: isDesktop ? 10 : 40,
+              paddingLeft: 10,
               display: "flex",
             }}
           >
@@ -145,16 +145,14 @@ const SideNav = () => {
                       justifyContent: "start",
                       color: "black",
                       fontSize: 18,
-                      marginLeft: 10,
+                      marginLeft: isDesktop ? 10 : "none",
                       textTransform: "capitalize",
                     }}
                     onClick={(event) =>
                       handleChange2(event, page.name, page1.name)
                     }
                   >
-                    <Typography textAlign="center" color="gray">
-                      {page1.name}
-                    </Typography>
+                    <Typography color="gray">{page1.name}</Typography>
                   </Button>
                 ))}
               </>
