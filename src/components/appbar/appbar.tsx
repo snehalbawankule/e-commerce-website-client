@@ -21,7 +21,7 @@ import { IconName } from "./appbar.styled";
 
 const Appbar = () => {
   const badgeRef = useRef(null);
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.carts.cart);
@@ -59,7 +59,6 @@ const Appbar = () => {
         style={{
           background: "white",
           color: "black",
-
           height: 65,
           display: "flex",
         }}
@@ -73,22 +72,23 @@ const Appbar = () => {
         >
           <Grid
             item
-            xs={4}
-            sm={2}
-            md={2}
-            lg={2}
+            xs={5}
+            sm={4}
+            md={6}
+            lg={6}
             style={{
               paddingLeft: isDesktop ? 30 : 10,
             }}
           >
             <TextWrap4>ShopMaven</TextWrap4>
-            <Grid item style={{ display: isMobile ? "flex" : "none" }}>
+            {/* <Grid item style={{ display: isMobile ? "flex" : "none" }}>
               <Navbar />
-            </Grid>
+            </Grid>*/}
           </Grid>
 
-          <Grid
+          {/* <Grid
             item
+            sm={6}
             md={4.5}
             lg={4.5}
             style={{
@@ -96,23 +96,24 @@ const Appbar = () => {
             }}
           >
             <Navbar />
-          </Grid>
-          <Grid item md={3.5} lg={3.5}>
+          </Grid> */}
+
+          <Grid item xs={6.5} sm={5} md={4} lg={4}>
             <SearchBar />
           </Grid>
           <Grid
             item
+            sm={2}
             md={1.2}
             lg={1.2}
             style={{
-              // paddingLeft: isDesktop ? 15 : 10,
               paddingTop: 15,
               justifyContent: "center",
               display: isMobile ? "none" : "flex",
             }}
           >
             <FavoriteBorderIcon
-              sx={{ fontSize: isDesktop ? 35 : 20 }}
+              sx={{ fontSize: 35 }}
               onClick={handleWishlist}
             />
             <div>
@@ -128,13 +129,14 @@ const Appbar = () => {
               </div>
 
               <ShoppingCartOutlinedIcon
-                sx={{ fontSize: isDesktop ? 35 : 20, paddingLeft: 2 }}
+                sx={{ fontSize: 35, paddingLeft: 2 }}
                 onClick={handleCart}
               />
             </div>
           </Grid>
           <Grid
             item
+            sm={0.8}
             md={0.8}
             lg={0.8}
             style={{ display: isMobile ? "none" : "flex" }}

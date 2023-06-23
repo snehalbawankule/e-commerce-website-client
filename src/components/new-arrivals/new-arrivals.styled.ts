@@ -121,8 +121,8 @@ const ImageBox = styled.img<LatestArticleProps>`
   border-radius: ${pxToRem(16)};
 
   @media (max-width: 767px) {
-    height: ${pxToRem(230)};
-    width: ${pxToRem(170)};
+    height: ${pxToRem(201)};
+    width: ${pxToRem(153)};
   }
 `;
 export {

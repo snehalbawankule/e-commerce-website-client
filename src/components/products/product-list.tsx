@@ -68,17 +68,17 @@ const ProductList = () => {
     <Grid
       container
       onScroll={firstEvent}
-      style={{ height: 800, overflowY: "auto" }}
+      style={{ height: "100%", overflowY: "auto" }}
     >
       <Grid
         container
         direction="row"
         spacing={2}
         style={{
-          marginLeft: isDesktop ? "250px" : "5px",
-          marginBottom: isDesktop ? "50px" : "5px",
-          marginTop: 80,
-          paddingBottom: isDesktop ? "20px" : "5px",
+          marginLeft: isMobile ? "5px" : isDesktop ? "230px" : "180px",
+          marginBottom: isMobile ? "75px" : "50px",
+          marginTop: isMobile ? "60px" : "80px",
+          paddingBottom: isMobile ? "5px" : "20px",
         }}
       >
         {data.map((post: any, index: any) => {
@@ -86,7 +86,7 @@ const ProductList = () => {
             <Grid
               item
               xs={6}
-              sm={6}
+              sm={4}
               md={3}
               lg={3}
               marginTop="15px"

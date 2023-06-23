@@ -84,16 +84,17 @@ const Navbar = () => {
         <Box
           sx={{
             flexGrow: 1,
-            display: isDesktop ? "flex" : "none",
+            display: isMobile ? "none" : "flex",
             alignItems: "center",
           }}
         >
           <Grid
             item
+            sm={12}
             md={12}
             lg={12}
             style={{
-              paddingLeft: isDesktop ? 10 : 40,
+              paddingLeft: 10,
               display: "flex",
               justifyContent: "space-evenly",
             }}
