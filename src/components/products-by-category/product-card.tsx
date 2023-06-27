@@ -6,7 +6,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductCard = (props: any) => {
   const { post } = props;
-  const { isMobile, isDesktop } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 

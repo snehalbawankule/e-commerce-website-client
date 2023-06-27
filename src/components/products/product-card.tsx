@@ -5,7 +5,7 @@ import { ProductName, ProductTitle } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 const ProductCard = (props: any) => {
   const { post } = props;
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 

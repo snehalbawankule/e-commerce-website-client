@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import useMediaQuery from "../../hooks/use-media-query";
 const Navbar = () => {
-  const { isDesktop, isTablet, isMobile } = useMediaQuery();
+  const { isDesktop, isMobile } = useMediaQuery();
 
   const pages = ["women", "men", "kids", "beauty", "home"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
