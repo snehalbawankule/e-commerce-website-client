@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ProductName, ProductTitle } from "../new-arrivals/new-arrivals.styled";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductCard = (props: any) => {
   const { post } = props;
-
+  const { isMobile, isDesktop } = useMediaQuery();
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -23,14 +24,13 @@ const ProductCard = (props: any) => {
     <Box onClick={handleChange} key={post?.id} sx={{ display: "grid" }}>
       <Box
         style={{
-          height: "250px",
-          width: "180px",
+          height: isDesktop ? "250px" : "230px",
+          width: isDesktop ? "180px" : "170px",
           backgroundImage: `url(${post?.image})`,
           backgroundPosition: "top",
           backgroundSize: "cover",
           transform: hovered ? "scale(1.1)" : "scale(1)",
           transition: "all 0.2s ease-in-out",
-          borderRadius: "16px",
         }}
         sx={{ display: "grid", justifyContent: "center" }}
         onMouseOver={handleHover}

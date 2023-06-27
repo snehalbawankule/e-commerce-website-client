@@ -14,7 +14,7 @@ const ProductList = () => {
   const [pageNo, setPageNo] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const previousInputValue = useRef("");
-  const { isMobile, isDesktop } = useMediaQuery();
+  const { isMobile, isDesktop, isTablet } = useMediaQuery();
   console.log("aswa" + currentPage !== previousInputValue.current);
   useEffect(() => {
     previousInputValue.current = currentPage;
@@ -76,9 +76,8 @@ const ProductList = () => {
         spacing={2}
         style={{
           marginLeft: isMobile ? "5px" : isDesktop ? "230px" : "180px",
-          marginBottom: isMobile ? "75px" : "50px",
-          marginTop: isMobile ? "60px" : "80px",
-          paddingBottom: isMobile ? "5px" : "20px",
+          marginBottom: isMobile ? "5px" : "15px",
+          marginTop: isDesktop ? 60 : isTablet ? 8 : 60,
         }}
       >
         {data.map((post: any, index: any) => {
@@ -87,8 +86,8 @@ const ProductList = () => {
               item
               xs={6}
               sm={4}
-              md={3}
-              lg={3}
+              md={2.4}
+              lg={2.4}
               marginTop="15px"
               display="flex"
               key={index}

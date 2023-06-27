@@ -4,12 +4,13 @@ import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
 import { addProduct } from "../../store/product/services";
 import { useEffect, useState } from "react";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductList = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   const segments = currentPage.split("/");
-
+  const { isMobile, isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
 
   const Products = useAppSelector((state) => state.products.product);
@@ -39,19 +40,19 @@ const ProductList = () => {
           spacing={2}
           marginLeft="250px"
           style={{
-            marginBottom: 50,
-            paddingBottom: 20,
-            marginTop: 80,
+            marginLeft: isMobile ? "5px" : isDesktop ? "230px" : "180px",
+            marginBottom: isMobile ? "5px" : "15px",
+            marginTop: isDesktop ? 60 : isTablet ? 8 : 60,
           }}
         >
           {products.map((post: any, index: any) => {
             return (
               <Grid
                 item
-                xs={12}
-                sm={6}
-                md={3}
-                lg={3}
+                xs={6}
+                sm={4}
+                md={2.4}
+                lg={2.4}
                 display="flex"
                 marginTop="15px"
                 key={index}

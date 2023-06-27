@@ -100,7 +100,7 @@ const SideNav = () => {
       <div
         style={{
           width: isDesktop ? "20%" : isTablet ? "25%" : "none",
-          paddingTop: 100,
+          paddingTop: 80,
           height: "100%",
           position: "absolute",
           backgroundColor: "white",
