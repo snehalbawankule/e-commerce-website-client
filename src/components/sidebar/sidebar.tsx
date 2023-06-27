@@ -11,7 +11,9 @@ const Sidebar = () => {
   const { isMobile } = useMediaQuery();
   const pathSegments = location.pathname.split("/");
   const firstName = "/" + pathSegments[1];
+  console.log(Product123);
   const isCurrentPathMatch = Product123.includes(firstName);
+  console.log(isCurrentPathMatch);
   const currentPath = firstName === "/faqs";
   const currentPath1 = firstName === "/profile";
 

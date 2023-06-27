@@ -46,18 +46,18 @@ const Poster = () => {
           overflow: "hidden",
         }}
       >
-        <Grid item xs={12} sm={6} md={7} lg={7}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <Box
             sx={{
               height: isDesktop ? "370px" : isMobile ? "370px" : "600px",
-
+              objectFit: "fill",
               backgroundImage: `url(${posters[index].image})`,
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
           />
         </Grid>
-        <Grid
+        {/* <Grid
           item
           xs={0}
           sm={6}
@@ -102,7 +102,7 @@ const Poster = () => {
               </Link>
             </PostButton>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Box>
     </Grid>
   );

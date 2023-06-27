@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Box,
   Menu,
@@ -25,6 +25,13 @@ const Navbar = () => {
   };
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
+  };
+
+  const location = useLocation();
+
+  const activeLinkStyle = {
+    backgroundColor: "blue",
+    // Add your other styles here
   };
 
   return (
@@ -100,6 +107,7 @@ const Navbar = () => {
             {pages.map((page, index) => (
               <Button
                 key={index}
+                style={location.pathname === page ? activeLinkStyle : {}}
                 onClick={handleCloseNavMenu}
                 sx={{ minWidth: isDesktop ? "64px" : "50px" }}
               >

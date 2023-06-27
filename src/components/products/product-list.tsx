@@ -7,7 +7,6 @@ import useMediaQuery from "../../hooks/use-media-query";
 const ProductList = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
-  console.log("currentpage" + currentPage);
 
   const [data, setData] = useState<any[]>([]);
 
@@ -15,22 +14,17 @@ const ProductList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const previousInputValue = useRef("");
   const { isMobile, isDesktop, isTablet } = useMediaQuery();
-  console.log("aswa" + currentPage !== previousInputValue.current);
+
   useEffect(() => {
     previousInputValue.current = currentPage;
 
-    console.log("pre" + previousInputValue.current);
     if (currentPage !== previousInputValue.current) {
-      console.log("hi");
       window.location.reload();
       getData(currentPage);
     } else {
       getData(currentPage);
     }
   }, [currentPage, isLoading]);
-  console.log(previousInputValue.current);
-  const history = currentPage;
-  console.log(history);
 
   function getData(currentPage: string) {
     fetch(

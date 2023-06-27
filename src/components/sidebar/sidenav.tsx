@@ -19,12 +19,14 @@ import { addCategory } from "../../store/category/services";
 const SideNav = () => {
   const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
   const category = categories.find((item) => item.name === currentPage);
+  console.log(category);
   useEffect(() => {
     if (categories.length) {
       dispatch(addCategory());
@@ -46,6 +48,7 @@ const SideNav = () => {
     const convertedString = page.toLowerCase();
     navigate(`/${currentPage}/${convertedString}`);
   };
+  console.log(currentPage);
   const handleChange2 = (e: any, page: any, page1: any) => {
     e.preventDefault();
     const convertedString = page.toLowerCase();

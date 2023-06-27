@@ -3,7 +3,6 @@ import { Routes } from "./types";
 import ProductList from "../components/products-by-category/product-list";
 import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
-const Home = lazy(() => import("../components/home"));
 const Cart = lazy(() => import("../components/cart"));
 const Profile = lazy(() => import("../components/profile/profile-info"));
 const Category = lazy(() => import("../components/category"));
@@ -20,7 +19,7 @@ const Faqs = lazy(() => import("../components/helpcenter"));
 const FaqsCard = lazy(() => import("../components/faqs-card"));
 const ProfileInfo = lazy(() => import("../components/profile/profile-info"));
 const ManageAddress = lazy(() => import("../components/user-address"));
-export const Product123 = ["/women", "/men", "/beauty"];
+export const Product123 = ["/women", "/men", "/kids", "/home", "/beauty"];
 export const ProductByCategory = [
   "/women/western wear",
   "/women/ethnic wear",
@@ -33,6 +32,8 @@ export const ProductByCategory = [
   "/beauty/skincare",
   "/beauty/haircare",
   "/beauty/tools and accessories",
+  "/home/home decor",
+  "/home/home storage",
 ];
 export const HelpCenter = [
   "/faqs/order",
@@ -94,10 +95,7 @@ const APP_ROUTES: Routes = [
     path: ["/account"],
     component: Account,
   },
-  {
-    path: ["/home"],
-    component: Home,
-  },
+
   {
     path: ["/contact-us"],
     component: ContactUs,
