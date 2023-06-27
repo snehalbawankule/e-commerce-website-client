@@ -17,12 +17,13 @@ const PostButton = styled.button`
     height: ${pxToRem(42)};
   }
 `;
-const TextWrap4 = styled.h1`
+const TextWrap4 = styled.div`
   font-size: ${pxToRem(24)};
   color: black;
   font-weight: 700;
+
   @media (max-width: 1024px) {
-    font-size: ${pxToRem(18)};
+    font-size: ${pxToRem(16)};
   }
 `;
 export { PostButton, TextWrap4 };

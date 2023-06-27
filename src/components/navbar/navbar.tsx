@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import useMediaQuery from "../../hooks/use-media-query";
 const Navbar = () => {
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop, isTablet, isMobile } = useMediaQuery();
 
   const pages = ["women", "men", "kids", "beauty", "home"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -80,7 +80,7 @@ const Navbar = () => {
           </Menu>
         </Grid>
       </Toolbar>
-      <Toolbar>
+      <Toolbar style={{ paddingLeft: 5, paddingRight: 5 }}>
         <Box
           sx={{
             flexGrow: 1,
@@ -94,16 +94,19 @@ const Navbar = () => {
             md={12}
             lg={12}
             style={{
-              paddingLeft: 10,
               display: "flex",
-              justifyContent: "space-evenly",
             }}
           >
             {pages.map((page, index) => (
-              <Button key={index} onClick={handleCloseNavMenu}>
+              <Button
+                key={index}
+                onClick={handleCloseNavMenu}
+                sx={{ minWidth: isDesktop ? "64px" : "50px" }}
+              >
                 <Link
                   style={{
                     color: "black",
+                    fontSize: isDesktop ? "14px" : "11px",
                     textDecoration: "none",
                   }}
                   to={`/${page}`}

@@ -73,47 +73,52 @@ const Appbar = () => {
           <Grid
             item
             xs={5}
-            sm={4}
-            md={6}
-            lg={6}
+            sm={1.5}
+            md={2}
+            lg={2}
             style={{
-              paddingLeft: isDesktop ? 30 : 10,
+              paddingLeft: isDesktop ? 30 : 5,
             }}
           >
-            <TextWrap4>ShopMaven</TextWrap4>
-            {/* <Grid item style={{ display: isMobile ? "flex" : "none" }}>
+            <TextWrap4
+              style={{ marginTop: isDesktop ? 12 : isTablet ? 19 : 12 }}
+            >
+              ShopMaven
+            </TextWrap4>
+            <Grid item style={{ display: isMobile ? "flex" : "none" }}>
               <Navbar />
-            </Grid>*/}
+            </Grid>
           </Grid>
 
-          {/* <Grid
+          <Grid
             item
-            sm={6}
-            md={4.5}
-            lg={4.5}
+            sm={4.5}
+            md={4}
+            lg={4}
             style={{
               display: isMobile ? "none" : "flex",
             }}
           >
             <Navbar />
-          </Grid> */}
+          </Grid>
 
-          <Grid item xs={6.5} sm={5} md={4} lg={4}>
+          <Grid item xs={6.5} sm={3.6} md={4} lg={4}>
             <SearchBar />
           </Grid>
           <Grid
             item
-            sm={2}
+            sm={1.4}
             md={1.2}
             lg={1.2}
             style={{
               paddingTop: 15,
+              paddingLeft: 20,
               justifyContent: "center",
               display: isMobile ? "none" : "flex",
             }}
           >
             <FavoriteBorderIcon
-              sx={{ fontSize: 35 }}
+              sx={{ fontSize: 35, paddingRight: isDesktop ? 1 : "" }}
               onClick={handleWishlist}
             />
             <div>
@@ -136,17 +141,14 @@ const Appbar = () => {
           </Grid>
           <Grid
             item
-            sm={0.8}
+            sm={1}
             md={0.8}
             lg={0.8}
             style={{ display: isMobile ? "none" : "flex" }}
-            alignItems="baseline"
+            alignItems="center"
           >
             {currentUser === "" ? (
-              <PostButton
-                style={{ color: "black", paddingTop: 20 }}
-                onClick={handleLogin}
-              >
+              <PostButton style={{ color: "black" }} onClick={handleLogin}>
                 Login
               </PostButton>
             ) : (

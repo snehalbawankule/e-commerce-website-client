@@ -49,14 +49,14 @@ function SearchBar() {
         >
           <Search>
             <Grid container>
-              <Grid item xs={10} sm={11} md={11} lg={11}>
+              <Grid item xs={10} sm={10.5} md={11} lg={11}>
                 <InputBase
                   placeholder="Search…"
                   value={searchQuery}
                   onChange={handleSearchInputChange}
                 />
               </Grid>
-              <Grid item xs={2} sm={1} md={1} lg={1}>
+              <Grid item xs={2} sm={1.5} md={1} lg={1}>
                 <SearchIcon style={{ color: "gray", fontSize: 30 }} />
               </Grid>
             </Grid>

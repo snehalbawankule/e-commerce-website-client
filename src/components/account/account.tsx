@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
 import { PostButton, ProfileImage } from "./account.styled";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const Account = () => {
   const pages = ["orders", "returns", "wishlist", "profile"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-
+  const { isTablet } = useMediaQuery();
   const handleLogOut = () => {
     localStorage.setItem("currentUser", JSON.stringify(""));
   };
@@ -25,7 +26,15 @@ const Account = () => {
   var profile2 = currentUser?.lastname?.charAt(0).toUpperCase();
   var profile = profile1 + profile2;
   return (
-    <Grid container>
+    <Grid
+      container
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingLeft: isTablet ? 10 : "",
+      }}
+    >
       <Grid item>
         <IconButton size="small" onClick={handleOpenNavMenu} color="inherit">
           <ProfileImage>{profile}</ProfileImage>

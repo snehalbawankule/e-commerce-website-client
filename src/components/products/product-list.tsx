@@ -68,7 +68,7 @@ const ProductList = () => {
     <Grid
       container
       onScroll={firstEvent}
-      style={{ height: "100%", overflowY: "auto" }}
+      style={{ height: "800px", overflowY: "auto" }}
     >
       <Grid
         container
