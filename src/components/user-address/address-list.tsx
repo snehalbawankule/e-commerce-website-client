@@ -8,7 +8,7 @@ import AddressEditModal from "./edit-address";
 function AddressList() {
   const currentUser = useAppSelector((state) => state.user.user);
   const addressed = currentUser.user_addresses;
-  console.log(addressed);
+
   const [addresses, setAddresses] = useState(addressed);
   const [editingAddress, setEditingAddress] = useState(null);
 

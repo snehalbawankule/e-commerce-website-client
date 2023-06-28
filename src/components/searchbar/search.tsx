@@ -16,7 +16,7 @@ function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isMobile } = useMediaQuery();
   const handleSearchInputChange = (event: any) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -34,7 +34,6 @@ function SearchBar() {
     setSearchResults([]);
     setSearchQuery("");
     navigate(`/products/${id}`);
-    console.log(id);
   };
 
   return (

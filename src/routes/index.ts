@@ -4,7 +4,7 @@ import ProductList from "../components/products-by-category/product-list";
 import Products1 from "../components/products-by-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Cart = lazy(() => import("../components/cart"));
-const Profile = lazy(() => import("../components/profile/profile-info"));
+
 const Category = lazy(() => import("../components/category"));
 const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));

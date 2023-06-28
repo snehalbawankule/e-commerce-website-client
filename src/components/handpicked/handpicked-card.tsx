@@ -39,7 +39,7 @@ const HandPickedCard = (props: any) => {
         <ProductName>{post.name}</ProductName>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductTitle>${post.actualPrice}</ProductTitle>
+        <ProductTitle>₹{post.actualPrice}</ProductTitle>
       </Grid>
     </Box>
   );

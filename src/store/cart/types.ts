@@ -6,7 +6,7 @@ export type Cartlist = {
   quantity: number;
   size: string;
   color: string;
-  defaultProduct: any;
+  product: any;
 };
 
 export type defaultState = {
@@ -18,5 +18,5 @@ export const defaultCart: Cartlist = {
   quantity: 0,
   size: "",
   color: "",
-  defaultProduct,
+  product: defaultProduct,
 };

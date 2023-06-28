@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { defaultState, defaultUser } from "./types";
 import axios from "axios";
 
@@ -54,14 +54,10 @@ const { actions, reducer } = createSlice({
         });
     },
     updateAddress(state, action) {
-      const { userId, name, mobile, address_line1, address_line } =
-        action.payload;
       const existingPost = state.user.user_addresses.find(
         (item: any) => item.id === action.payload.id
       );
 
-      console.log(action.payload);
-      console.log(existingPost?.name);
       if (existingPost) {
         existingPost.name = action.payload.name;
         existingPost.mobile = action.payload.mobile;

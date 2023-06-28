@@ -10,6 +10,7 @@ export type Product = {
   subCategory: string;
   actualPrice: number;
   discount: number;
+  discountPrice: number;
   createdAt: Date;
   updatedAt: Date;
   likes: [
@@ -50,6 +51,7 @@ export const defaultProduct: Product = {
   subCategory: "",
   actualPrice: 0,
   discount: 0,
+  discountPrice: 0,
   createdAt: new Date("2023-10-02"),
   updatedAt: new Date("2023-10-02"),
 

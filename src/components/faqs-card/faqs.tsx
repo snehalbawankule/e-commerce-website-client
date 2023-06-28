@@ -10,11 +10,8 @@ const FaqsList = () => {
   const segments = currentPage.split("/");
 
   const decodedString = decodeURIComponent(segments[1]);
-  console.log(decodedString);
   const Products = useAppSelector((state) => state.helpCenter.helpCenter);
-  console.log(Products);
   const something = Products.find((item) => item.name === decodedString);
-  console.log(something);
 
   return (
     <>

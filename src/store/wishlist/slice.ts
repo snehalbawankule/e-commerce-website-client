@@ -12,7 +12,6 @@ const { actions, reducer } = createSlice({
       state.wishlist = action.payload;
     },
     addWishlist(state, action) {
-      console.log(action.payload);
       state.wishlist.push(action.payload);
       axios.post("http://localhost:3001/postwishlist", {
         userId: action.payload.userId,

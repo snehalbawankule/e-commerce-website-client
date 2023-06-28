@@ -4,7 +4,7 @@ import { ProductName } from "../new-arrivals/new-arrivals.styled";
 
 const FaqsCard = (props: any) => {
   const { post } = props;
-  console.log(post);
+
   let history = useNavigate();
 
   const handleChange = () => {

@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Box, Grid, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
 import { EditButton, SaveButton } from "../profile/profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { getCurrentUser } from "../../store/user/services";
+import { useAppDispatch } from "../../hooks/hooks";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { AddressType, TextWrap01 } from "./address.styled";
 
 const AddressEditModal = ({ address, onSave, onCancel }: any) => {
   const [userAddressInfo, setUserAddressInfo]: any = useState({
@@ -30,7 +28,6 @@ const AddressEditModal = ({ address, onSave, onCancel }: any) => {
       ...userAddressInfo,
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.name, event.target.value);
   };
 
   const handleSave = (event: any) => {
@@ -49,7 +46,7 @@ const AddressEditModal = ({ address, onSave, onCancel }: any) => {
       alternative_mobile: userAddressInfo.alternative_mobile,
       address_type: userAddressInfo.address_type,
     };
-    console.log(updatedAddress);
+
     dispatch(
       actions.updateAddress({
         id: address.id,

@@ -23,12 +23,9 @@ const SideNav = () => {
   const navigate = useNavigate();
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
-  console.log(currentPage);
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
-  console.log(categories);
   const category = categories.find((item) => item.name === currentPage);
-  console.log(category);
   useEffect(() => {
     if (categories.length) {
       dispatch(addCategory());

@@ -3,8 +3,9 @@ import styled from "styled-components";
 const ProductName = styled.div`
   font-family: "Inter";
   font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 18px;
+  padding-bottom: 12px;
   line-height: 20px;
   display: flex;
   align-items: center;

@@ -104,7 +104,7 @@ const WishlistCard = (props: any) => {
         </Grid>
         <Grid item xs={12} sm={3} md={3} lg={3}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price>${post.product?.actualPrice}</Price>
+            <Price>₹{post.product?.actualPrice}</Price>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Price style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}>

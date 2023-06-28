@@ -21,7 +21,7 @@ const CartCard = (props: any) => {
     dispatch(actions.removeCart(post.id));
     window.location.reload();
   };
-  const { isTablet, isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop, isMobile } = useMediaQuery();
 
   return (
     <>
@@ -50,9 +50,7 @@ const CartCard = (props: any) => {
         />
         <Grid item xs={5} sm={4} md={6} lg={6}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <ProductName style={{ paddingTop: 0 }}>
-              {post.product?.brand}
-            </ProductName>
+            <ProductName>{post.product?.brand}</ProductName>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <ProductTitle>{post.product?.name}</ProductTitle>
@@ -88,15 +86,15 @@ const CartCard = (props: any) => {
         </Grid>
         <Grid item xs={3.5} sm={4} md={3} lg={3}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price>${post.product?.actualPrice}</Price>
+            <Price>₹{post.product?.actualPrice}</Price>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}>
-              {post.product?.discount}
+            <Price style={{ fontWeight: 500, fontSize: 18, color: "green" }}>
+              -{post.product?.discount}%
             </Price>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price>price</Price>
+            <Price>{post.product?.discountPrice}</Price>
           </Grid>
           <Grid
             item

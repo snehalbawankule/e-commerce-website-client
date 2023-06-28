@@ -46,7 +46,7 @@ const ProductCard = (props: any) => {
         <ProductTitle>{post?.title}</ProductTitle>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductTitle>${post?.actualPrice}</ProductTitle>
+        <ProductTitle>₹{post?.actualPrice}</ProductTitle>
       </Grid>
     </Box>
   );
