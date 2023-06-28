@@ -20,7 +20,7 @@ const ProductCard = (props: any) => {
   };
 
   return (
-    <Box onClick={handleChange} key={post?.id} sx={{ display: "grid" }}>
+    <Box onClick={handleChange} key={post?.id}>
       <Box
         style={{
           height: isDesktop ? "250px" : "230px",

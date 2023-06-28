@@ -19,12 +19,14 @@ import { addCategory } from "../../store/category/services";
 const SideNav = () => {
   const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const location = useLocation();
-  console.log(location);
+
   const navigate = useNavigate();
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
+  console.log(currentPage);
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
+  console.log(categories);
   const category = categories.find((item) => item.name === currentPage);
   console.log(category);
   useEffect(() => {
@@ -48,7 +50,7 @@ const SideNav = () => {
     const convertedString = page.toLowerCase();
     navigate(`/${currentPage}/${convertedString}`);
   };
-  console.log(currentPage);
+
   const handleChange2 = (e: any, page: any, page1: any) => {
     e.preventDefault();
     const convertedString = page.toLowerCase();
@@ -102,7 +104,7 @@ const SideNav = () => {
       </Grid>
       <div
         style={{
-          width: isDesktop ? "20%" : isTablet ? "25%" : "none",
+          width: isDesktop ? "18%" : isTablet ? "25%" : "none",
           paddingTop: 80,
           height: "100%",
           position: "absolute",

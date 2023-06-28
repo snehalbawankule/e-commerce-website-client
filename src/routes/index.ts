@@ -19,7 +19,7 @@ const Faqs = lazy(() => import("../components/helpcenter"));
 const FaqsCard = lazy(() => import("../components/faqs-card"));
 const ProfileInfo = lazy(() => import("../components/profile/profile-info"));
 const ManageAddress = lazy(() => import("../components/user-address"));
-export const Product123 = ["/women", "/men", "/kids", "/home", "/beauty"];
+export const Product123 = ["/women", "/men", "/kids", "/beauty", "/home"];
 export const ProductByCategory = [
   "/women/western wear",
   "/women/ethnic wear",

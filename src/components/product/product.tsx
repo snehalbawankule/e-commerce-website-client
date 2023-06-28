@@ -14,7 +14,7 @@ const Product = () => {
   let { id } = useParams();
   const dispatch = useAppDispatch();
 
-  const { isTablet, isDesktop } = useMediaQuery();
+  const { isTablet, isDesktop, isMobile } = useMediaQuery();
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
   const existingPost = useAppSelector((state) => state.products.product);
   const post = existingPost.find((item: any) => item.id === id);
@@ -66,11 +66,11 @@ const Product = () => {
       }}
       key={id}
     >
-      <Grid item xs={12} sm={12} md={4} lg={4}>
+      <Grid item xs={12} sm={4} md={4} lg={4}>
         <Box
           style={{
-            width: "90%",
-            height: "100%",
+            width: isMobile ? "100%" : "90%",
+            height: isMobile ? "400px" : "100%",
             backgroundImage: `url(${product?.image})`,
             backgroundPosition: "top",
             backgroundSize: "contain",
@@ -79,7 +79,7 @@ const Product = () => {
         ></Box>
       </Grid>
 
-      <Grid item xs={12} sm={12} md={6} lg={6} style={{ overflowY: "scroll" }}>
+      <Grid item xs={12} sm={6} md={6} lg={6} style={{ overflowY: "scroll" }}>
         <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
           <TextWrap02 style={{ paddingTop: 0 }}>{product?.name}</TextWrap02>
         </Grid>
@@ -101,7 +101,14 @@ const Product = () => {
           <Size onSendValue={handleValueFromChild} />
         ) : null}
 
-        <Grid item xs={6} sm={6} md={6} lg={6} sx={{ mt: isDesktop ? 5 : 3 }}>
+        <Grid
+          item
+          xs={6}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{ mt: isDesktop ? 5 : 3 }}
+        >
           <PostButton onClick={handleCart}>Add to bag</PostButton>
           <PostButton style={{ marginLeft: 10 }} onClick={handleWishlist}>
             Add to wishlist
