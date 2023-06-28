@@ -46,6 +46,12 @@ const AddToCardText = styled.button`
   border: none;
   text-decoration-line: underline;
   color: #1b4b66;
+  padding: 0px;
+  @media (max-width: 767px) {
+    font-size: 12px;
+    text-align: start;
+    padding-right: 5px;
+  }
 `;
 
 const Price = styled.div`

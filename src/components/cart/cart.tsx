@@ -23,11 +23,14 @@ const Cart = () => {
       <Grid container marginTop="50px">
         <Grid
           item
-          xs={10}
+          xs={12}
           sm={9}
           md={9}
           lg={9}
-          sx={{ p: isDesktop ? 5 : isTablet ? 5 : 3 }}
+          sx={{
+            pl: isDesktop ? 5 : isTablet ? 0 : 1,
+            pr: isDesktop ? 5 : isTablet ? 3 : 1,
+          }}
         >
           <Grid
             item
@@ -35,11 +38,16 @@ const Cart = () => {
             sm={10}
             md={8}
             lg={8}
-            style={{ paddingBottom: 20, fontWeight: "bold" }}
+            style={{
+              paddingBottom: 20,
+              paddingTop: 30,
+              paddingLeft: 10,
+              fontWeight: "bold",
+            }}
           >
-            Cart
+            Shopping Cart
           </Grid>
-          <Divider style={{ marginBottom: 40 }}></Divider>
+          <Divider style={{ marginBottom: 15 }}></Divider>
           {cart.map((post: any, index: any) => {
             return (
               <Grid

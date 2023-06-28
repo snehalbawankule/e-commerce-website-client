@@ -21,32 +21,34 @@ const CartCard = (props: any) => {
     dispatch(actions.removeCart(post.id));
     window.location.reload();
   };
-  const { isTablet, isDesktop } = useMediaQuery();
+  const { isTablet, isDesktop, isMobile } = useMediaQuery();
 
   return (
     <>
       <Grid
         container
         sx={{
-          px: isDesktop ? 5 : isTablet ? 5 : 4,
-          pb: 5,
-          direction: "column",
+          pl: isDesktop ? 4 : 0,
+          pr: isDesktop ? 4 : 1,
+
+          pb: 1.25,
         }}
       >
         <Grid
           item
-          xs={12}
-          sm={12}
+          xs={3.5}
+          sm={3}
           md={2}
           lg={2}
           style={{
             backgroundImage: `url(${post?.product?.image})`,
+            height: "130px",
             backgroundPosition: "center",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
           }}
         />
-        <Grid item xs={4} sm={6} md={6} lg={6}>
+        <Grid item xs={5} sm={4} md={6} lg={6}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <ProductName style={{ paddingTop: 0 }}>
               {post.product?.brand}
@@ -66,8 +68,11 @@ const CartCard = (props: any) => {
             </TextWrap02>
           </Grid>
         </Grid>
-        <Grid item xs={2} sm={1} md={1} lg={1}>
-          <Box sx={{ minWidth: 120 }}>
+        <Grid item sm={1} md={1} lg={1}>
+          <Box
+            sx={{ minWidth: 120 }}
+            style={{ display: isMobile ? "none" : "flex" }}
+          >
             <FormControl fullWidth>
               <InputLabel>Qty</InputLabel>
               <Select value={quantity} label="Quantity" onChange={handleChange}>
@@ -81,7 +86,7 @@ const CartCard = (props: any) => {
             </FormControl>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={3} md={3} lg={3}>
+        <Grid item xs={3.5} sm={4} md={3} lg={3}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Price>${post.product?.actualPrice}</Price>
           </Grid>
@@ -99,15 +104,19 @@ const CartCard = (props: any) => {
             sm={12}
             md={12}
             lg={12}
-            sx={{ mt: isDesktop ? 5 : 3, display: "flex", textAlign: "end" }}
+            sx={{
+              mt: isDesktop ? 5 : 3,
+              display: "flex",
+              textAlign: "end",
+            }}
           >
-            <Grid item xs={6} sm={6} md={6} lg={6}>
+            <Grid item xs={8} sm={8} md={6} lg={6}>
               <AddToCardText>Move to Cart </AddToCardText>
             </Grid>
-            <Grid item xs={6} sm={6} md={6} lg={6}>
+            <Grid item xs={4} sm={4} md={6} lg={6}>
               <AddToCardText
                 onClick={handleRemove}
-                style={{ color: "red", padding: 0 }}
+                style={{ color: "red", paddingLeft: 5 }}
               >
                 Remove
               </AddToCardText>
@@ -115,7 +124,7 @@ const CartCard = (props: any) => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Divider style={{ marginTop: 40 }}></Divider>
+          <Divider style={{ marginTop: 15 }}></Divider>
         </Grid>
       </Grid>
     </>
