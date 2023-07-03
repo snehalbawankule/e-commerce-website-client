@@ -26,6 +26,7 @@ const SideNav = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
   const category = categories.find((item) => item.name === currentPage);
+  
   useEffect(() => {
     if (categories.length) {
       dispatch(addCategory());
