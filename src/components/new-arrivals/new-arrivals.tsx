@@ -8,7 +8,7 @@ import useMediaQuery from "../../hooks/use-media-query";
 
 const NewArrivals = () => {
   const dispatch = useAppDispatch();
-  const { isDesktop } = useMediaQuery();
+  const { isDesktop, isTablet } = useMediaQuery();
   const newArrivals = useAppSelector((state) => state.products.product);
   useEffect(() => {
     if (newArrivals.length) {
@@ -21,7 +21,7 @@ const NewArrivals = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : 14,
+        paddingLeft: isDesktop ? 30 : isTablet ? 8 : 12,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}

@@ -9,4 +9,18 @@ const CategoryName = styled.div`
   padding-bottom: ${pxToRem(10)};
 `;
 
-export { CategoryName };
+const Scroller = styled.div`
+  background: #fff;
+  padding: 8px 8px 8px 8px;
+  margin: 12px 0px 5px 0px;
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0);
+  border: 1px solid #dadce0;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  overflow: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+`;
+export { CategoryName, Scroller };
