@@ -11,4 +11,10 @@ const AddressType = styled.button`
   border: none;
   color: gray;
 `;
-export { TextWrap01, AddressType };
+const TextWrap02 = styled.div`
+  font-weight: 500;
+  padding-top: ${pxToRem(5)};
+  font-size: ${pxToRem(20)};
+  color: #c45500;
+`;
+export { TextWrap01, AddressType, TextWrap02 };

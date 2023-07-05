@@ -15,6 +15,7 @@ const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
 const NewArrivals = lazy(() => import("../components/new-arrivals"));
 const ContactUs = lazy(() => import("../components/contact-us"));
+const Checkout = lazy(() => import("../components/checkout"));
 const Faqs = lazy(() => import("../components/helpcenter"));
 const FaqsCard = lazy(() => import("../components/faqs-card"));
 const ProfileInfo = lazy(() => import("../components/profile/profile-info"));
@@ -115,6 +116,10 @@ const APP_ROUTES: Routes = [
   {
     path: ["/profile"],
     component: ProfileInfo,
+  },
+  {
+    path: ["checkout"],
+    component: Checkout,
   },
   {
     path: ["/category"],

@@ -26,38 +26,49 @@ const Category = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : 10,
+        paddingLeft: isDesktop ? 30 : 8,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
-        marginTop: isMobile ? 35 : "",
       }}
     >
-      <Grid item xs={12} sm={10} md={12} lg={12}>
-        <NewArrivalTextWrap style={{ paddingTop: 0 }}>
-          Category Shop. Limitless Choices
-        </NewArrivalTextWrap>
-      </Grid>
       {location.pathname === "/" ? (
-        <Scroll>
-          {categories.map((post: any, index: any) => {
-            return (
-              <Grid item xs={4} sm={6} md={2} lg={2} display="flex" key={index}>
-                <CategoryCard post={post} />
-              </Grid>
-            );
-          })}
-        </Scroll>
-      ) : (
         <>
-          <Grid container style={{ marginLeft: 80, marginTop: 10 }}>
+          <Grid item xs={12} sm={10} md={12} lg={12}>
+            <NewArrivalTextWrap>
+              Category Shop. Limitless Choices
+            </NewArrivalTextWrap>
+          </Grid>
+          <Scroll>
             {categories.map((post: any, index: any) => {
               return (
                 <Grid
                   item
                   xs={6}
-                  sm={6}
-                  md={2.4}
-                  lg={2.4}
+                  sm={3}
+                  md={2}
+                  lg={2}
+                  display="flex"
+                  key={index}
+                >
+                  <CategoryCard post={post} />
+                </Grid>
+              );
+            })}
+          </Scroll>
+        </>
+      ) : (
+        <>
+          <Grid item xs={12} sm={10} md={12} lg={12}>
+            <NewArrivalTextWrap style={{ marginTop: 80 }}>
+              Category Shop. Limitless Choices
+            </NewArrivalTextWrap>
+          </Grid>
+          <Grid container style={{ marginLeft: 50, marginTop: 10 }}>
+            {categories.map((post: any, index: any) => {
+              return (
+                <Grid
+                  item
+                  xs={6}
                   display="flex"
                   style={{ marginBottom: 10 }}
                   key={index}

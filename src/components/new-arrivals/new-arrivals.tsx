@@ -21,7 +21,7 @@ const NewArrivals = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : isTablet ? 8 : 12,
+        paddingLeft: isDesktop ? 30 : 8,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}

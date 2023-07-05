@@ -6,11 +6,16 @@ import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
 import { AddToCardText, ProductName } from "./cart.styled";
 import { Divider } from "@mui/material";
+import { PostButton } from "../navbar/navbar.styled";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.carts.cart);
-
+  const navigate = useNavigate();
+  const navCheckout = () => {
+    navigate("/checkout");
+  };
   var totalPrice = 0,
     discount = 0,
     subTotal = 0;
@@ -74,7 +79,7 @@ const Cart = () => {
           })}
         </Grid>
         <Grid item xs={10} sm={3} md={3} lg={3}>
-          <Card sx={{ p: 2, backgroundColor: "gray" }}>
+          <Card sx={{ p: 2, backgroundColor: "white" }}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <ProductName style={{ paddingTop: 0, fontWeight: 700 }}>
                 PRICE DETAILS
@@ -88,26 +93,33 @@ const Cart = () => {
               <ProductName>Discount</ProductName>
               <ProductName>-{discount}</ProductName>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            {/* <Grid item xs={12} sm={12} md={12} lg={12}>
               <ProductName>Delhivery Charges</ProductName>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <ProductName>Total Amount</ProductName>
               <ProductName>-{subTotal}</ProductName>
             </Grid>
-            <ProductName>you will save 567 on this order</ProductName>
+            {/* <ProductName>you will save 567 on this order</ProductName> */}
 
-            <Grid item xs={12} sm={3} md={3} lg={3}>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                sx={{ mt: isDesktop ? 5 : 3 }}
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              sx={{ mt: isDesktop ? 5 : 3 }}
+            >
+              <PostButton
+                style={{
+                  backgroundColor: "#FFD814",
+                  color: "black",
+                  borderColor: "#FFD814",
+                }}
+                onClick={navCheckout}
               >
-                <AddToCardText>Add to Cart </AddToCardText>
-              </Grid>
+                Proceed to Buy
+              </PostButton>
             </Grid>
           </Card>
         </Grid>

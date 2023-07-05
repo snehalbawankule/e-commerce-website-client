@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { EditButton } from "../profile/profile.styled";
 import { useAppSelector } from "../../hooks/hooks";
-import { AddressType, TextWrap01 } from "./address.styled";
+import { AddressType, TextWrap01, TextWrap02 } from "./address.styled";
 import AddressEditModal from "./edit-address";
 
 function AddressList() {
@@ -26,11 +26,14 @@ function AddressList() {
     setEditingAddress(null);
   };
 
+  const [selectedValue, setSelectedValue] = useState(0);
+
   return (
     <Grid container>
       <Box>
         <Grid container>
-          {addressed.map((address: any) => {
+          <TextWrap02>1. Select a delivery address</TextWrap02>
+          {addressed.map((address: any, index: any) => {
             return (
               <Grid item xs={11} sm={11} md={10} lg={10} key={address.id}>
                 {editingAddress === address ? (
@@ -58,22 +61,24 @@ function AddressList() {
                           <EditButton
                             onClick={() => handleEditAddress(address)}
                           >
-                            Edit
+                            {index}
                           </EditButton>
                         </Grid>
                       </Grid>
-                      <TextWrap01 style={{ fontWeight: 500 }}>
+
+                      <label key={index}>
+                        <input
+                          type="radio"
+                          value={index}
+                          checked={selectedValue === index}
+                          onChange={() => setSelectedValue(index)}
+                          defaultChecked={selectedValue === index}
+                        />
                         {address.name}
-                        {"       "} {address.mobile}
-                      </TextWrap01>
-                      <TextWrap01>
                         {address.address_line1}, {address.address_line2},{" "}
-                        {address.city},
-                      </TextWrap01>
-                      <TextWrap01>
-                        {address.state}, {address.country}, -{" "}
-                        {address.postal_code}{" "}
-                      </TextWrap01>
+                        {address.city}, {address.state}, {address.country}, -{" "}
+                        {address.postal_code}, Phone Number:{address.mobile}
+                      </label>
                     </Box>
                   </>
                 )}

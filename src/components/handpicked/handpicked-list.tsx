@@ -25,7 +25,7 @@ const HandPickedList = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : 3,
+        paddingLeft: isDesktop ? 30 : 8,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}
@@ -39,7 +39,7 @@ const HandPickedList = () => {
       <Scroll>
         {products.map((post: any, index: any) => {
           return (
-            <Grid item xs={6} sm={4} md={2} lg={2} display="flex" key={index}>
+            <Grid item xs={6} sm={3} md={2} lg={2} display="flex" key={index}>
               <HandPickedCard post={post} />
             </Grid>
           );

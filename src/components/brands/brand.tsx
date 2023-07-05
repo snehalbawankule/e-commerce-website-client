@@ -36,7 +36,7 @@ const Brand = () => {
       <Scroll style={{ marginLeft: 10 }}>
         {brands.map((post: any, index: any) => {
           return (
-            <Grid item xs={4} sm={6} md={2} lg={2} display="flex" key={index}>
+            <Grid item xs={4} sm={3} md={2} lg={2} display="flex" key={index}>
               <BrandCard post={post} />
             </Grid>
           );

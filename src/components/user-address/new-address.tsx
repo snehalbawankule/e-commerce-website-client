@@ -51,7 +51,7 @@ const NewAddress = () => {
   const [editMode, setEditMode] = useState(false);
 
   return (
-    <Grid container style={{ marginTop: 100, paddingLeft: 330 }}>
+    <Grid container style={{ marginTop: 100 }}>
       <Grid
         item
         xs={12}

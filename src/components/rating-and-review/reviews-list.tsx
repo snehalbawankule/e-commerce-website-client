@@ -22,7 +22,7 @@ const ReviewList = () => {
         });
     }
   }, [id, product]);
-  console.log(reviews);
+
   return (
     <Grid container display="flex" justifyContent="center">
       {/* <Box
