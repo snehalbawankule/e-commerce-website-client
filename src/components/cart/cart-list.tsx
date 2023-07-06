@@ -23,9 +23,8 @@ const Cart = () => {
     totalPrice += cart[i].product.actualPrice;
     discount += (cart[i].product.actualPrice * cart[i].product.discount) / 100;
     subTotal += cart[i].product.discountPrice;
-    console.log(discount);
   }
-  console.log(totalPrice);
+
   useEffect(() => {
     if (cart.length) {
       dispatch(getCart());
@@ -33,98 +32,96 @@ const Cart = () => {
   }, [cart.length, dispatch]);
 
   return (
-    <>
-      <Grid container marginTop="80px">
+    <Grid container marginTop="80px">
+      <Grid
+        item
+        xs={12}
+        sm={9}
+        md={9}
+        lg={9}
+        sx={{
+          pl: isDesktop ? 5 : isTablet ? 0 : 1,
+          pr: isDesktop ? 5 : isTablet ? 3 : 1,
+        }}
+      >
         <Grid
           item
-          xs={12}
-          sm={9}
-          md={9}
-          lg={9}
-          sx={{
-            pl: isDesktop ? 5 : isTablet ? 0 : 1,
-            pr: isDesktop ? 5 : isTablet ? 3 : 1,
+          xs={10}
+          sm={10}
+          md={8}
+          lg={8}
+          style={{
+            paddingBottom: 20,
+
+            paddingLeft: 10,
+            fontWeight: "bold",
           }}
         >
-          <Grid
-            item
-            xs={10}
-            sm={10}
-            md={8}
-            lg={8}
-            style={{
-              paddingBottom: 20,
-
-              paddingLeft: 10,
-              fontWeight: "bold",
-            }}
-          >
-            Shopping Cart
-          </Grid>
-          <Divider style={{ marginBottom: 15 }}></Divider>
-          {cart.map((post: any, index: any) => {
-            return (
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                display="flex"
-                key={index}
-              >
-                <CartCard post={post} />
-              </Grid>
-            );
-          })}
+          Shopping Cart
         </Grid>
-        <Grid item xs={10} sm={3} md={3} lg={3}>
-          <Card sx={{ p: 2, backgroundColor: "white" }}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName style={{ paddingTop: 0, fontWeight: 700 }}>
-                PRICE DETAILS
-              </ProductName>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName>Price ({cart.length}items)</ProductName>
-              <ProductName>{totalPrice}</ProductName>
-            </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName>Discount</ProductName>
-              <ProductName>-{discount}</ProductName>
-            </Grid>
-            {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName>Delhivery Charges</ProductName>
-            </Grid> */}
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName>Total Amount</ProductName>
-              <ProductName>-{subTotal}</ProductName>
-            </Grid>
-            {/* <ProductName>you will save 567 on this order</ProductName> */}
-
+        <Divider style={{ marginBottom: 15 }}></Divider>
+        {cart.map((post: any, index: any) => {
+          return (
             <Grid
               item
               xs={12}
               sm={12}
               md={12}
               lg={12}
-              sx={{ mt: isDesktop ? 5 : 3 }}
+              display="flex"
+              key={index}
             >
-              <PostButton
-                style={{
-                  backgroundColor: "#FFD814",
-                  color: "black",
-                  borderColor: "#FFD814",
-                }}
-                onClick={navCheckout}
-              >
-                Proceed to Buy
-              </PostButton>
+              <CartCard post={post} />
             </Grid>
-          </Card>
-        </Grid>
+          );
+        })}
       </Grid>
-    </>
+      <Grid item xs={10} sm={3} md={3} lg={3}>
+        <Card sx={{ p: 2, backgroundColor: "white" }}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <ProductName style={{ paddingTop: 0, fontWeight: 700 }}>
+              PRICE DETAILS
+            </ProductName>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <ProductName>Price ({cart.length}items)</ProductName>
+            <ProductName>{totalPrice}</ProductName>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <ProductName>Discount</ProductName>
+            <ProductName>-{discount}</ProductName>
+          </Grid>
+          {/* <Grid item xs={12} sm={12} md={12} lg={12}>
+              <ProductName>Delhivery Charges</ProductName>
+            </Grid> */}
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <ProductName>Total Amount</ProductName>
+            <ProductName>-{subTotal}</ProductName>
+          </Grid>
+          {/* <ProductName>you will save 567 on this order</ProductName> */}
+
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            sx={{ mt: isDesktop ? 5 : 3 }}
+          >
+            <PostButton
+              style={{
+                backgroundColor: "#FFD814",
+                color: "black",
+                borderColor: "#FFD814",
+              }}
+              onClick={navCheckout}
+            >
+              Proceed to Buy
+            </PostButton>
+          </Grid>
+        </Card>
+      </Grid>
+    </Grid>
   );
 };
 
