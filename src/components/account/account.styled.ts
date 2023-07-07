@@ -21,7 +21,6 @@ const PostButton = styled.button`
   font-size: ${pxToRem(16)};
   border: none;
   background: none;
-
   margin-left: ${pxToRem(10)};
 `;
 
