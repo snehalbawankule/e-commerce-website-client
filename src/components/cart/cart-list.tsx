@@ -16,14 +16,24 @@ const Cart = () => {
   const navCheckout = () => {
     navigate("/checkout");
   };
+
   var totalPrice = 0,
     discount = 0,
-    subTotal = 0;
+    subTotal = 0,
+    Delhivery = 99,
+    saved = 0;
   for (var i = 0; i < cart.length; i++) {
     totalPrice += cart[i].product.actualPrice;
     discount += (cart[i].product.actualPrice * cart[i].product.discount) / 100;
-    subTotal += cart[i].product.discountPrice;
+    discount = parseFloat(discount.toFixed(2));
+    if (totalPrice - discount > 200) {
+      saved = discount + Delhivery;
+      Delhivery = 0;
+    } else {
+      saved = discount;
+    }
   }
+  subTotal = totalPrice - discount + Delhivery;
 
   useEffect(() => {
     if (cart.length) {
@@ -32,7 +42,7 @@ const Cart = () => {
   }, [cart.length, dispatch]);
 
   return (
-    <Grid container marginTop="80px">
+    <Grid container marginTop="80px" paddingRight="12px" spacing={2}>
       <Grid
         item
         xs={12}
@@ -57,7 +67,7 @@ const Cart = () => {
             fontWeight: "bold",
           }}
         >
-          Shopping Cart
+          Shopping Cart ({cart.length} items)
         </Grid>
         <Divider style={{ marginBottom: 15 }}></Divider>
         {cart.map((post: any, index: any) => {
@@ -77,28 +87,63 @@ const Cart = () => {
         })}
       </Grid>
       <Grid item xs={10} sm={3} md={3} lg={3}>
-        <Card sx={{ p: 2, backgroundColor: "white" }}>
+        <Card sx={{ p: 2, backgroundColor: "white", mt: 5 }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <ProductName style={{ paddingTop: 0, fontWeight: 700 }}>
               PRICE DETAILS
             </ProductName>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            display="flex"
+            justifyContent="space-between"
+          >
             <ProductName>Price ({cart.length}items)</ProductName>
             <ProductName>{totalPrice}</ProductName>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            display="flex"
+            justifyContent="space-between"
+          >
             <ProductName>Discount</ProductName>
             <ProductName>-{discount}</ProductName>
           </Grid>
-          {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-              <ProductName>Delhivery Charges</ProductName>
-            </Grid> */}
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <ProductName>Total Amount</ProductName>
-            <ProductName>-{subTotal}</ProductName>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            display="flex"
+            justifyContent="space-between"
+          >
+            <ProductName>Delhivery Charges</ProductName>
+            <ProductName>{Delhivery}</ProductName>
           </Grid>
-          {/* <ProductName>you will save 567 on this order</ProductName> */}
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            display="flex"
+            justifyContent="space-between"
+          >
+            <ProductName>Total Amount</ProductName>
+            <ProductName>{subTotal}</ProductName>
+          </Grid>
+          <ProductName style={{ color: "green" }}>
+            you will save {saved} on this order
+          </ProductName>
 
           <Grid
             item
@@ -106,7 +151,7 @@ const Cart = () => {
             sm={12}
             md={12}
             lg={12}
-            sx={{ mt: isDesktop ? 5 : 3 }}
+            sx={{ mt: isDesktop ? 0 : 3 }}
           >
             <PostButton
               style={{

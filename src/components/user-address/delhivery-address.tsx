@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { EditButton } from "../profile/profile.styled";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { AddressType, TextWrap01, TextWrap02 } from "./address.styled";
 import AddressEditModal from "./edit-address";
+import { getCurrentUser } from "../../store/user/services";
 
 function AddressList() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
   const currentUser = useAppSelector((state) => state.user.user);
   const addressed = currentUser.user_addresses;
 

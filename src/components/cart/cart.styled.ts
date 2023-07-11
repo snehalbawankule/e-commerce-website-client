@@ -5,7 +5,7 @@ const ProductName = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  padding-bottom: 12px;
+  padding-bottom: 20px;
   line-height: 20px;
   display: flex;
   align-items: center;
