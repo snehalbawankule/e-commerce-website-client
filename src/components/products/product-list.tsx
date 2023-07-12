@@ -28,7 +28,7 @@ const ProductList = () => {
 
   function getData(currentPage: string) {
     fetch(
-      `http://localhost:3001/get-category-products?page=${pageNo}&size=8&sort=createdAt&order=ASC&category=${currentPage}`
+      `http://localhost:3001/get-category-products?page=${pageNo}&size=10&sort=createdAt&order=ASC&category=${currentPage}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -63,7 +63,7 @@ const ProductList = () => {
       container
       onScroll={firstEvent}
       style={{
-        height: isDesktop ? 800 : isTablet ? 1024 : 800,
+        height: isDesktop ? 750 : isTablet ? 1024 : 800,
         overflowY: "auto",
       }}
     >

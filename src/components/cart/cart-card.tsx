@@ -24,108 +24,104 @@ const CartCard = (props: any) => {
   const { isDesktop, isMobile } = useMediaQuery();
 
   return (
-    <>
+    <Grid
+      container
+      sx={{
+        pl: isDesktop ? 4 : 0,
+        pr: isDesktop ? 4 : 1,
+        pt: 1,
+        pb: 1.25,
+      }}
+    >
       <Grid
-        container
-        sx={{
-          pl: isDesktop ? 4 : 0,
-          pr: isDesktop ? 4 : 1,
-
-          pb: 1.25,
+        item
+        xs={3.5}
+        sm={3}
+        md={2}
+        lg={2}
+        style={{
+          backgroundImage: `url(${post?.product?.image})`,
+          height: "130px",
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
         }}
-      >
-        <Grid
-          item
-          xs={3.5}
-          sm={3}
-          md={2}
-          lg={2}
-          style={{
-            backgroundImage: `url(${post?.product?.image})`,
-            height: "130px",
-            backgroundPosition: "center",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-        <Grid item xs={5} sm={4} md={6} lg={6}>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <ProductName>{post.product?.brand}</ProductName>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <ProductTitle>{post.product?.name}</ProductTitle>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <ProductTitle>Color:{post.color}</ProductTitle>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <TextWrap02
-              style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}
-            >
-              {post.product?.size}
-            </TextWrap02>
-          </Grid>
-        </Grid>
-        <Grid item sm={1} md={1} lg={1}>
-          <Box
-            sx={{ minWidth: 120 }}
-            style={{ display: isMobile ? "none" : "flex" }}
-          >
-            <FormControl fullWidth>
-              <InputLabel>Qty</InputLabel>
-              <Select value={quantity} label="Quantity" onChange={handleChange}>
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={10}>5+</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Grid>
-        <Grid item xs={3.5} sm={4} md={3} lg={3}>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price>₹{post.product?.actualPrice}</Price>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price style={{ fontWeight: 500, fontSize: 18, color: "green" }}>
-              -{post.product?.discount}%
-            </Price>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Price>{post.product?.discountPrice}</Price>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            sx={{
-              mt: isDesktop ? 5 : 3,
-              display: "flex",
-              textAlign: "end",
-            }}
-          >
-            <Grid item xs={8} sm={8} md={6} lg={6}>
-              <AddToCardText>Move to Cart </AddToCardText>
-            </Grid>
-            <Grid item xs={4} sm={4} md={6} lg={6}>
-              <AddToCardText
-                onClick={handleRemove}
-                style={{ color: "red", paddingLeft: 5 }}
-              >
-                Remove
-              </AddToCardText>
-            </Grid>
-          </Grid>
+      />
+      <Grid item xs={5} sm={4} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <ProductName>{post.product?.brand}</ProductName>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Divider style={{ marginTop: 15 }}></Divider>
+          <ProductTitle>{post.product?.name}</ProductTitle>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <ProductTitle>Color:{post.color}</ProductTitle>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <TextWrap02 style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}>
+            {post.product?.size}
+          </TextWrap02>
         </Grid>
       </Grid>
-    </>
+      <Grid item sm={1} md={1} lg={1}>
+        <Box
+          sx={{ minWidth: 120 }}
+          style={{ display: isMobile ? "none" : "flex" }}
+        >
+          <FormControl fullWidth>
+            <InputLabel>Qty</InputLabel>
+            <Select value={quantity} label="Quantity" onChange={handleChange}>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>5+</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+      </Grid>
+      <Grid item xs={3.5} sm={4} md={3} lg={3}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Price>₹{post.product?.actualPrice}</Price>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Price style={{ fontWeight: 500, fontSize: 18, color: "green" }}>
+            -{post.product?.discount}%
+          </Price>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Price>{post.product?.discountPrice}</Price>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{
+            mt: isDesktop ? 5 : 3,
+            display: "flex",
+            textAlign: "end",
+          }}
+        >
+          <Grid item xs={8} sm={8} md={6} lg={6}>
+            <AddToCardText>Move to Cart </AddToCardText>
+          </Grid>
+          <Grid item xs={4} sm={4} md={6} lg={6}>
+            <AddToCardText
+              onClick={handleRemove}
+              style={{ color: "red", paddingLeft: 5 }}
+            >
+              Remove
+            </AddToCardText>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Divider style={{ marginTop: 15 }}></Divider>
+      </Grid>
+    </Grid>
   );
 };
 export default CartCard;

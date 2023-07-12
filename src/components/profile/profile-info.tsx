@@ -7,18 +7,19 @@ import { getCurrentUser } from "../../store/user/services";
 
 const ProfileInfo = () => {
   const dispatch = useAppDispatch();
+
+  const currentUser = useAppSelector((state) => state.user.user);
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-  const User = useAppSelector((state) => state.user.user);
-  const currentUser = User;
+  // const currentUser = User;
   const [userInfo, setUserInfo] = useState({
     id: currentUser.id,
     firstname: currentUser.firstname,
     lastname: currentUser.lastname,
     email: currentUser.email,
   });
-
+  console.log(userInfo);
   const [validEmail, setValidEmail] = useState(true);
 
   const validateEmail = (email: any) => {

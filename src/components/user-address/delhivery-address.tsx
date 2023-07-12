@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { EditButton } from "../profile/profile.styled";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { AddressType, TextWrap01, TextWrap02 } from "./address.styled";
+import { AddressType, TextWrap02 } from "./address.styled";
 import AddressEditModal from "./edit-address";
 import { getCurrentUser } from "../../store/user/services";
 
@@ -12,6 +12,7 @@ function AddressList() {
     dispatch(getCurrentUser());
   }, [dispatch]);
   const currentUser = useAppSelector((state) => state.user.user);
+
   const addressed = currentUser.user_addresses;
 
   const [addresses, setAddresses] = useState(addressed);
@@ -40,7 +41,7 @@ function AddressList() {
           <TextWrap02>1. Select a delivery address</TextWrap02>
           {addressed.map((address: any, index: any) => {
             return (
-              <Grid item xs={11} sm={11} md={10} lg={10} key={address.id}>
+              <Grid item xs={12} sm={11} md={11} lg={11} key={address.id}>
                 {editingAddress === address ? (
                   <AddressEditModal
                     address={editingAddress}
@@ -66,7 +67,7 @@ function AddressList() {
                           <EditButton
                             onClick={() => handleEditAddress(address)}
                           >
-                            {index}
+                            Edit{" "}
                           </EditButton>
                         </Grid>
                       </Grid>

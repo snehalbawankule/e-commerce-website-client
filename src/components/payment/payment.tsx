@@ -1,13 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, Grid } from "@mui/material";
-import { EditButton } from "../profile/profile.styled";
-import { useAppSelector } from "../../hooks/hooks";
-import {
-  AddressType,
-  TextWrap01,
-  TextWrap02,
-} from "../user-address/address.styled";
-import { Link } from "react-router-dom";
+import { Box, Grid } from "@mui/material";
+import { TextWrap02 } from "../user-address/address.styled";
 
 function PaymentOptions() {
   const pages = [
@@ -20,7 +13,7 @@ function PaymentOptions() {
 
   const [selectedValue, setSelectedValue] = useState(0);
   return (
-    <Grid container>
+    <Grid container style={{ marginTop: 40 }}>
       <Box>
         <TextWrap02>2 Select a payment method</TextWrap02>
         <Grid container direction="column">
