@@ -7,25 +7,26 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import useMediaQuery from "../../hooks/use-media-query";
+import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
 
 function Footer() {
   const { isMobile, isDesktop, isTablet } = useMediaQuery();
-  const page1 = ["track order", "shipping", "Returns", "faqs", "contact-us"];
-  const about = ["about us", "career", "cyber security", "press"];
+  const page1 = ["Track order", "Shipping", "Returns", "Faqs", "Contact-us"];
+  const about = ["About us", "Career", "Cyber security", "Press"];
   return (
     <Grid
       container
       sx={{
-        p: isDesktop ? 10 : isTablet ? 5 : 3,
+        p: isDesktop ? 10 : isTablet ? 2.5 : 3,
         background: "#F3F2FF",
         display: isMobile ? "none" : "flex",
       }}
     >
-      <Grid item xs={2} sm={2} md={4} lg={4}>
+      <Grid item xs={2} sm={4} md={4} lg={4}>
         <Grid
           item
           xs={2}
-          sm={2}
+          sm={8}
           md={8}
           lg={8}
           style={{
@@ -57,7 +58,7 @@ function Footer() {
           </Box>
         </Grid>
       </Grid>
-      <Grid item xs={2} sm={2} md={3} lg={3}>
+      <Grid item xs={2} sm={3} md={3} lg={3}>
         <TextWrapFooter>Help</TextWrapFooter>
         {page1.map((page, index) => (
           <Grid
@@ -70,24 +71,23 @@ function Footer() {
             style={{
               display: "flex",
               alignItems: "baseline",
+              paddingTop: 10,
             }}
           >
-            <Button>
-              <Link
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  fontSize: isMobile ? 8 : "",
-                }}
-                to={`/${page}`}
-              >
-                {page}
-              </Link>
-            </Button>
+            <Link
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: isDesktop ? 20 : isTablet ? 16 : 8,
+              }}
+              to={`/${page}`}
+            >
+              {page}
+            </Link>
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={2} sm={2} md={3} lg={3}>
+      <Grid item xs={2} sm={3} md={3} lg={3}>
         <TextWrapFooter>About Us</TextWrapFooter>
         {about.map((page, index) => (
           <Grid
@@ -100,30 +100,36 @@ function Footer() {
             style={{
               display: "flex",
               alignItems: "baseline",
+              paddingTop: 10,
             }}
           >
-            <Button>
-              <Link
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                  fontSize: isMobile ? 8 : "",
-                }}
-                to={`/${page}`}
-              >
-                {page}
-              </Link>
-            </Button>
+            <Link
+              style={{
+                color: "black",
+                textDecoration: "none",
+                fontSize: isDesktop ? 20 : isTablet ? 16 : 8,
+              }}
+              to={`/${page}`}
+            >
+              {page}
+            </Link>
           </Grid>
         ))}
       </Grid>
       <Grid item xs={2} sm={2} md={2} lg={2}>
         <TextWrapFooter>Deliver to </TextWrapFooter>
-        <TextWrapFooter style={{ marginLeft: 10 }}>
-          Tavant Technologies, Koramangala
-        </TextWrapFooter>
+        <TextWrap01
+          style={{
+            fontSize: isDesktop ? 20 : 16,
+            paddingTop: 5,
+          }}
+        >
+          new c comfort, Koramangala -560034
+        </TextWrap01>
         <TextWrapFooter style={{ marginTop: 10 }}>Language </TextWrapFooter>
-        <TextWrapFooter style={{ marginLeft: 10 }}>English </TextWrapFooter>
+        <TextWrapFooter style={{ marginLeft: 10, fontWeight: 300 }}>
+          English{" "}
+        </TextWrapFooter>
       </Grid>
     </Grid>
   );

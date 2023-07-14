@@ -59,6 +59,10 @@ const ProductName = styled.div`
   color: #2f2e41;
   font-weight: 500;
   text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin-top: ${pxToRem(10)};
   @media (max-width: 767px) {
     font-size: ${pxToRem(12)};
@@ -95,7 +99,7 @@ const NewArrivalTextWrap = styled.div`
 
 const Scroll = styled.div`
   overflow-x: auto;
-  white-space: nowrap;
+
   display: flex;
   margin-left: 50px;
   margin-top: 20px;

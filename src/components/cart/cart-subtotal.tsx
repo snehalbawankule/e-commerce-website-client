@@ -12,12 +12,22 @@ const CartSubTotal = () => {
   const location = useLocation();
   const { isDesktop, isMobile } = useMediaQuery();
   const dispatch = useAppDispatch();
+
   const cart = useAppSelector((state) => state.carts.cart);
+  console.log(cart);
   const navigate = useNavigate();
   const navCheckout = () => {
     navigate("/checkout");
   };
   const navOrderPlaced = () => {
+    // const newWishlist = {
+    //   userId: currentUser.id,
+    //   productId: product?.id,
+    //   quantity: 1,
+    //   size: valueFromChild,
+    //   color: "red",
+    // };
+    // dispatch(actions.addWishlist(newWishlist));
     navigate("/order placed");
   };
 
@@ -49,7 +59,7 @@ const CartSubTotal = () => {
     <Grid>
       <Card
         sx={{
-          p: 2,
+          p: 1,
           ml: isMobile ? 1 : 0,
           backgroundColor: "white",
           mt: isMobile ? 1 : 5,
@@ -118,13 +128,14 @@ const CartSubTotal = () => {
           sm={12}
           md={12}
           lg={12}
-          sx={{ mt: isDesktop ? 0 : 3 }}
+          sx={{ mb: isDesktop ? 0 : 2 }}
         >
           {location.pathname === "/cart" ? (
             <PostButton
               style={{
                 backgroundColor: "#FFD814",
                 color: "black",
+
                 borderColor: "#FFD814",
               }}
               onClick={navCheckout}

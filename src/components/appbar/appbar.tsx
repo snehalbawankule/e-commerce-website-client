@@ -23,6 +23,7 @@ const Appbar = () => {
   const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
   const cart = useAppSelector((state) => state.carts.cart);
   useEffect(() => {
     if (cart.length) {
@@ -31,10 +32,12 @@ const Appbar = () => {
   }, [cart.length, dispatch]);
 
   const handleWishlist = () => {
-    navigate("/wishlist");
+    if (currentUser === "") navigate("/login");
+    else navigate("/wishlist");
   };
   const handleCart = () => {
-    navigate("/cart");
+    if (currentUser === "") navigate("/login");
+    else navigate("/cart");
   };
   const handleLogin = () => {
     navigate("/login");
@@ -48,8 +51,6 @@ const Appbar = () => {
   const handleCategory = () => {
     navigate("/category");
   };
-
-  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
 
   return (
     <>

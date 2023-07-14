@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Grid, Box } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Grid, Box, Alert } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 import { TextWrap02, TextWrap03 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -13,7 +13,7 @@ import ReviewList from "../rating-and-review/reviews-list";
 const Product = () => {
   let { id } = useParams();
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const { isTablet, isDesktop, isMobile } = useMediaQuery();
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
   const existingPost = useAppSelector((state) => state.products.product);
@@ -34,27 +34,38 @@ const Product = () => {
 
   const handleValueFromChild = (value: string) => {
     setValueFromChild(value);
+    setErrorMessage(null);
   };
-
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const handleWishlist = () => {
-    const newWishlist = {
-      userId: currentUser.id,
-      productId: product?.id,
-      quantity: 1,
-      size: valueFromChild,
-      color: "red",
-    };
-    dispatch(actions.addWishlist(newWishlist));
+    if (currentUser === "") {
+      navigate("/login");
+    } else {
+      const newWishlist = {
+        userId: currentUser.id,
+        productId: product?.id,
+        quantity: 1,
+        size: valueFromChild,
+        color: "red",
+      };
+      dispatch(actions.addWishlist(newWishlist));
+    }
   };
   const handleCart = () => {
-    const newCart = {
-      userId: currentUser.id,
-      productId: product?.id,
-      quantity: 1,
-      size: valueFromChild,
-      color: "red",
-    };
-    dispatch(action.addCart(newCart));
+    if (currentUser === "") {
+      navigate("/login");
+    } else if (!valueFromChild) {
+      setErrorMessage("Please select a size");
+    } else {
+      const newCart = {
+        userId: currentUser.id,
+        productId: product?.id,
+        quantity: 1,
+        size: valueFromChild,
+        color: "red",
+      };
+      dispatch(action.addCart(newCart));
+    }
   };
   return (
     <Grid
@@ -100,7 +111,7 @@ const Product = () => {
         {product?.category === "women" || product?.category === "men" ? (
           <Size onSendValue={handleValueFromChild} />
         ) : null}
-
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         <Grid
           item
           xs={6}

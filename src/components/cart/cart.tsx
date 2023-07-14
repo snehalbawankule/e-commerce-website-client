@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import CartCard from "./cart-card";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
 
@@ -25,12 +24,12 @@ const Cart = () => {
       <Grid
         item
         xs={12}
-        sm={8}
+        sm={8.5}
         md={9}
         lg={9}
         sx={{
           pl: isDesktop ? 5 : isTablet ? 0 : 1,
-          pr: isDesktop ? 5 : isTablet ? 3 : 1,
+          pr: isDesktop ? 5 : 1,
         }}
       >
         <Grid
@@ -51,7 +50,7 @@ const Cart = () => {
         <Divider style={{ marginBottom: 15 }}></Divider>
         <Cartlist cart={cart} />
       </Grid>
-      <Grid item xs={12} sm={4} md={3} lg={3}>
+      <Grid item xs={12} sm={3.5} md={3} lg={3}>
         <CartSubTotal />
       </Grid>
     </Grid>

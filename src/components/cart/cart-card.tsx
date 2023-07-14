@@ -47,7 +47,7 @@ const CartCard = (props: any) => {
           backgroundRepeat: "no-repeat",
         }}
       />
-      <Grid item xs={5} sm={4} md={6} lg={6}>
+      <Grid item xs={5} sm={3.5} md={6} lg={6}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <ProductName>{post.product?.brand}</ProductName>
         </Grid>
@@ -81,7 +81,7 @@ const CartCard = (props: any) => {
           </FormControl>
         </Box>
       </Grid>
-      <Grid item xs={3.5} sm={4} md={3} lg={3}>
+      <Grid item xs={3.5} sm={4.5} md={3} lg={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Price>₹{post.product?.actualPrice}</Price>
         </Grid>
@@ -100,7 +100,7 @@ const CartCard = (props: any) => {
           md={12}
           lg={12}
           sx={{
-            mt: isDesktop ? 5 : 3,
+            mt: isDesktop ? 5 : 4,
             display: "flex",
             textAlign: "end",
           }}
