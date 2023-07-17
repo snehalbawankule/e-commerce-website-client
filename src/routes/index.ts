@@ -37,6 +37,7 @@ export const ProductByCategory = [
   "/beauty/tools and accessories",
   "/home/home decor",
   "/home/home storage",
+  "/kids/kids clothing",
 ];
 export const HelpCenter = [
   "/faqs/order",
@@ -50,7 +51,7 @@ export const HelpCenter = [
 const ProductBySubCategory = [
   "/women/western wear/tops, tshirt & shirts",
   "/women/western wear/dresses & jumpsuits",
-  "/women/western wear/jeans & jeggings",
+  "/women/western wear/jeans and jeggings",
   "/women/ethnic wear/lehenga cholis",
   "/women/ethnic wear/kurtas",
   "/women/ethnic wear/sarees",
@@ -87,6 +88,8 @@ const ProductBySubCategory = [
   "/beauty/haircare/hair treatment",
   "/beauty/haircare/styling products",
   "/beauty/tools and accessories",
+  "/kids/kids clothing/girls clothing",
+  "/kids/kids clothing/boys clothing",
 ];
 
 const APP_ROUTES: Routes = [
@@ -108,7 +111,7 @@ const APP_ROUTES: Routes = [
     component: OrderPlaced,
   },
   {
-    path: ["/faqs"],
+    path: ["/Faqs"],
     component: Faqs,
   },
   {

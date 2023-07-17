@@ -12,7 +12,7 @@ const Sidebar = () => {
   const pathSegments = location.pathname.split("/");
   const firstName = "/" + pathSegments[1];
   const isCurrentPathMatch = Product123.includes(firstName);
-  const currentPath = firstName === "/faqs";
+  const currentPath = firstName === "/Faqs";
   const currentPath1 = firstName === "/profile";
 
   return (

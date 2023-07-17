@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Input, TextWrapFooter } from "./footer.styled";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";

@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Divider, FormControl } from "@mui/material";
+import { actions as action } from "../../store/wishlist/slice";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import {
   AddToCardText,
@@ -17,15 +18,27 @@ import { actions } from "../../store/cart/slice";
 import { useAppDispatch } from "../../hooks/hooks";
 const WishlistCard = (props: any) => {
   const { post } = props;
+
   const [quantity, setQuantity] = useState(post.quantity);
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(event.target.value as string);
   };
   const handleRemove = () => {
-    dispatch(actions.removeCart(post.id));
+    dispatch(action.removeWishlist(post.id));
     window.location.reload();
   };
+  const handleCart = () => {
+    const newCart = {
+      userId: post.userId,
+      productId: post.productId,
+      quantity: 1,
+      size: post.size,
+      color: "red",
+    };
+    dispatch(actions.addCart(newCart));
+  };
+
   const { isDesktop, isMobile } = useMediaQuery();
 
   return (
@@ -111,7 +124,7 @@ const WishlistCard = (props: any) => {
           }}
         >
           <Grid item xs={8} sm={8} md={6} lg={6}>
-            <AddToCardText>Move to Cart </AddToCardText>
+            <AddToCardText onClick={handleCart}>Move to Cart </AddToCardText>
           </Grid>
           <Grid item xs={4} sm={4} md={6} lg={6}>
             <AddToCardText

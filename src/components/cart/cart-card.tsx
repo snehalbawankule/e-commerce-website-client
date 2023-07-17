@@ -9,6 +9,7 @@ import { Divider, FormControl } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { AddToCardText, Price, ProductName, ProductTitle } from "./cart.styled";
 import { actions } from "../../store/cart/slice";
+import { actions as action } from "../../store/wishlist/slice";
 import { useAppDispatch } from "../../hooks/hooks";
 const CartCard = (props: any) => {
   const { post } = props;
@@ -16,6 +17,16 @@ const CartCard = (props: any) => {
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(event.target.value as string);
+  };
+  const handleWishlist = () => {
+    const newWishlist = {
+      userId: post.userId,
+      productId: post.productId,
+      quantity: 1,
+      size: post.size,
+      color: post.color,
+    };
+    dispatch(action.addWishlist(newWishlist));
   };
   const handleRemove = () => {
     dispatch(actions.removeCart(post.id));
@@ -106,7 +117,9 @@ const CartCard = (props: any) => {
           }}
         >
           <Grid item xs={8} sm={8} md={6} lg={6}>
-            <AddToCardText>Move to Cart </AddToCardText>
+            <AddToCardText onClick={handleWishlist}>
+              Move to Wishlist{" "}
+            </AddToCardText>
           </Grid>
           <Grid item xs={4} sm={4} md={6} lg={6}>
             <AddToCardText

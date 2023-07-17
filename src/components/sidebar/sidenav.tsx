@@ -26,7 +26,7 @@ const SideNav = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.category);
   const category = categories.find((item) => item.name === currentPage);
-  
+
   useEffect(() => {
     if (categories.length) {
       dispatch(addCategory());
@@ -124,7 +124,9 @@ const SideNav = () => {
               display: "flex",
             }}
           >
-            <CategoryName> {currentPage}</CategoryName>
+            <CategoryName onClick={() => navigate("/" + currentPage)}>
+              {currentPage}
+            </CategoryName>
             {sub_categories?.map((page, index) => (
               <>
                 <Button

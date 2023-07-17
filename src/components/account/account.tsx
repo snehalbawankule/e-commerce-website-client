@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
 import { PostButton, ProfileImage } from "./account.styled";
 import useMediaQuery from "../../hooks/use-media-query";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { getCurrentUser } from "../../store/user/services";
 
 const Account = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
   const pages = ["orders", "returns", "wishlist", "profile"];
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -21,7 +27,8 @@ const Account = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+  const currentUser = useAppSelector((state) => state.user.user);
+  console.log(currentUser);
   var profile1 = currentUser?.firstname?.charAt(0).toUpperCase();
   var profile2 = currentUser?.lastname?.charAt(0).toUpperCase();
   var profile = profile1 + profile2;

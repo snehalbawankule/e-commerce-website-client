@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
@@ -9,59 +9,64 @@ const ProductList = () => {
   const currentPage = location.pathname.slice(1);
 
   const [data, setData] = useState<any[]>([]);
-
   const [pageNo, setPageNo] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const previousInputValue = useRef("");
+  const [previousPage, setPreviousPage] = useState("");
+
   const { isMobile, isDesktop, isTablet } = useMediaQuery();
 
   useEffect(() => {
-    previousInputValue.current = currentPage;
-
-    if (currentPage !== previousInputValue.current) {
-      window.location.reload();
-      getData(currentPage);
-    } else {
-      getData(currentPage);
+    if (currentPage !== previousPage) {
+      setPageNo(1);
+      setData([]);
+      setPreviousPage(currentPage);
     }
-  }, [currentPage, isLoading]);
 
-  function getData(currentPage: string) {
+    setIsLoading(true);
+    getData(currentPage, pageNo);
+  }, [currentPage, pageNo, previousPage]);
+
+  function getData(currentPage: string, page: number) {
     fetch(
-      `http://localhost:3001/get-category-products?page=${pageNo}&size=10&sort=createdAt&order=ASC&category=${currentPage}`
+      `http://localhost:3001/get-category-products?page=${page}&size=10&sort=createdAt&order=ASC&category=${currentPage}`
     )
       .then((res) => res.json())
       .then((json) => {
-        if (pageNo > 1) {
+        if (page > 1) {
           let arr = [...data, ...json];
-
           setData(arr);
-          setIsLoading(false);
         } else {
           setData(json);
-          setIsLoading(false);
         }
+        setIsLoading(false);
       })
-
       .catch((error) => {
         alert("Axios GET request failed");
+        setIsLoading(false);
       });
   }
 
-  const firstEvent = (e: any) => {
-    var bottom =
-      e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight < 50;
-    if (bottom) {
-      let pg = pageNo + 1;
-      setPageNo(pg);
-      getData(currentPage);
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    const bottom =
+      target.scrollHeight - target.scrollTop - target.clientHeight < 50;
+    if (bottom && !isLoading) {
+      const nextPage = pageNo + 1;
+      setPageNo(nextPage);
     }
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    setData([]);
+
+    getData(currentPage, 1);
+  }, [currentPage]);
 
   return (
     <Grid
       container
-      onScroll={firstEvent}
+      onScroll={handleScroll}
       style={{
         height: isDesktop ? 750 : isTablet ? 1024 : 800,
         overflowY: "auto",
@@ -71,6 +76,7 @@ const ProductList = () => {
         container
         direction="row"
         spacing={2}
+        marginLeft="330px"
         style={{
           marginLeft: isMobile ? "5px" : isDesktop ? "230px" : "180px",
           marginBottom: isMobile ? "5px" : "15px",
@@ -85,8 +91,8 @@ const ProductList = () => {
               sm={4}
               md={2.4}
               lg={2.4}
-              marginTop="15px"
               display="flex"
+              marginTop="15px"
               key={index}
             >
               <ProductCard post={post} />
