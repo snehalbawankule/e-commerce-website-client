@@ -12,6 +12,7 @@ const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
 const Brand = lazy(() => import("../components/brands"));
 const Product = lazy(() => import("../components/product"));
+// const Orders = lazy(() => import("../components/orders"));
 const Account = lazy(() => import("../components/account"));
 const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
@@ -101,7 +102,10 @@ const APP_ROUTES: Routes = [
     path: ["/account"],
     component: Account,
   },
-
+  // {
+  //   path: ["/orders"],
+  //   component: Orders,
+  // },
   {
     path: ["/contact-us"],
     component: ContactUs,

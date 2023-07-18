@@ -1,10 +1,7 @@
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
-import { addProduct } from "../../store/product/services";
-
 import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductList = () => {

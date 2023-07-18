@@ -89,10 +89,10 @@ const ProductList = () => {
               item
               xs={6}
               sm={4}
-              md={2.4}
-              lg={2.4}
+              md={3}
+              lg={3}
               display="flex"
-              marginTop="15px"
+              marginTop="40px"
               key={index}
             >
               <ProductCard post={post} />

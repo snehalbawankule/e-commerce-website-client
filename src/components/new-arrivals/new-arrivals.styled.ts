@@ -73,7 +73,7 @@ const ProductTitle = styled.div`
   padding-top: ${pxToRem(6)};
   font-weight: 400;
   color: #2f2e41;
-
+  display: inline-block;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

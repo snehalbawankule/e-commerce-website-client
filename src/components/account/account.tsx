@@ -8,6 +8,8 @@ import { getCurrentUser } from "../../store/user/services";
 
 const Account = () => {
   const dispatch = useAppDispatch();
+  const currentUser = useAppSelector((state) => state.user.user);
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -27,7 +29,6 @@ const Account = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const currentUser = useAppSelector((state) => state.user.user);
   console.log(currentUser);
   var profile1 = currentUser?.firstname?.charAt(0).toUpperCase();
   var profile2 = currentUser?.lastname?.charAt(0).toUpperCase();
