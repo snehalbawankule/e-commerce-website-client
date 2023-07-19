@@ -24,8 +24,9 @@ function AddressList() {
 
   const handleSaveAddress = (updatedAddress: any) => {
     setAddresses(updatedAddress);
-
+     
     setEditingAddress(null);
+    
   };
 
   const handleCancelEdit = () => {

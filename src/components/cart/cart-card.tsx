@@ -17,14 +17,19 @@ const CartCard = (props: any) => {
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
     setQuantity(event.target.value as string);
+    const newWishlist = {
+      productId: post.productId,
+      quantity: event.target.value,
+    };
+    dispatch(actions.updateCarts(newWishlist));
   };
   const handleWishlist = () => {
     const newWishlist = {
-      userId: post.userId,
-      productId: post.productId,
+      userId: post?.userId,
+      productId: post?.productId,
       quantity: 1,
-      size: post.size,
-      color: post.color,
+      size: post?.size,
+      color: post?.color,
     };
     dispatch(action.addWishlist(newWishlist));
   };

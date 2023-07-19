@@ -8,17 +8,16 @@ import { Divider } from "@mui/material";
 
 import CartSubTotal from "./cart-subtotal";
 import Cartlist from "./cart-list";
+import { actions } from "../../store/cart/slice";
 const Cart = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.carts.cart);
-
   useEffect(() => {
     if (cart.length) {
       dispatch(getCart());
     }
   }, [cart.length, dispatch]);
-
   return (
     <Grid container marginTop="80px" paddingRight="12px" spacing={2}>
       <Grid

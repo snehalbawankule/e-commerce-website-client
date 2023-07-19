@@ -8,26 +8,22 @@ import { ProductName } from "./cart.styled";
 
 import { PostButton } from "../navbar/navbar.styled";
 import { useLocation, useNavigate } from "react-router-dom";
+import { actions } from "../../store/wishlist/slice";
 const CartSubTotal = () => {
   const location = useLocation();
   const { isDesktop, isMobile } = useMediaQuery();
   const dispatch = useAppDispatch();
 
   const cart = useAppSelector((state) => state.carts.cart);
-  console.log(cart);
+
   const navigate = useNavigate();
   const navCheckout = () => {
     navigate("/checkout");
   };
   const navOrderPlaced = () => {
-    // const newWishlist = {
-    //   userId: currentUser.id,
-    //   productId: product?.id,
-    //   quantity: 1,
-    //   size: valueFromChild,
-    //   color: "red",
-    // };
-    // dispatch(actions.addWishlist(newWishlist));
+    const newWishlist = { userId:cart[0].userId, cart: cart };
+    console.log(newWishlist);
+    dispatch(actions.addWishlist(newWishlist));
     navigate("/order placed");
   };
 
@@ -35,9 +31,11 @@ const CartSubTotal = () => {
     discount = 0,
     subTotal = 0,
     Delhivery = 99,
-    saved = 0;
+    saved = 0,
+    quantity = 0;
   for (var i = 0; i < cart.length; i++) {
-    totalPrice += cart[i].product.actualPrice;
+    totalPrice += cart[i].product.actualPrice * cart[i].quantity;
+    quantity += cart[i].quantity;
     discount += (cart[i].product.actualPrice * cart[i].product.discount) / 100;
     discount = parseFloat(discount.toFixed(2));
     if (totalPrice - discount > 200) {
@@ -79,7 +77,7 @@ const CartSubTotal = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <ProductName>Price ({cart.length}items)</ProductName>
+          <ProductName>Price ({quantity}items)</ProductName>
           <ProductName>{totalPrice}</ProductName>
         </Grid>
         <Grid

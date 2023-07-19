@@ -29,7 +29,6 @@ const Account = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  console.log(currentUser);
   var profile1 = currentUser?.firstname?.charAt(0).toUpperCase();
   var profile2 = currentUser?.lastname?.charAt(0).toUpperCase();
   var profile = profile1 + profile2;

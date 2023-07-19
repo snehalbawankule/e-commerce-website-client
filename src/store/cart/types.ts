@@ -2,10 +2,11 @@ import { defaultProduct } from "../product/types";
 
 export type Cartlist = {
   id: string;
-  userEmail: string;
+  userId: string;
   quantity: number;
   size: string;
   color: string;
+  productId: string;
   product: any;
 };
 
@@ -14,9 +15,10 @@ export type defaultState = {
 };
 export const defaultCart: Cartlist = {
   id: "",
-  userEmail: "",
+  userId: "",
   quantity: 0,
   size: "",
   color: "",
+  productId: "",
   product: defaultProduct,
 };
