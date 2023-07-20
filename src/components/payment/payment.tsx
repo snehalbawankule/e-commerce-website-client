@@ -15,7 +15,7 @@ function PaymentOptions() {
   return (
     <Grid container style={{ marginTop: 40 }}>
       <Box>
-        <TextWrap02>2 Select a payment method</TextWrap02>
+        <TextWrap02>3 Select a payment method</TextWrap02>
         <Grid container direction="column">
           {pages.map((page: any, index: any) => {
             return (

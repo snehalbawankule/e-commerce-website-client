@@ -58,7 +58,7 @@ const AddToCardText = styled.button`
 const Price = styled.div`
   font-family: "Inter";
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   justify-content: end;
   color: #171520;

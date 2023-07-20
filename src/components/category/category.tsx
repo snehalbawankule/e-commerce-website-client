@@ -13,7 +13,7 @@ import { useLocation } from "react-router-dom";
 const Category = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   const categories = useAppSelector((state) => state.categories.category);
   useEffect(() => {
     if (categories.length) {
@@ -45,8 +45,8 @@ const Category = () => {
                   item
                   xs={6}
                   sm={3}
-                  md={2}
-                  lg={2}
+                  md={2.4}
+                  lg={2.4}
                   display="flex"
                   key={index}
                 >

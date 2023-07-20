@@ -1,10 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
 import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
-import { addProduct } from "../../store/product/services";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import useMediaQuery from "../../hooks/use-media-query";
 
 const ProductList = () => {
@@ -92,8 +89,8 @@ const ProductList = () => {
               item
               xs={6}
               sm={4}
-              md={2.4}
-              lg={2.4}
+              md={3}
+              lg={3}
               display="flex"
               marginTop="15px"
               key={index}

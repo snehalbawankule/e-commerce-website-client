@@ -38,8 +38,26 @@ const HandPickedCard = (props: any) => {
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
         <ProductName>{post.name}</ProductName>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductTitle>₹{post.actualPrice}</ProductTitle>
+      <Grid container display="flex" alignItems="end">
+        <Grid item xs={3} sm={4} md={4} lg={4}>
+          <ProductTitle
+            style={{ fontSize: 24, fontWeight: 500, marginBottom: -3 }}
+          >
+            ₹{post?.discountPrice}
+          </ProductTitle>
+        </Grid>
+        <Grid item xs={3} sm={4} md={4.3} lg={4.3}>
+          <ProductTitle
+            style={{ paddingTop: 0, textDecoration: "line-through" }}
+          >
+            M.R.P: ₹{post?.actualPrice}
+          </ProductTitle>
+        </Grid>
+        <Grid item xs={3} sm={4} md={3.7} lg={3.7}>
+          <ProductTitle style={{ fontWeight: 700, color: "green" }}>
+            ({post?.discount}% off)
+          </ProductTitle>
+        </Grid>
       </Grid>
     </Box>
   );

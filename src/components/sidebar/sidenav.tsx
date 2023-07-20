@@ -124,7 +124,10 @@ const SideNav = () => {
               display: "flex",
             }}
           >
-            <CategoryName onClick={() => navigate("/" + currentPage)}>
+            <CategoryName
+              style={{ fontSize: 20 }}
+              onClick={() => navigate("/" + currentPage)}
+            >
               {currentPage}
             </CategoryName>
             {sub_categories?.map((page, index) => (

@@ -101,15 +101,19 @@ const WishlistCard = (props: any) => {
       </Grid>
       <Grid item xs={3.5} sm={4} md={3} lg={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price>₹{post.product?.actualPrice}</Price>
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price style={{ fontWeight: 500, fontSize: 18, color: "green" }}>
-            -{post.product?.discount}%
+          <Price style={{ fontSize: 25, fontWeight: 600 }}>
+            ₹{post.product?.discountPrice}
           </Price>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price>{post.product?.discountPrice}</Price>
+          <Price style={{ textDecoration: "line-through" }}>
+            {post.product?.actualPrice}
+          </Price>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Price style={{ fontWeight: 500, fontSize: 22, color: "green" }}>
+            -{post.product?.discount}% off
+          </Price>
         </Grid>
         <Grid
           item
@@ -123,7 +127,7 @@ const WishlistCard = (props: any) => {
             textAlign: "end",
           }}
         >
-          <Grid item xs={8} sm={8} md={6} lg={6}>
+          <Grid item xs={8} sm={8} md={8} lg={8}>
             <AddToCardText onClick={handleCart}>Move to Cart </AddToCardText>
           </Grid>
           <Grid item xs={4} sm={4} md={6} lg={6}>

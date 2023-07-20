@@ -21,15 +21,11 @@ const Checkout = () => {
       <TextWrap01>Checkout</TextWrap01>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} lg={8}>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <AddressList />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <PaymentOptions />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Review />
-          </Grid>
+          <AddressList />
+
+          <Review />
+
+          <PaymentOptions />
         </Grid>
         <Grid item xs={12} sm={4} md={4} lg={4}>
           <CartSubTotal />

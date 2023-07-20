@@ -8,6 +8,7 @@ import { ProductName } from "./cart.styled";
 
 import { PostButton } from "../navbar/navbar.styled";
 import { useLocation, useNavigate } from "react-router-dom";
+import { actions as action } from "../../store/order/slice";
 import { actions } from "../../store/wishlist/slice";
 const CartSubTotal = () => {
   const location = useLocation();
@@ -21,9 +22,24 @@ const CartSubTotal = () => {
     navigate("/checkout");
   };
   const navOrderPlaced = () => {
-    const newWishlist = { userId:cart[0].userId, cart: cart };
+    const storedDataAsString = sessionStorage.getItem("shipping_address");
+
+    let storedData;
+    if (storedDataAsString) {
+      // If the shipping address exists, parse it from JSON
+      storedData = JSON.parse(storedDataAsString);
+    }
+    const newWishlist = {
+      userId: cart[0].userId,
+      shippingAddress: storedData.shipping_address,
+      totalCost: subTotal,
+      items: cart.map((item: any) => ({
+        productId: item.productId,
+        quantity: item.quantity,
+      })),
+    };
     console.log(newWishlist);
-    dispatch(actions.addWishlist(newWishlist));
+    dispatch(action.addOrder(newWishlist));
     navigate("/order placed");
   };
 

@@ -116,13 +116,12 @@ const Scroll1 = styled.div`
 `;
 
 const ImageBox = styled.img<LatestArticleProps>`
-  height: ${pxToRem(250)};
-  width: ${pxToRem(170)};
+  height: ${pxToRem(280)};
+  width: ${pxToRem(200)};
   background-image: url(${(props: any) => props.src});
   background-position: top;
   background-size: cover;
   transition: all 0.2s ease-in-out;
-  border-radius: ${pxToRem(16)};
 
   @media (max-width: 767px) {
     height: ${pxToRem(270)};

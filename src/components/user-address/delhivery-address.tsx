@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { AddressType, TextWrap02 } from "./address.styled";
 import AddressEditModal from "./edit-address";
 import { getCurrentUser } from "../../store/user/services";
+import CartSubTotal from "../cart/cart-subtotal";
 
 function AddressList() {
   const dispatch = useAppDispatch();
@@ -22,11 +23,29 @@ function AddressList() {
     setEditingAddress(address);
   };
 
-  const handleSaveAddress = (updatedAddress: any) => {
-    setAddresses(updatedAddress);
-     
+  const handleSaveAddress = (index: any) => {
+    setSelectedValue(index);
+    const selectedAddress = addresses[index];
+    const shipping_address = `${selectedAddress.name} ${selectedAddress.address_line1}, ${selectedAddress.address_line2}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country}, - ${selectedAddress.postal_code}, Phone Number:${selectedAddress.mobile}`;
+    console.log(shipping_address);
+
+    const storedDataAsString = sessionStorage.getItem("shipping_address");
+    let storedData = {};
+
+    if (storedDataAsString) {
+      // If the shipping address exists, parse it from JSON
+      storedData = JSON.parse(storedDataAsString);
+    }
+
+    // Update the storedData with the new shippingAddress data
+    storedData = { ...storedData, shipping_address };
+
+    // Convert the updated data back to a JSON string
+    const dataAsString = JSON.stringify(storedData);
+
+    // Save the updated data back to sessionStorage
+    sessionStorage.setItem("shipping_address", dataAsString);
     setEditingAddress(null);
-    
   };
 
   const handleCancelEdit = () => {
@@ -46,7 +65,6 @@ function AddressList() {
                 {editingAddress === address ? (
                   <AddressEditModal
                     address={editingAddress}
-                    onSave={handleSaveAddress}
                     onCancel={handleCancelEdit}
                   />
                 ) : (
@@ -78,7 +96,7 @@ function AddressList() {
                           type="radio"
                           value={index}
                           checked={selectedValue === index}
-                          onChange={() => setSelectedValue(index)}
+                          onChange={() => handleSaveAddress(index)}
                           defaultChecked={selectedValue === index}
                         />
                         {address.name}

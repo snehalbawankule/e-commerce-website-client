@@ -16,8 +16,8 @@ const Review = () => {
   }, [cart.length, dispatch]);
   return (
     <div style={{ marginTop: 40 }}>
-      <TextWrap02>3 Review items & delivery</TextWrap02>
-      <Grid container style={{ marginTop: 10 }}>
+      <TextWrap02>2 Review items & delivery</TextWrap02>
+      <Grid container style={{ marginTop: 10, paddingRight: 2 }}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Cart cart={cart} />
         </Grid>

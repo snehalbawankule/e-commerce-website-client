@@ -9,6 +9,7 @@ import Size from "../size/size";
 import { actions } from "../../store/wishlist/slice";
 import { actions as action } from "../../store/cart/slice";
 import ReviewList from "../rating-and-review/reviews-list";
+import { ProductTitle } from "../new-arrivals/new-arrivals.styled";
 
 const Product = () => {
   let { id } = useParams();
@@ -99,10 +100,27 @@ const Product = () => {
             {product?.title}
           </TextWrap02>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
-          <TextWrap03 style={{ fontWeight: 500, fontSize: 18 }}>
-            ${product?.actualPrice}
-          </TextWrap03>
+        <Grid container display="flex" alignItems="end" marginTop="25px">
+          <Grid item xs={3} sm={4} md={2.7} lg={2.7}>
+            <ProductTitle
+              style={{ fontSize: 45, fontWeight: 500, marginBottom: -10 }}
+            >
+              ₹{product?.discountPrice}
+            </ProductTitle>
+          </Grid>
+          <Grid item xs={3} sm={4} md={1.7} lg={1.7}>
+            <ProductTitle
+              style={{ paddingTop: 0, textDecoration: "line-through" }}
+            >
+              M.R.P: ₹{product?.actualPrice}
+            </ProductTitle>
+          </Grid>
+          <Grid item xs={3} sm={4} md={2} lg={2}>
+            <ProductTitle style={{ fontWeight: 700, color: "green" }}>
+              {" "}
+              ({product?.discount}% off)
+            </ProductTitle>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12} display="flex">
           <TextWrap03>{product?.description}</TextWrap03>

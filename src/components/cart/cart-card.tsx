@@ -11,7 +11,9 @@ import { AddToCardText, Price, ProductName, ProductTitle } from "./cart.styled";
 import { actions } from "../../store/cart/slice";
 import { actions as action } from "../../store/wishlist/slice";
 import { useAppDispatch } from "../../hooks/hooks";
+import { useLocation } from "react-router-dom";
 const CartCard = (props: any) => {
+  const location = useLocation();
   const { post } = props;
   const [quantity, setQuantity] = useState(post.quantity);
   const dispatch = useAppDispatch();
@@ -27,7 +29,7 @@ const CartCard = (props: any) => {
     const newWishlist = {
       userId: post?.userId,
       productId: post?.productId,
-      quantity: 1,
+      quantity: quantity,
       size: post?.size,
       color: post?.color,
     };
@@ -99,15 +101,19 @@ const CartCard = (props: any) => {
       </Grid>
       <Grid item xs={3.5} sm={4.5} md={3} lg={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price>₹{post.product?.actualPrice}</Price>
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price style={{ fontWeight: 500, fontSize: 18, color: "green" }}>
-            -{post.product?.discount}%
+          <Price style={{ fontSize: 25, fontWeight: 600 }}>
+            ₹{post.product?.discountPrice}
           </Price>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Price>{post.product?.discountPrice}</Price>
+          <Price style={{ textDecoration: "line-through" }}>
+            {post.product?.actualPrice}
+          </Price>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Price style={{ fontWeight: 500, fontSize: 22, color: "green" }}>
+            -{post.product?.discount}% off
+          </Price>
         </Grid>
         <Grid
           item
@@ -121,12 +127,14 @@ const CartCard = (props: any) => {
             textAlign: "end",
           }}
         >
-          <Grid item xs={8} sm={8} md={6} lg={6}>
-            <AddToCardText onClick={handleWishlist}>
-              Move to Wishlist{" "}
-            </AddToCardText>
+          <Grid item xs={8} sm={8} md={8} lg={8}>
+            {location.pathname === "/cart" ? (
+              <AddToCardText onClick={handleWishlist}>
+                Move to Wishlist{" "}
+              </AddToCardText>
+            ) : null}
           </Grid>
-          <Grid item xs={4} sm={4} md={6} lg={6}>
+          <Grid item xs={4} sm={4} md={4} lg={4}>
             <AddToCardText
               onClick={handleRemove}
               style={{ color: "red", paddingLeft: 5 }}

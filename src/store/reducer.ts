@@ -9,6 +9,7 @@ import cartReducer from "./cart/slice";
 
 import helpCenterReducer from "./helpcenter/slice";
 import userReducer from "./user/slice";
+import orderReducer from "./order/slice";
 
 const reducers = combineReducers({
   products: productReducer,
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   carts: cartReducer,
   helpCenter: helpCenterReducer,
   user: userReducer,
+  order: orderReducer,
 });
 
 export default reducers;
