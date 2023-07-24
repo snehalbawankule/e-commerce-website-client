@@ -12,7 +12,7 @@ const Products = lazy(() => import("../components/products"));
 const Wishlist = lazy(() => import("../components/wishlist"));
 const Brand = lazy(() => import("../components/brands"));
 const Product = lazy(() => import("../components/product"));
-// const Orders = lazy(() => import("../components/orders"));
+const Orders = lazy(() => import("../components/orders"));
 const Account = lazy(() => import("../components/account"));
 const Registration = lazy(() => import("../components/registration"));
 const Login = lazy(() => import("../components/login"));
@@ -32,6 +32,8 @@ export const ProductByCategory = [
   "/men/topwear",
   "/men/bottomwear",
   "/men/footwear",
+  "men/ethnic wear",
+  "men/accessories",
   "/beauty/makeup",
   "/beauty/skincare",
   "/beauty/haircare",
@@ -39,6 +41,10 @@ export const ProductByCategory = [
   "/home/home decor",
   "/home/home storage",
   "/kids/kids clothing",
+  "/kids/accessories",
+  "/kids/baby products",
+  "/kids/kids shoes",
+  "/kids/toys & games",
 ];
 export const HelpCenter = [
   "/faqs/order",
@@ -88,9 +94,9 @@ const ProductBySubCategory = [
   "/beauty/haircare/hair tools",
   "/beauty/haircare/hair treatment",
   "/beauty/haircare/styling products",
-  "/beauty/tools and accessories",
   "/kids/kids clothing/girls clothing",
-  "/kids/kids clothing/boys clothing",
+  "/kids/kids clothing/boys clothing",  
+  "/kids/accessories/books",
 ];
 
 const APP_ROUTES: Routes = [
@@ -102,10 +108,10 @@ const APP_ROUTES: Routes = [
     path: ["/account"],
     component: Account,
   },
-  // {
-  //   path: ["/orders"],
-  //   component: Orders,
-  // },
+  {
+    path: ["/orders"],
+    component: Orders,
+  },
   {
     path: ["/contact-us"],
     component: ContactUs,

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { actions } from "./slice";
 
-export const getCart = createAsyncThunk(
+export const getOrder = createAsyncThunk(
   "cart/getOrder",
   async (_, { dispatch }) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");

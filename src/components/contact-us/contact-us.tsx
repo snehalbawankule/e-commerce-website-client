@@ -11,7 +11,7 @@ import {
 import { Box, Grid } from "@mui/material";
 import { default as textwrap } from "../../assets/text-file/textwrap.json";
 // import { useGoogleLogin } from "@react-oauth/google";
-import Rectangle1 from "../../assets/images/Rectangle1.png";
+import Rectangle1 from "../../assets/images/shop.jpg";
 
 import useMediaQuery from "../../hooks/use-media-query";
 
@@ -65,40 +65,6 @@ const ContactUs = () => {
               sx={{ pl: isDesktop ? 10 : 4, pt: isDesktop ? 5 : 1 }}
             >
               <TextWrap4>{textwrap.title}</TextWrap4>
-            </Grid>
-            <Grid
-              item
-              xs={11}
-              sm={10}
-              md={10}
-              lg={11}
-              sx={{ pl: isDesktop ? 10 : 4, pt: isMobile ? 15 : 55.9 }}
-            >
-              <TextWrap5>{textwrap.description}</TextWrap5>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              sx={{ pl: isDesktop ? 10 : 4 }}
-            >
-              <TextWrap6>{textwrap.author}</TextWrap6>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={6}
-              lg={6}
-              sx={{
-                pl: isDesktop ? 10 : 4,
-                mt: isMobile ? -3 : -5,
-                pb: isMobile ? 3 : 8,
-              }}
-            >
-              <TextWrap7>{textwrap.authorCategory}</TextWrap7>
             </Grid>
           </Box>
         </Grid>
