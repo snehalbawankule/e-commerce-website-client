@@ -13,30 +13,14 @@ const ProductName = styled.div`
 `;
 
 const ProductTitle = styled.div`
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
+  font-weight: 300;
+  font-size: 14px;
+
   display: flex;
   align-items: center;
   color: #171520;
-
-  /* Paragraph/R-16px */
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 125% */
-
   display: flex;
   align-items: center;
-
-  /* Type/Low-Emphasis */
-
-  color: #626262;
 `;
 
 const AddToCardText = styled.button`
