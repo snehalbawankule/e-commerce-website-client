@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
-import NewArrivalsCard from "./new-arrivals-card";
+
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { addProduct } from "../../store/product/services";
 import { NewArrivalTextWrap, Scroll } from "./new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
+
+import HandPickedCard from "../handpicked/handpicked-card";
 
 const NewArrivals = () => {
   const dispatch = useAppDispatch();
@@ -38,13 +40,13 @@ const NewArrivals = () => {
             <Grid
               item
               xs={6}
-              sm={3}
+              sm={4}
               md={2.4}
               lg={2.4}
               display="flex"
               key={index}
             >
-              <NewArrivalsCard post={post} />
+              <HandPickedCard post={post} />
             </Grid>
           );
         })}

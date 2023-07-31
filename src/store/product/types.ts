@@ -13,6 +13,11 @@ export type Product = {
   discountPrice: number;
   createdAt: Date;
   updatedAt: Date;
+  product_images: [
+    {
+      name: string;
+    }
+  ];
   likes: [
     {
       id: string;
@@ -54,7 +59,11 @@ export const defaultProduct: Product = {
   discountPrice: 0,
   createdAt: new Date("2023-10-02"),
   updatedAt: new Date("2023-10-02"),
-
+  product_images: [
+    {
+      name: "",
+    },
+  ],
   likes: [
     {
       id: "",

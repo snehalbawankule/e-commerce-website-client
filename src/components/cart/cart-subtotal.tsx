@@ -5,11 +5,10 @@ import useMediaQuery from "../../hooks/use-media-query";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
 import { ProductName } from "./cart.styled";
-
 import { PostButton } from "../navbar/navbar.styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { actions as action } from "../../store/order/slice";
-import { actions } from "../../store/wishlist/slice";
+
 const CartSubTotal = () => {
   const location = useLocation();
   const { isDesktop, isMobile } = useMediaQuery();
@@ -38,7 +37,7 @@ const CartSubTotal = () => {
         quantity: item.quantity,
       })),
     };
-    console.log(newWishlist);
+
     dispatch(action.addOrder(newWishlist));
     navigate("/order placed");
   };
@@ -73,6 +72,7 @@ const CartSubTotal = () => {
     <Grid>
       <Card
         sx={{
+          pl: 0,
           p: 1,
           ml: isMobile ? 1 : 0,
           backgroundColor: "white",
