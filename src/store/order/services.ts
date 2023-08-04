@@ -14,17 +14,3 @@ export const getOrder = createAsyncThunk(
       });
   }
 );
-// export const getOrder = createAsyncThunk(
-//   "cart/getOrder",
-//   async (_, { dispatch }) => {
-//     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-//     return fetch(
-//       `http://localhost:3001/get-order-by-id?userId=${currentUser.id}`
-//     )
-//       .then((res) => res.json())
-//       .then((json) => {
-//         console.log(json);
-//         dispatch(actions.getOrders(json));
-//       });
-//   }
-// );

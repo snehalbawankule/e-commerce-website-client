@@ -1,5 +1,3 @@
-import { defaultProduct } from "../product/types";
-
 export type Cartlist = {
   id: string;
   userId: string;
@@ -12,13 +10,4 @@ export type Cartlist = {
 
 export type defaultState = {
   cart: Cartlist[];
-};
-export const defaultCart: Cartlist = {
-  id: "",
-  userId: "",
-  quantity: 0,
-  size: "",
-  color: "",
-  productId: "",
-  product: defaultProduct,
 };

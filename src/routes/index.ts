@@ -95,7 +95,7 @@ const ProductBySubCategory = [
   "/beauty/haircare/hair treatment",
   "/beauty/haircare/styling products",
   "/kids/kids clothing/girls clothing",
-  "/kids/kids clothing/boys clothing",  
+  "/kids/kids clothing/boys clothing",
   "/kids/accessories/books",
 ];
 
@@ -149,11 +149,6 @@ const APP_ROUTES: Routes = [
     component: NewArrivals,
   },
   {
-    path: ["/beauty"],
-    component: Products,
-  },
-
-  {
     path: ["/wishlist"],
     component: Wishlist,
   },
@@ -174,17 +169,10 @@ const APP_ROUTES: Routes = [
     component: Login,
   },
   {
-    path: ["/women"],
+    path: Product123,
     component: Products,
   },
-  {
-    path: ["/men"],
-    component: Products,
-  },
-  {
-    path: ["/kids"],
-    component: Products,
-  },
+
   {
     path: ["/profile/profile information"],
     component: ProfileInfo,
