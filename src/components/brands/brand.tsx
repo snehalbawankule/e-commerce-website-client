@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import BrandCard from "./brand-card";
 import { useAppDispatch } from "../../hooks/hooks";
 import { addBrand } from "../../store/brand/services";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 import {
   NewArrivalTextWrap,
   Scroll,
@@ -32,7 +33,7 @@ const Brand = () => {
       }}
     >
       <Grid item xs={12} sm={10} md={12} lg={12}>
-        <NewArrivalTextWrap>Brands. To-Hot-To-Handle</NewArrivalTextWrap>
+        <NewArrivalTextWrap>{TextWrap.brandTitle}</NewArrivalTextWrap>
       </Grid>
 
       <Scroll style={{ marginLeft: 10 }}>

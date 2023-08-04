@@ -7,6 +7,7 @@ import {
   NewArrivalTextWrap,
   Scroll,
 } from "../new-arrivals/new-arrivals.styled";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -37,9 +38,7 @@ const Category = () => {
       {location.pathname === "/" ? (
         <>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <NewArrivalTextWrap>
-              Category Shop. Limitless Choices
-            </NewArrivalTextWrap>
+            <NewArrivalTextWrap>{TextWrap.categoryTitle}</NewArrivalTextWrap>
           </Grid>
           <Scroll>
             {categories.map((post: any, index: any) => {
@@ -63,7 +62,7 @@ const Category = () => {
         <>
           <Grid item xs={12} sm={10} md={12} lg={12}>
             <NewArrivalTextWrap style={{ marginTop: 80 }}>
-              Category Shop. Limitless Choices
+              {TextWrap.categoryTitle}
             </NewArrivalTextWrap>
           </Grid>
           <Grid container style={{ marginLeft: 50, marginTop: 10 }}>

@@ -19,6 +19,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { IconName } from "./appbar.styled";
 import { useSelector } from "react-redux";
 import { getCarts } from "../../store/selectors";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 
 const Appbar = () => {
   const badgeRef = useRef(null);
@@ -85,7 +86,7 @@ const Appbar = () => {
             <TextWrap4
               style={{ marginTop: isDesktop ? 12 : isTablet ? 19 : 12 }}
             >
-              ShopMaven
+              {TextWrap.WebsiteName}
             </TextWrap4>
             <Grid item style={{ display: isMobile ? "flex" : "none" }}>
               <Navbar />
@@ -151,7 +152,7 @@ const Appbar = () => {
           >
             {currentUser === "" ? (
               <PostButton style={{ color: "black" }} onClick={handleLogin}>
-                Login
+                {TextWrap.Login}
               </PostButton>
             ) : (
               <Account />
@@ -185,7 +186,7 @@ const Appbar = () => {
           >
             <Grid item xs={2.4} sm={2.4}>
               <HomeOutlinedIcon sx={{ fontSize: 30 }} onClick={handleHome} />
-              <IconName>Home</IconName>
+              <IconName>{TextWrap.Home}</IconName>
             </Grid>
 
             <Grid item xs={2.4} sm={2.4}>
@@ -193,14 +194,14 @@ const Appbar = () => {
                 sx={{ fontSize: 30, justifyContent: "center" }}
                 onClick={handleCategory}
               />
-              <IconName>Category</IconName>
+              <IconName>{TextWrap.Category}</IconName>
             </Grid>
             <Grid item xs={2.4} sm={2.4}>
               <FavoriteBorderIcon
                 sx={{ fontSize: 30 }}
                 onClick={handleWishlist}
               />
-              <IconName>Wishlist</IconName>
+              <IconName>{TextWrap.WishList}</IconName>
             </Grid>
             <Grid item xs={2.4} sm={2.4}>
               <div>
@@ -219,7 +220,7 @@ const Appbar = () => {
                   sx={{ fontSize: 30 }}
                   onClick={handleCart}
                 />
-                <IconName>Cart</IconName>
+                <IconName>{TextWrap.Cart}</IconName>
               </div>
             </Grid>
             <Grid item xs={2.4} sm={2.4} alignItems="baseline">
@@ -227,7 +228,7 @@ const Appbar = () => {
                 sx={{ fontSize: 30 }}
                 onClick={handleAccount}
               />
-              <IconName>Account</IconName>
+              <IconName>{TextWrap.account}</IconName>
             </Grid>
           </Grid>
         </Toolbar>

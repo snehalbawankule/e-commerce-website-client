@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
 import { PostButton, ProfileImage } from "../account/account.styled";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 
 const Account = () => {
   const pages = ["orders", "returns", "wishlist", "profile"];
@@ -71,7 +72,7 @@ const Account = () => {
               }}
               to={`/login`}
             >
-              LogOut
+              {TextWrap.LogOut}
             </Link>
           </PostButton>
         </Menu>

@@ -8,6 +8,8 @@ import CartSubTotal from "./cart-subtotal";
 import Cartlist from "./cart-list";
 import { useSelector } from "react-redux";
 import { getCarts } from "../../store/selectors";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
+
 const Cart = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
@@ -43,7 +45,7 @@ const Cart = () => {
             fontWeight: "bold",
           }}
         >
-          Shopping Cart ({cart.length} items)
+          {TextWrap.shoppingCard} ({cart.length} items)
         </Grid>
         <Divider style={{ marginBottom: 15 }}></Divider>
         <Cartlist cart={cart} />

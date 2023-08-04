@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
 import { useSelector } from "react-redux";
 import { getUser } from "../../store/selectors";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 
 const Account = () => {
   const dispatch = useAppDispatch();
@@ -90,7 +91,7 @@ const Account = () => {
               }}
               to={`/login`}
             >
-              LogOut
+              {TextWrap.LogOut}
             </Link>
           </PostButton>
         </Menu>
