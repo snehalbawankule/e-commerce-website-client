@@ -6,18 +6,20 @@ import {
   ProfileInfoTitle,
   SaveButton,
 } from "../profile/profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { getUser } from "../../store/selectors";
+import { useSelector } from "react-redux";
 
 const NewAddress = () => {
   const dispatch = useAppDispatch();
 
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
   const id = currentUser.id;
   useEffect(() => {
     dispatch(getCurrentUser());

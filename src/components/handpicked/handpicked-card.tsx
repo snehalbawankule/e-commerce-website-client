@@ -6,6 +6,7 @@ import {
   ImageBox,
 } from "../new-arrivals/new-arrivals.styled";
 import { useNavigate } from "react-router-dom";
+import ProductPrice from "../product/product-price";
 
 const HandPickedCard = (props: any) => {
   const { post } = props;
@@ -39,25 +40,11 @@ const HandPickedCard = (props: any) => {
         <ProductName>{post.name}</ProductName>
       </Grid>
       <Grid container display="flex" alignItems="end">
-        <Grid item xs={3} sm={4} md={4} lg={4}>
-          <ProductTitle
-            style={{ fontSize: 24, fontWeight: 500, marginBottom: -3 }}
-          >
-            ₹{post?.discountPrice}
-          </ProductTitle>
-        </Grid>
-        <Grid item xs={3} sm={4} md={4.3} lg={4.3}>
-          <ProductTitle
-            style={{ paddingTop: 0, textDecoration: "line-through" }}
-          >
-            M.R.P: ₹{post?.actualPrice}
-          </ProductTitle>
-        </Grid>
-        <Grid item xs={3} sm={4} md={3.7} lg={3.7}>
-          <ProductTitle style={{ fontWeight: 700, color: "green" }}>
-            ({post?.discount}% off)
-          </ProductTitle>
-        </Grid>
+        <ProductPrice
+          actualPrice={post.actualPrice}
+          discountPrice={post?.discountPrice}
+          discount={post?.discount}
+        />
       </Grid>
     </Box>
   );

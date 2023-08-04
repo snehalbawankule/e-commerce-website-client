@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { Menu, Grid, IconButton, MenuItem, Typography } from "@mui/material";
 import { PostButton, ProfileImage } from "./account.styled";
 import useMediaQuery from "../../hooks/use-media-query";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
+import { useSelector } from "react-redux";
+import { getUser } from "../../store/selectors";
 
 const Account = () => {
   const dispatch = useAppDispatch();
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
 
   useEffect(() => {
     dispatch(getCurrentUser());

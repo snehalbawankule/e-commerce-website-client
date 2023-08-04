@@ -14,7 +14,6 @@ const { actions, reducer } = createSlice({
     },
 
     addOrder(state, action) {
-      console.log(action.payload);
       state.order.push(action.payload);
       axios.post("http://localhost:3001/post-order", {
         userId: action.payload.userId,

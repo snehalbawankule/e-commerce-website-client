@@ -7,15 +7,6 @@ export type Wishlist = {
   size: string;
   color: string;
   defaultProduct: any;
-  // products: [
-  //   {
-  //     id: string;
-  //     name: string;
-  //     title: string;
-  //     image: string;
-  //     updatedAt: Date;
-  //   }
-  // ];
 };
 
 export type defaultState = {
@@ -28,13 +19,4 @@ export const defaultWishlist: Wishlist = {
   size: "",
   color: "",
   defaultProduct,
-  // products: [
-  //   {
-  //     id: "",
-  //     name: "",
-  //     title: "",
-  //     image: "",
-  //     updatedAt: new Date("2023-10-02"),
-  //   },
-  // ],
 };

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { EditButton } from "../profile/profile.styled";
-import { useAppSelector } from "../../hooks/hooks";
 import { AddressType, TextWrap01 } from "./address.styled";
 import AddressEditModal from "./edit-address";
+import { getUser } from "../../store/selectors";
+import { useSelector } from "react-redux";
 
 function AddressList() {
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
   const addressed = currentUser.user_addresses;
 
   const [addresses, setAddresses] = useState(addressed);

@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import ProductCard from "./product-card";
 import { useLocation } from "react-router-dom";
 import useMediaQuery from "../../hooks/use-media-query";
+import ProductList from "../products/product-lists";
 
-const ProductList = () => {
+const Products = () => {
   const location = useLocation();
   const currentPage = location.pathname.slice(1);
   const segments = currentPage.split("/");
@@ -40,7 +40,7 @@ const ProductList = () => {
         }
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Axios GET request failed");
         setIsLoading(false);
       });
@@ -72,35 +72,8 @@ const ProductList = () => {
         overflowY: "auto",
       }}
     >
-      <Grid
-        container
-        direction="row"
-        spacing={2}
-        marginLeft="250px"
-        style={{
-          marginLeft: isMobile ? "5px" : isDesktop ? "230px" : "180px",
-          marginBottom: isMobile ? "5px" : "15px",
-          marginTop: isDesktop ? 60 : isTablet ? 8 : 60,
-        }}
-      >
-        {data.map((post: any, index: any) => {
-          return (
-            <Grid
-              item
-              xs={6}
-              sm={4}
-              md={3}
-              lg={3}
-              display="flex"
-              marginTop="15px"
-              key={index}
-            >
-              <ProductCard post={post} />
-            </Grid>
-          );
-        })}
-      </Grid>
+      <ProductList data={data} />
     </Grid>
   );
 };
-export default ProductList;
+export default Products;
