@@ -10,13 +10,15 @@ import { PostButton } from "../account/account.styled";
 import SearchBar from "../searchbar";
 import Navbar from "../navbar/navbar";
 import NotificationBadge from "react-notification-badge";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { useEffect } from "react";
 import { getCart } from "../../store/cart/services";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { IconName } from "./appbar.styled";
+import { useSelector } from "react-redux";
+import { getCarts } from "../../store/selectors";
 
 const Appbar = () => {
   const badgeRef = useRef(null);
@@ -24,7 +26,7 @@ const Appbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-  const cart = useAppSelector((state) => state.carts.cart);
+  const cart = useSelector(getCarts);
   useEffect(() => {
     if (cart.length) {
       dispatch(getCart());

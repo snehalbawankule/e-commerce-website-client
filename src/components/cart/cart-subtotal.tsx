@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 import { Card, Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
 import { ProductName } from "./cart.styled";
 import { PostButton } from "../navbar/navbar.styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { actions as action } from "../../store/order/slice";
+import { useSelector } from "react-redux";
+import { getCarts } from "../../store/selectors";
 
 const CartSubTotal = () => {
   const location = useLocation();
   const { isDesktop, isMobile } = useMediaQuery();
   const dispatch = useAppDispatch();
-
-  const cart = useAppSelector((state) => state.carts.cart);
+  const cart = useSelector(getCarts);
 
   const navigate = useNavigate();
   const navCheckout = () => {
@@ -72,7 +73,6 @@ const CartSubTotal = () => {
     <Grid>
       <Card
         sx={{
-          pl: 0,
           p: 1,
           ml: isMobile ? 1 : 0,
           backgroundColor: "white",

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import CategoryCard from "./category-card";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { addCategory } from "../../store/category/services";
 import {
   NewArrivalTextWrap,
@@ -9,12 +9,15 @@ import {
 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getCategories } from "../../store/selectors";
 
 const Category = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const { isDesktop } = useMediaQuery();
-  const categories = useAppSelector((state) => state.categories.category);
+  const { isDesktop, isTablet } = useMediaQuery();
+  const categories = useSelector(getCategories);
+
   useEffect(() => {
     if (categories.length) {
       dispatch(addCategory());
@@ -26,14 +29,14 @@ const Category = () => {
       container
       spacing={5}
       style={{
-        paddingLeft: isDesktop ? 30 : 8,
+        paddingLeft: isDesktop ? 30 : isTablet ? 0 : 8,
         marginBottom: isDesktop ? 50 : 5,
         paddingBottom: 20,
       }}
     >
       {location.pathname === "/" ? (
         <>
-          <Grid item xs={12} sm={10} md={12} lg={12}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <NewArrivalTextWrap>
               Category Shop. Limitless Choices
             </NewArrivalTextWrap>

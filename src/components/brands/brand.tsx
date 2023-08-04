@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import BrandCard from "./brand-card";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { addBrand } from "../../store/brand/services";
 import {
   NewArrivalTextWrap,
   Scroll,
 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
+import { useSelector } from "react-redux";
+import { getBrands } from "../../store/selectors";
 
 const Brand = () => {
   const dispatch = useAppDispatch();
-  const { isDesktop, isMobile } = useMediaQuery();
-  const brands = useAppSelector((state) => state.brands.brand);
+  const { isDesktop } = useMediaQuery();
+  const brands = useSelector(getBrands);
 
   useEffect(() => {
     if (brands.length) {

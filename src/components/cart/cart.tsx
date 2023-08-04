@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
-
 import { Divider } from "@mui/material";
-
 import CartSubTotal from "./cart-subtotal";
 import Cartlist from "./cart-list";
-import { actions } from "../../store/cart/slice";
+import { useSelector } from "react-redux";
+import { getCarts } from "../../store/selectors";
 const Cart = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.carts.cart);
+  const cart = useSelector(getCarts);
   useEffect(() => {
     if (cart.length) {
       dispatch(getCart());
