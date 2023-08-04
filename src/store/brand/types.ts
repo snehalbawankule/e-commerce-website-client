@@ -7,9 +7,3 @@ export type Brand = {
 export type defaultState = {
   brand: Brand[];
 };
-
-export const defaultBrand: Brand = {
-  id: "",
-  name: "",
-  image: "",
-};

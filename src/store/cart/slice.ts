@@ -1,6 +1,8 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { defaultState, defaultCart } from "./types";
+import { defaultState } from "./types";
+import { defaultCart } from "./initial-state";
 import axios from "axios";
+
 const initialState: defaultState = {
   cart: [defaultCart],
 };
