@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultOrder } from "./types";
+import { defaultState } from "./types";
+import { defaultOrder } from "./initial-state";
 import axios from "axios";
+
 const initialState: defaultState = {
   order: [defaultOrder],
 };

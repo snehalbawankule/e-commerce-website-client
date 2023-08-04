@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultPoster } from "./types";
+import { defaultState } from "./types";
+import { defaultPoster } from "./initial-state";
 
 const initialState: defaultState = {
   poster: [defaultPoster],

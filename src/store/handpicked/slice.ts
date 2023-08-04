@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultHandPicked } from "./types";
+import { defaultState } from "./types";
+import { defaultHandPicked } from "./initial-state";
 //import axios from "axios";
 
 const initialState: defaultState = {

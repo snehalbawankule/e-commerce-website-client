@@ -1,5 +1,3 @@
-import { defaultProduct } from "../product/types";
-
 export type OrderList = {
   id: string;
   userId: string;
@@ -16,18 +14,4 @@ export type OrderList = {
 
 export type defaultState = {
   order: OrderList[];
-};
-export const defaultOrder: OrderList = {
-  id: "",
-  userId: "",
-
-  shippingAddress: "",
-  totalCost: 0,
-  item: [
-    {
-      productId: "",
-      quantity: 0,
-      product: defaultProduct,
-    },
-  ],
 };
