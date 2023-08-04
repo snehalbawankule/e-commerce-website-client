@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultProduct } from "./types";
+import { defaultState } from "./types";
+import { defaultProduct } from "./initial-state";
 
 const initialState: defaultState = {
   product: [defaultProduct],

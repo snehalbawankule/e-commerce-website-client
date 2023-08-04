@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultUser } from "./types";
+import { defaultState } from "./types";
 import axios from "axios";
+import { defaultUser } from "./initial-state";
 
 const initialState: defaultState = {
   user: defaultUser,
