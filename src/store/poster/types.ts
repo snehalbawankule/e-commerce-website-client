@@ -7,9 +7,3 @@ export type Poster = {
 export type defaultState = {
   poster: Poster[];
 };
-
-export const defaultPoster: Poster = {
-  id: "",
-  name: "",
-  image: "",
-};
