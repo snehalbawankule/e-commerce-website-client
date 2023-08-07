@@ -1,15 +1,19 @@
-import Dialog from "@mui/material/Dialog";
 import axios from "axios";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import GoogleLogo from "../../assets/images/GoogleLogo.png";
 import FacebookLogo from "../../assets/images/FacebookLogo.png";
-import { Box, Grid, Divider } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import {
+  Box,
+  Grid,
+  Divider,
+  Checkbox,
+  FormControlLabel,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Dialog,
+} from "@mui/material";
 import {
   Input,
   SignGoogleButton,
@@ -83,12 +87,12 @@ const Registration = () => {
         <Box>
           <SignGoogleButton>
             <GoogleLogo1 src={GoogleLogo} />
-            Continue with Google
+            {textwrap.continueWithGoogle}
           </SignGoogleButton>
 
           <SignGoogleButton>
             <GoogleLogo1 src={FacebookLogo} />
-            Continue with Facebook
+            {textwrap.continueWithFacebook}
           </SignGoogleButton>
 
           <Divider style={{ marginTop: 65 }}>OR</Divider>
@@ -161,8 +165,7 @@ const Registration = () => {
                   <LoginLink onClick={navLogin}>{textwrap.loginLink}</LoginLink>
                 </TextWrap3>
                 <TextWrap3>
-                  By signing up, you agree to our Privacy Policy and Terms of
-                  Service.
+                  {textwrap["registrationTerms&Conditions"]}
                 </TextWrap3>
               </Box>
             </DialogActions>

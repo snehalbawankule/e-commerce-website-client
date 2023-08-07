@@ -5,7 +5,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "../../hooks/use-media-query";
 import { ProfileImage, ProfileText } from "./profile.styled";
 import Girl from "../../assets/images/girl.png";
-import { useAppSelector } from "../../hooks/hooks";
+import { useSelector } from "react-redux";
+import { getUser } from "../../store/selectors";
 
 const ProfileSidebar = () => {
   const { isDesktop } = useMediaQuery();
@@ -14,9 +15,8 @@ const ProfileSidebar = () => {
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
 
-  //   const categories = useAppSelector((state) => state.categories.category);
   const categories = ["profile information", "manage address", "gift cards"];
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
 
   const firstName =
     currentUser?.firstname?.charAt(0).toUpperCase() +

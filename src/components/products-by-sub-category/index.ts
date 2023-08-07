@@ -1,1 +1,1 @@
-export { default } from "./product-list";
+export { default } from "./product-by-sub-category";

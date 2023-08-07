@@ -12,10 +12,12 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 
 import useMediaQuery from "../../hooks/use-media-query";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
-import { CategoryName } from "../products/products.styled";
+import { CategoryName } from "../product-by-category/products.styled";
 import { addCategory } from "../../store/category/services";
+import { useSelector } from "react-redux";
+import { getCategories } from "../../store/selectors";
 const SideNav = () => {
   const { isDesktop, isMobile, isTablet } = useMediaQuery();
   const location = useLocation();
@@ -24,7 +26,7 @@ const SideNav = () => {
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
   const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state.categories.category);
+  const categories = useSelector(getCategories);
   const category = categories.find((item) => item.name === currentPage);
 
   useEffect(() => {
@@ -148,6 +150,7 @@ const SideNav = () => {
 
                 {page.sub_sub_categories.map((page1: any, index1: any) => (
                   <Button
+                    key={index1}
                     style={{
                       display: "flex",
                       justifyContent: "start",

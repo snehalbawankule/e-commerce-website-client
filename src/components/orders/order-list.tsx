@@ -1,8 +1,7 @@
-import React from "react";
 import { Grid } from "@mui/material";
-import CartCard from "./order-cart";
+import OrderCard from "./order-cart";
 
-const Cartlist = (props: any) => {
+const Orderlist = (props: any) => {
   const { cart } = props;
 
   return (
@@ -10,7 +9,7 @@ const Cartlist = (props: any) => {
       {cart.map((post: any, index: any) => {
         return (
           <Grid item xs={12} sm={12} md={12} lg={12} display="flex" key={index}>
-            <CartCard post={post} />
+            <OrderCard key={index} post={post} />
           </Grid>
         );
       })}
@@ -18,4 +17,4 @@ const Cartlist = (props: any) => {
   );
 };
 
-export default Cartlist;
+export default Orderlist;

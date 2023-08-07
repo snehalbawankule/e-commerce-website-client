@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { TextWrap02 } from "../user-address/address.styled";
+import { default as textwrap } from "../../assets/text-file/textwrap.json";
 
 function PaymentOptions() {
   const pages = [
@@ -15,7 +16,7 @@ function PaymentOptions() {
   return (
     <Grid container style={{ marginTop: 40 }}>
       <Box>
-        <TextWrap02>3 Select a payment method</TextWrap02>
+        <TextWrap02>{textwrap.paymentMethodTitle}</TextWrap02>
         <Grid container direction="column">
           {pages.map((page: any, index: any) => {
             return (

@@ -4,10 +4,12 @@ import { Box, Menu, Button, Grid, IconButton, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import useMediaQuery from "../../hooks/use-media-query";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { TextWrap01 } from "../new-arrivals/new-arrivals.styled";
-import { CategoryName } from "../products/products.styled";
+import { CategoryName } from "../product-by-category/products.styled";
 import { addHelpCenter } from "../../store/helpcenter/services";
+import { getHelpCenter } from "../../store/selectors";
+import { useSelector } from "react-redux";
 const HelpCenter = () => {
   const { isDesktop } = useMediaQuery();
   const location = useLocation();
@@ -15,7 +17,7 @@ const HelpCenter = () => {
   const pathSegments = location.pathname.split("/");
   const currentPage = pathSegments[1];
   const dispatch = useAppDispatch();
-  const categories = useAppSelector((state) => state.helpCenter.helpCenter);
+  const categories = useSelector(getHelpCenter);
   //   const category = categories.find((item) => item.name === "faqs");
   useEffect(() => {
     // if (categories.length) {

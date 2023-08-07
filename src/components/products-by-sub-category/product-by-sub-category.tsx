@@ -2,7 +2,8 @@ import { Grid } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import useMediaQuery from "../../hooks/use-media-query";
-import ProductList from "../products/product-lists";
+import ProductList from "../product-by-category/product-lists";
+import handleScroll from "../product-by-category/handle-scroll";
 
 const Products = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [previousPage, setPreviousPage] = useState("");
 
-  const { isMobile, isDesktop, isTablet } = useMediaQuery();
+  const { isDesktop, isTablet } = useMediaQuery();
 
   useEffect(() => {
     if (currentPage !== previousPage) {
@@ -46,16 +47,6 @@ const Products = () => {
       });
   }
 
-  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    const bottom =
-      target.scrollHeight - target.scrollTop - target.clientHeight < 50;
-    if (bottom && !isLoading) {
-      const nextPage = pageNo + 1;
-      setPageNo(nextPage);
-    }
-  };
-
   useEffect(() => {
     setIsLoading(true);
     setData([]);
@@ -66,7 +57,7 @@ const Products = () => {
   return (
     <Grid
       container
-      onScroll={handleScroll}
+      onScroll={(e) => handleScroll(e, isLoading, pageNo, setPageNo)}
       style={{
         height: isDesktop ? 750 : isTablet ? 1024 : 800,
         overflowY: "auto",

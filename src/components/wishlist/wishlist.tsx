@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Card, Grid } from "@mui/material";
+import { Card, Grid, Divider } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import WishlistCard from "./wishlist-card";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+
+import { useAppDispatch } from "../../hooks/hooks";
 import { getWishlists } from "../../store/wishlist/services";
 import {
   AddToCardText,
@@ -11,12 +11,15 @@ import {
   ProductTitle,
 } from "./wishlist.styled";
 import Bag from "../../assets/images/bag.png";
-import { Divider } from "@mui/material";
 import WishlistList from "./wishlist-list";
+import { useSelector } from "react-redux";
+import { getWishlist } from "../../store/selectors";
+import { default as textwrap } from "../../assets/text-file/textwrap.json";
+
 const Wishlist = () => {
   const { isDesktop, isTablet, isMobile } = useMediaQuery();
   const dispatch = useAppDispatch();
-  const wishlist = useAppSelector((state) => state.wishlists.wishlist);
+  const wishlist = useSelector(getWishlist);
 
   useEffect(() => {
     if (wishlist.length) {
@@ -50,7 +53,7 @@ const Wishlist = () => {
             fontWeight: "bold",
           }}
         >
-          Wishlist
+          {textwrap.WishList}
         </Grid>
         <Divider style={{ marginBottom: 15 }}></Divider>
         <WishlistList wishlist={wishlist} />

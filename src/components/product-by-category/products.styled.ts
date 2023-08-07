@@ -23,4 +23,6 @@ const Scroller = styled.div`
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 `;
-export { CategoryName, Scroller };
+
+const ProductsImageBox = styled.div``;
+export { CategoryName, Scroller, ProductsImageBox };

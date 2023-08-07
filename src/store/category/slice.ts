@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultState, defaultCategory } from "./types";
-//import axios from "axios";
+import { defaultState } from "./types";
+import { defaultCategory } from "./initial-state";
 
 const initialState: defaultState = {
   category: [defaultCategory],

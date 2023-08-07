@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
 import { EditButton, ProfileInfoTitle, SaveButton } from "./profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
+import { getUser } from "../../store/selectors";
+import { useSelector } from "react-redux";
+import { default as textwrap } from "../../assets/text-file/textwrap.json";
 
 const ProfileInfo = () => {
   const dispatch = useAppDispatch();
 
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -19,7 +22,7 @@ const ProfileInfo = () => {
     lastname: currentUser.lastname,
     email: currentUser.email,
   });
-  console.log(userInfo);
+
   const [validEmail, setValidEmail] = useState(true);
 
   const validateEmail = (email: any) => {
@@ -60,9 +63,9 @@ const ProfileInfo = () => {
         lg={4}
         style={{ display: "flex", paddingBottom: 20 }}
       >
-        <ProfileInfoTitle>Personal Information</ProfileInfoTitle>
+        <ProfileInfoTitle>{textwrap.profileInfo}</ProfileInfoTitle>
         <EditButton onClick={handleEditClick}>
-          {editMode ? <>Cancel</> : <>Edit</>}
+          {editMode ? <>{textwrap.cancel}</> : <>{textwrap.edit}</>}
         </EditButton>
       </Grid>
       <form
@@ -111,7 +114,7 @@ const ProfileInfo = () => {
               helperText={!validEmail && "Invalid email address"}
               style={{ marginLeft: 20 }}
             />
-            <SaveButton>Save</SaveButton>
+            <SaveButton>{textwrap.save}</SaveButton>
           </>
         ) : (
           <>

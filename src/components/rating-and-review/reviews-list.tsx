@@ -5,12 +5,14 @@ import { CommentCard } from "./review";
 import { CommentsBox } from "./review.styled";
 import useMediaQuery from "../../hooks/use-media-query";
 import { Comment } from "./new-review";
-import { useAppSelector } from "../../hooks/hooks";
+import { getProducts } from "../../store/selectors";
+import { useSelector } from "react-redux";
+
 const ReviewList = () => {
   const { isDesktop, isMobile } = useMediaQuery();
 
   const { id } = useParams();
-  const existingPost = useAppSelector((state) => state.products.product);
+  const existingPost = useSelector(getProducts);
   var product = existingPost.find((item: any) => item.id === id);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {

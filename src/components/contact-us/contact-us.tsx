@@ -1,22 +1,17 @@
 import { useState } from "react";
-// import axios from "axios";
 import {
   Input,
   TextWrap1,
-  TextWrap6,
-  TextWrap7,
   TextWrap4,
-  TextWrap5,
 } from "../registration/registration.styled";
 import { Box, Grid } from "@mui/material";
 import { default as textwrap } from "../../assets/text-file/textwrap.json";
-// import { useGoogleLogin } from "@react-oauth/google";
 import Rectangle1 from "../../assets/images/shop.jpg";
 
 import useMediaQuery from "../../hooks/use-media-query";
 
 const ContactUs = () => {
-  const { isMobile, isDesktop } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
   const [contactInfo, setContactInfo] = useState({
     name: "",
     email: "",
@@ -30,20 +25,6 @@ const ContactUs = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // if (userInfo.password === confirm_password) {
-    //   axios
-    //     .post("http://localhost:3001/postuser", {
-    //       email: userInfo.email,
-    //       name: userInfo.name,
-    //       profile: userInfo.profile,
-    //       password: userInfo.password,
-    //     })
-    //     .then(() => {
-    //       navLogin();
-    //     });
-    // } else {
-    //   alert("Passwords Don't Match");
-    // }
   };
   return (
     <>

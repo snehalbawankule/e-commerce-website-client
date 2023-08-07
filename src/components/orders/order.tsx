@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Divider } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-
-import { Divider } from "@mui/material";
-
+import { useAppDispatch } from "../../hooks/hooks";
 import Cartlist from "./order-list";
-import { actions } from "../../store/cart/slice";
 import { getOrder } from "../../store/order/services";
-const Cart = () => {
+import { useSelector } from "react-redux";
+import { getOrders } from "../../store/selectors";
+
+const Orders = () => {
   const { isDesktop, isTablet } = useMediaQuery();
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.order.order);
+  const cart = useSelector(getOrders);
   useEffect(() => {
     if (cart.length) {
       dispatch(getOrder());
@@ -52,4 +51,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Orders;

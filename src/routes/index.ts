@@ -1,14 +1,12 @@
 import { lazy } from "react";
 import { Routes } from "./types";
-import ProductList from "../components/products-by-category/product-list";
-import Products1 from "../components/products-by-sub-category";
+import ProductList from "../components/products-by-sub-category/product-by-sub-category";
+import Products1 from "../components/product-by-sub-sub-category";
 const HanselsHome = lazy(() => import("../components/hansels-home"));
 const Cart = lazy(() => import("../components/cart"));
-const OrderPlaced = lazy(
-  () => import("../components/checkout/review-cart-items/order-placed")
-);
+const OrderPlaced = lazy(() => import("../components/checkout/order-placed"));
 const Category = lazy(() => import("../components/category"));
-const Products = lazy(() => import("../components/products"));
+const Products = lazy(() => import("../components/product-by-category"));
 const Wishlist = lazy(() => import("../components/wishlist"));
 const Brand = lazy(() => import("../components/brands"));
 const Product = lazy(() => import("../components/product"));

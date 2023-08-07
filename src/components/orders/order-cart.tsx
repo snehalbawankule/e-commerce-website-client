@@ -1,13 +1,12 @@
-import { Grid } from "@mui/material";
-import { TextWrap02 } from "../new-arrivals/new-arrivals.styled";
+import { Grid, Divider } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-import { Divider } from "@mui/material";
-import { Price, ProductName, ProductTitle } from "./cart.styled";
+import { Price, ProductName, ProductTitle } from "../cart/cart.styled";
 import { PostButton } from "../navbar/navbar.styled";
+import { default as textwrap } from "../../assets/text-file/textwrap.json";
 
-const CartCard = (props: any) => {
+const OrderCard = (props: any) => {
   const { post } = props;
-  const { isDesktop, isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
 
   return (
     <Grid
@@ -45,7 +44,10 @@ const CartCard = (props: any) => {
                 <ProductTitle>{item.product?.name}</ProductTitle>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <ProductTitle>Quantity: {item.quantity}</ProductTitle>
+                <ProductTitle>
+                  {textwrap.quantity}
+                  {item.quantity}
+                </ProductTitle>
               </Grid>
             </Grid>
 
@@ -69,7 +71,7 @@ const CartCard = (props: any) => {
               </Grid>
             </Grid>
             <Grid item xs={3.5} sm={4.5} md={6} lg={6}>
-              <Price>view order details</Price>
+              <Price>{textwrap.viewOrderDetails}</Price>
 
               <PostButton
                 style={{
@@ -79,7 +81,7 @@ const CartCard = (props: any) => {
                   color: "black",
                 }}
               >
-                Write a product review
+                {textwrap.writeProductReview}
               </PostButton>
             </Grid>
           </>
@@ -94,4 +96,4 @@ const CartCard = (props: any) => {
     </Grid>
   );
 };
-export default CartCard;
+export default OrderCard;

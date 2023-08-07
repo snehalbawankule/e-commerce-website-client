@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { TextWrap01 } from "./checkout.styled";
 import AddressList from "../user-address/delhivery-address";
 import PaymentOptions from "../payment/payment";
-import Review from "./review-cart-items/review";
+import Review from "./review";
 import CartSubTotal from "../cart/cart-subtotal";
 import useMediaQuery from "../../hooks/use-media-query";
 

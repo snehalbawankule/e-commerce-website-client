@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, TextField } from "@mui/material";
 import { actions } from "../../store/user/slice";
 import { EditButton, SaveButton } from "../profile/profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { getCurrentUser } from "../../store/user/services";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+import {
+  Grid,
+  TextField,
+  Radio,
+  Box,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+} from "@mui/material";
 import { AddressType, TextWrap01 } from "./address.styled";
+import { getUser } from "../../store/selectors";
+import { useSelector } from "react-redux";
 
 const ExistingAddress = () => {
   const dispatch = useAppDispatch();
 
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
   const id = currentUser.id;
   const address = currentUser.user_addresses;
   useEffect(() => {

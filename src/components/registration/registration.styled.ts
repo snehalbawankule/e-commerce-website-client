@@ -11,11 +11,7 @@ const TextWrap1 = styled.text`
     font-size: ${pxToRem(27)};
   }
 `;
-const TextWrap2 = styled.text`
-  font-weight: 400;
-  margin-top: ${pxToRem(40)};
-  font-size: ${pxToRem(20)};
-`;
+
 const Input = styled.input`
   font-weight: 300;
   font-size: ${pxToRem(17)};
@@ -125,7 +121,6 @@ const GoogleLogo1 = styled.img<RegistrationProps>`
 
 export {
   TextWrap1,
-  TextWrap2,
   CreateAccountButton,
   SignGoogleButton,
   GoogleLogo1,

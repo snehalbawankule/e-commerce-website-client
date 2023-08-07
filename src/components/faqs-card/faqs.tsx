@@ -1,8 +1,9 @@
-import { useAppSelector } from "../../hooks/hooks";
 import { Grid } from "@mui/material";
 import FaqsCard from "./faqs-card";
 import { useLocation } from "react-router-dom";
 import { ProductName } from "../new-arrivals/new-arrivals.styled";
+import { getHelpCenter } from "../../store/selectors";
+import { useSelector } from "react-redux";
 
 const FaqsList = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const FaqsList = () => {
   const segments = currentPage.split("/");
 
   const decodedString = decodeURIComponent(segments[1]);
-  const Products = useAppSelector((state) => state.helpCenter.helpCenter);
+  const Products = useSelector(getHelpCenter);
   const something = Products.find((item) => item.name === decodedString);
 
   return (

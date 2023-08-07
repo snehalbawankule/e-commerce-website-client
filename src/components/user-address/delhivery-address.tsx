@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { EditButton } from "../profile/profile.styled";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { AddressType, TextWrap02 } from "./address.styled";
 import AddressEditModal from "./edit-address";
 import { getCurrentUser } from "../../store/user/services";
-import CartSubTotal from "../cart/cart-subtotal";
+import { getUser } from "../../store/selectors";
+import { useSelector } from "react-redux";
 
 function AddressList() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-  const currentUser = useAppSelector((state) => state.user.user);
+  const currentUser = useSelector(getUser);
 
   const addressed = currentUser.user_addresses;
 
@@ -27,7 +28,6 @@ function AddressList() {
     setSelectedValue(index);
     const selectedAddress = addresses[index];
     const shipping_address = `${selectedAddress.name} ${selectedAddress.address_line1}, ${selectedAddress.address_line2}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country}, - ${selectedAddress.postal_code}, Phone Number:${selectedAddress.mobile}`;
-    console.log(shipping_address);
 
     const storedDataAsString = sessionStorage.getItem("shipping_address");
     let storedData = {};

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { Grid, Box } from "@mui/material";
-import { ProductName, ImageBox } from "../new-arrivals/new-arrivals.styled";
+import { useState } from "react";
+import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import {
+  ImageBox,
+  ProductName,
+  ProductTitle,
+} from "../new-arrivals/new-arrivals.styled";
 import ProductPrice from "../product/product-price";
 
-const HandPickedCard = (props: any) => {
+const ProductCard = (props: any) => {
   const { post } = props;
-  const { id } = post;
+
   let history = useNavigate();
   const [hovered, setHovered] = useState(false);
 
@@ -16,13 +20,12 @@ const HandPickedCard = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
+  const handleChange = () => {
+    history(`/products/${post.id}`);
+  };
 
   return (
-    <Box
-      onClick={() => history(`/products/${id}`)}
-      key={id}
-      sx={{ display: "grid", marginRight: 10 }}
-    >
+    <Box onClick={handleChange} key={post?.id} sx={{ display: "grid" }}>
       <ImageBox
         src={post.image}
         style={{
@@ -31,9 +34,12 @@ const HandPickedCard = (props: any) => {
         onMouseOver={handleHover}
         onMouseLeave={handleMouseLeave}
       />
+      <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+        <ProductName>{post?.name}</ProductName>
+      </Grid>
 
       <Grid item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-        <ProductName>{post.name}</ProductName>
+        <ProductTitle>{post?.title}</ProductTitle>
       </Grid>
       <Grid container display="flex" alignItems="end">
         <ProductPrice
@@ -45,5 +51,4 @@ const HandPickedCard = (props: any) => {
     </Box>
   );
 };
-
-export default HandPickedCard;
+export default ProductCard;
