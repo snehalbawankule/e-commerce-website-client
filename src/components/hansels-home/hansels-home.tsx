@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid } from "@mui/material";
 import Footer from "../footer/footer";
 import Category from "../category/category";
