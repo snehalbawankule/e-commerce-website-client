@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Grid, Divider } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -42,7 +42,7 @@ const Orders = () => {
             fontWeight: "bold",
           }}
         >
-          Orders ({cart.length} items)
+          Orders
         </Grid>
         <Divider style={{ marginBottom: 15 }}></Divider>
         <Cartlist cart={cart} />

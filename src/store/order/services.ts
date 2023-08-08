@@ -6,7 +6,7 @@ export const getOrder = createAsyncThunk(
   async (_, { dispatch }) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
     return fetch(
-      `http://localhost:3001/get-orders-by-id?userId=${currentUser.id}`
+      `http://localhost:3001/get-orders-by-id?page=1&size=12&sort=createdAt&order=DESC&userId=${currentUser.id}`
     )
       .then((res) => res.json())
       .then((json) => {
