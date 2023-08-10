@@ -53,7 +53,9 @@ const Appbar = () => {
   const handleCategory = () => {
     navigate("/category");
   };
-
+  const homePage = () => {
+    navigate("/");
+  };
   return (
     <>
       <AppBar
@@ -83,6 +85,7 @@ const Appbar = () => {
             }}
           >
             <TextWrap4
+              onClick={homePage}
               style={{ marginTop: isDesktop ? 12 : isTablet ? 19 : 12 }}
             >
               {TextWrap.WebsiteName}

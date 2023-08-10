@@ -20,9 +20,9 @@ function PaymentOptions() {
         <Grid container direction="column">
           {pages.map((page: any, index: any) => {
             return (
-              <Box sx={{ p: 1, marginTop: 2 }}>
+              <Box sx={{ p: 1, marginTop: 2 }} key={index}>
                 <Grid item xs={11} sm={11} md={12} lg={12} display="flex">
-                  <label key={index}>
+                  <label>
                     <input
                       type="radio"
                       value={index}

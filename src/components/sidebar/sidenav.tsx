@@ -133,9 +133,8 @@ const SideNav = () => {
               {currentPage}
             </CategoryName>
             {sub_categories?.map((page, index) => (
-              <>
+              <div key={index}>
                 <Button
-                  key={index}
                   style={{
                     display: "flex",
                     justifyContent: "start",
@@ -166,7 +165,7 @@ const SideNav = () => {
                     <Typography color="gray">{page1.name}</Typography>
                   </Button>
                 ))}
-              </>
+              </div>
             ))}
           </Grid>
         </Box>

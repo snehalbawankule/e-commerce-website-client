@@ -105,6 +105,7 @@ const Product = () => {
         {product?.product_images?.map((item: any) => {
           return (
             <Box
+              key={item.id}
               style={{
                 marginTop: 10,
                 width: isMobile ? "100%" : "100px",

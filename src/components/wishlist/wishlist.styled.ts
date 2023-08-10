@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const ProductName = styled.div`
-  font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;

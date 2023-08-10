@@ -15,6 +15,7 @@ export type Product = {
   updatedAt: Date;
   product_images: [
     {
+      id: string;
       name: string;
     }
   ];

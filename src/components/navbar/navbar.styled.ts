@@ -22,4 +22,5 @@ const TextWrap4 = styled.div`
     font-size: ${pxToRem(16)};
   }
 `;
+
 export { PostButton, TextWrap4 };

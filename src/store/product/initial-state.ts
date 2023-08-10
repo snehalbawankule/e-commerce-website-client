@@ -17,6 +17,7 @@ const defaultProduct: Product = {
   updatedAt: new Date("2023-10-02"),
   product_images: [
     {
+      id: "",
       name: "",
     },
   ],
