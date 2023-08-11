@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Grid, Box } from "@mui/material";
 import { ProductName, ImageBox } from "../new-arrivals/new-arrivals.styled";
 

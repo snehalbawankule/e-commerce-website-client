@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
 const ProductName = styled.div`
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 500;
   font-size: 18px;
   padding-bottom: 20px;
-  line-height: 20px;
   display: flex;
   align-items: center;
   color: #171520;
@@ -15,7 +12,6 @@ const ProductName = styled.div`
 const ProductTitle = styled.div`
   font-weight: 300;
   font-size: 14px;
-
   display: flex;
   align-items: center;
   color: #171520;
@@ -24,7 +20,6 @@ const ProductTitle = styled.div`
 `;
 
 const AddToCardText = styled.button`
-  font-family: "Inter";
   font-weight: 600;
   font-size: 14px;
   background: none;
@@ -40,7 +35,6 @@ const AddToCardText = styled.button`
 `;
 
 const Price = styled.div`
-  font-family: "Inter";
   font-weight: 500;
   font-size: 20px;
   display: flex;

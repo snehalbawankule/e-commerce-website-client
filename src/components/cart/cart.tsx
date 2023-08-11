@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { Grid } from "@mui/material";
+import { useEffect } from "react";
+import { Grid, Divider } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
 import { useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
-import { Divider } from "@mui/material";
 import CartSubTotal from "./cart-subtotal";
 import Cartlist from "./cart-list";
 import { useSelector } from "react-redux";

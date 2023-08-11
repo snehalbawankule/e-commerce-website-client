@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Card, Grid } from "@mui/material";
 import useMediaQuery from "../../hooks/use-media-query";
-
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 import { useAppDispatch } from "../../hooks/hooks";
 import { getCart } from "../../store/cart/services";
 import { ProductName } from "./cart.styled";
@@ -81,7 +81,7 @@ const CartSubTotal = () => {
       >
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <ProductName style={{ paddingTop: 0, fontWeight: 700 }}>
-            PRICE DETAILS
+            {TextWrap.priceDetails}
           </ProductName>
         </Grid>
         <Grid
@@ -93,7 +93,9 @@ const CartSubTotal = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <ProductName>Price ({quantity}items)</ProductName>
+          <ProductName>
+            {TextWrap.price} ({quantity}items)
+          </ProductName>
           <ProductName>{totalPrice}</ProductName>
         </Grid>
         <Grid
@@ -105,7 +107,7 @@ const CartSubTotal = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <ProductName>Discount</ProductName>
+          <ProductName>{TextWrap.discount}</ProductName>
           <ProductName>-{discount}</ProductName>
         </Grid>
         <Grid
@@ -117,7 +119,7 @@ const CartSubTotal = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <ProductName>Delhivery Charges</ProductName>
+          <ProductName>{TextWrap.deliveryCharges}</ProductName>
           <ProductName>{Delhivery}</ProductName>
         </Grid>
         <Grid
@@ -129,11 +131,11 @@ const CartSubTotal = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <ProductName>Total Amount</ProductName>
-          <ProductName>{subTotal}</ProductName>
+          <ProductName>{TextWrap.totalAmount}</ProductName>
+          <ProductName style={{ fontWeight: 700 }}>{subTotal}</ProductName>
         </Grid>
         <ProductName style={{ color: "green" }}>
-          you will save {saved} on this order
+          {TextWrap.youWillSave} {saved} {TextWrap.onThisOrder}
         </ProductName>
 
         <Grid
@@ -154,7 +156,7 @@ const CartSubTotal = () => {
               }}
               onClick={navCheckout}
             >
-              Proceed to Buy
+              {TextWrap.proccedToBuy}
             </PostButton>
           ) : (
             <>
@@ -167,7 +169,7 @@ const CartSubTotal = () => {
                 }}
                 onClick={navOrderPlaced}
               >
-                Place order
+                {TextWrap.placeOrder}
               </PostButton>
             </>
           )}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Grid } from "@mui/material";
 import CategoryCard from "./category-card";
 import { useAppDispatch } from "../../hooks/hooks";

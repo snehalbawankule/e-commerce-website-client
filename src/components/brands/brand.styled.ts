@@ -33,12 +33,5 @@ const ImageBox = styled.img<BrandProps>`
     width: ${pxToRem(120)};
   }
 `;
-const TextWrap4 = styled.h1`
-  font-size: ${pxToRem(24)};
-  color: #f3f2ff;
-  font-weight: 700;
-  @media (max-width: 1024px) {
-    font-size: ${pxToRem(12)};
-  }
-`;
-export { BrandName, TextWrap4, ImageBox };
+
+export { BrandName, ImageBox };

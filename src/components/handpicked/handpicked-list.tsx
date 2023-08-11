@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { useAppDispatch } from "../../hooks/hooks";
 import { addHandPicked } from "../../store/handpicked/services";

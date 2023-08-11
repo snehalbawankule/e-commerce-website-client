@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { Grid } from "@mui/material";
+import {
+  Grid,
+  Box,
+  InputLabel,
+  MenuItem,
+  Divider,
+  FormControl,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 import { TextWrap02 } from "../new-arrivals/new-arrivals.styled";
 import useMediaQuery from "../../hooks/use-media-query";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import { Divider, FormControl } from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { AddToCardText, Price, ProductName, ProductTitle } from "./cart.styled";
 import { actions } from "../../store/cart/slice";
 import { actions as action } from "../../store/wishlist/slice";
+import { default as TextWrap } from "../../assets/text-file/textwrap.json";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useLocation } from "react-router-dom";
-const CartCard = (props: any) => {
+
+const ShoppingCard = (props: any) => {
   const location = useLocation();
   const { post } = props;
   const [quantity, setQuantity] = useState(post.quantity);
@@ -73,7 +79,10 @@ const CartCard = (props: any) => {
           <ProductTitle>{post.product?.name}</ProductTitle>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <ProductTitle>Color:{post.color}</ProductTitle>
+          <ProductTitle>
+            {TextWrap.color}
+            {post.color}
+          </ProductTitle>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <TextWrap02 style={{ fontWeight: 500, fontSize: 18, paddingTop: 0 }}>
@@ -87,7 +96,7 @@ const CartCard = (props: any) => {
           style={{ display: isMobile ? "none" : "flex" }}
         >
           <FormControl fullWidth>
-            <InputLabel>Qty</InputLabel>
+            <InputLabel>{TextWrap.qty}</InputLabel>
             <Select value={quantity} label="Quantity" onChange={handleChange}>
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={2}>2</MenuItem>
@@ -112,7 +121,8 @@ const CartCard = (props: any) => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Price style={{ fontWeight: 500, fontSize: 22, color: "green" }}>
-            -{post.product?.discount}% off
+            -{post.product?.discount}
+            {TextWrap["%off"]}
           </Price>
         </Grid>
         <Grid
@@ -130,7 +140,11 @@ const CartCard = (props: any) => {
           <Grid item xs={8} sm={8} md={8} lg={8}>
             {location.pathname === "/cart" ? (
               <AddToCardText onClick={handleWishlist}>
-                Move to Wishlist{" "}
+                {TextWrap.moveToWishlist}
+              </AddToCardText>
+            ) : location.pathname === "/wishlist" ? (
+              <AddToCardText onClick={handleWishlist}>
+                {TextWrap.moveToCart}
               </AddToCardText>
             ) : null}
           </Grid>
@@ -139,7 +153,7 @@ const CartCard = (props: any) => {
               onClick={handleRemove}
               style={{ color: "red", paddingLeft: 5 }}
             >
-              Remove
+              {TextWrap.remove}
             </AddToCardText>
           </Grid>
         </Grid>
@@ -150,4 +164,4 @@ const CartCard = (props: any) => {
     </Grid>
   );
 };
-export default CartCard;
+export default ShoppingCard;

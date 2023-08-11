@@ -1,6 +1,5 @@
-import React from "react";
 import { Grid } from "@mui/material";
-import CartCard from "./cart-card";
+import CartCard from "./shopping-card";
 
 const Cartlist = (props: any) => {
   const { cart } = props;

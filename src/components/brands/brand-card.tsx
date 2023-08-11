@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Grid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ImageBox } from "./brand.styled";

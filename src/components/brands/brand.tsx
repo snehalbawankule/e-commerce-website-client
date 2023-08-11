@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Grid } from "@mui/material";
 import BrandCard from "./brand-card";
 import { useAppDispatch } from "../../hooks/hooks";

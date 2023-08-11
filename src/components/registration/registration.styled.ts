@@ -87,31 +87,7 @@ const TextWrap4 = styled.h4`
     font-size: ${pxToRem(12)};
   }
 `;
-const TextWrap5 = styled.h4`
-  font-size: ${pxToRem(48)};
-  color: #f3f2ff;
-  @media (max-width: 767px) {
-    font-size: ${pxToRem(24)};
-  }
-`;
 
-const TextWrap6 = styled.h4`
-  font-size: ${pxToRem(40)};
-  color: #f3f2ff;
-  font-weight: 500;
-  @media (max-width: 767px) {
-    font-size: ${pxToRem(20)};
-  }
-`;
-
-const TextWrap7 = styled.h3`
-  font-weight: 500;
-  @media (max-width: 767px) {
-    font-size: ${pxToRem(16)};
-  }
-  font-size: ${pxToRem(24)};
-  color: #f3f2ff;
-`;
 const GoogleLogo1 = styled.img<RegistrationProps>`
   margin-left: ${pxToRem(10)};
   margin-right: ${pxToRem(16)};
@@ -125,10 +101,7 @@ export {
   SignGoogleButton,
   GoogleLogo1,
   Input,
-  TextWrap6,
-  TextWrap7,
   TextWrap3,
-  TextWrap5,
   TextWrap4,
   LoginLink,
 };
