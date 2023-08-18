@@ -40,7 +40,7 @@ const Navbar = () => {
         style={{
           paddingLeft: 0,
           marginTop: -25,
-          display: isMobile ? "flex" : "none",
+          display: isMobile ? "block" : "none",
         }}
       >
         <Grid
@@ -95,15 +95,7 @@ const Navbar = () => {
             alignItems: "center",
           }}
         >
-          <Grid
-            item
-            sm={12}
-            md={12}
-            lg={12}
-            style={{
-              display: "flex",
-            }}
-          >
+          <Grid item sm={12} md={12} lg={12}>
             {pages.map((page, index) => (
               <Button
                 key={index}

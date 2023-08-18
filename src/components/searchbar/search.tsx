@@ -5,8 +5,10 @@ import {
   List,
   ListItem,
   Grid,
+  Divider,
   InputBase,
 } from "@mui/material";
+
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, Search, Lists } from "./search.styled";
@@ -47,7 +49,13 @@ function SearchBar() {
           }}
         >
           <Search>
-            <Grid container>
+            <Grid
+              container
+              style={{
+                height: 64,
+                alignItems: "center",
+              }}
+            >
               <Grid item xs={10} sm={10.5} md={11} lg={11}>
                 <InputBase
                   placeholder="Search…"
@@ -60,7 +68,14 @@ function SearchBar() {
               </Grid>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={12} lg={12}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={12}
+              lg={12}
+              style={{ borderTop: "2px solid gray" }}
+            >
               {searchResults.length > 0 && (
                 <Lists>
                   <List>

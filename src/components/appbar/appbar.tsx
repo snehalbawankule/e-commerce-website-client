@@ -101,7 +101,7 @@ const Appbar = () => {
             md={4}
             lg={4}
             style={{
-              display: isMobile ? "none" : "flex",
+              display: isMobile ? "none" : "block",
             }}
           >
             <Navbar />
@@ -149,7 +149,7 @@ const Appbar = () => {
             sm={1}
             md={0.8}
             lg={0.8}
-            style={{ display: isMobile ? "none" : "flex" }}
+            style={{ display: isMobile ? "none" : "block" }}
             alignItems="center"
           >
             {currentUser === "" ? (

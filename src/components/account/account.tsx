@@ -39,7 +39,6 @@ const Account = () => {
     <Grid
       container
       style={{
-        display: "flex",
         justifyContent: "center",
         alignItems: "center",
         paddingLeft: isTablet ? 10 : "",
